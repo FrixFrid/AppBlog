@@ -1,14 +1,14 @@
 <?php
-require_once('lib/database.php');
+namespace Models;
 
-class Model
+abstract class Model
 {
     protected $pdo;
     protected $table;
 
     public function __construct()
     {
-        $this->pdo = getPdo();
+        $this->pdo = \Database::getPdo();
     }
 
 
