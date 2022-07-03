@@ -53,13 +53,13 @@
                     <a href="?p=home"></a>
                 </li>
                 <li class="page-scroll">
-                    <a href="index.php?controller=article">Blog</a>
+                    <a href="templates/blog.html.php">Blog</a>
                 </li>
                 <li class="page-scroll">
-                    <a href="#about">About</a>
+                    <a href="templates/about.html.php">About</a>
                 </li>
                 <li class="page-scroll">
-                    <a href="?p=contact">Contact</a>
+                    <a href="#">Contact</a>
                 </li>
             </ul>
         </div>
@@ -67,22 +67,6 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-
-<!-- HEADER -->
-<header>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <img class="img-responsive" src="/public/img/profile.png" alt="">
-                <div class="intro-text">
-                    <span class="name">Farid TANGI</span>
-                    <hr class="star-light">
-                    <span class="skills">Developer - Graphic Artist - Inbound Marketing</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
 
 <?= $pageContent ?>
 

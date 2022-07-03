@@ -6,7 +6,7 @@ class Article extends Controller
 {
     protected $modelName = \Models\Article::class;
 
-    public function blog()
+    public function index()
     {
 
         /**
@@ -19,7 +19,7 @@ class Article extends Controller
          */
         $pageTitle = "Blog";
 
-        \Renderer::render('articles/blog', compact('pageTitle', 'articles'));
+        \Renderer::render('articles/index', compact('pageTitle', 'articles'));
     }
 
     public function show()
