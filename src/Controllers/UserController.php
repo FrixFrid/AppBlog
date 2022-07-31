@@ -67,8 +67,8 @@
          $user = $this->userModel->findUser($_POST['email']);
          if (password_verify($_POST['mdp'], $user['mdp'])) {
              if ($user['is_admin']) {
-                $_SESSION['auth'] = (int)$user['is_admin'];
-                Http::redirect("index.php?controller=home&task=dashboard");
+                $_SESSION['auth'] = $user['is_admin'];
+                 Http::redirect("index.php?controller=home&task=dashboard");
              } else {
                  Http::redirect("index.php?controller=home&task=home");
              }

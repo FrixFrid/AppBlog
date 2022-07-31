@@ -1,4 +1,8 @@
-
+<?php
+if (session_status() === PHP_SESSION_NONE){
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -62,19 +66,27 @@
                 <li class="page-scroll">
                     <a href="index.php?controller=home&task=contact">Contact</a>
                 </li>
-
-                <?php $_SESSION['auth'] = (int)$user['is_admin']; ?>
-                <?php if ($user['is_admin']) : ?>
-                    <ul>
-                        <li class="page-scroll">
+                <?php
+                if (isset($_SESSION['auth']) && $_SESSION['auth'] == 1) {
+                ?>                        <li class="page-scroll">
                             <a href="index.php?controller=home&task=dashboard">Dashboard</a>
                         </li>
                         <li class="page-scroll">
                             <a href="index.php?controller=user&task=logout">Déconnexion</a>
                         </li>
-                    </ul>
-                <?php endif ?>
-                <li class="page-scroll">
+                <?php
+                }
+                else { if (isset($_SESSION['auth']) && $_SESSION['auth'] == 0) {
+                    var_dump($_SESSION['auth']);
+                    die();
+                    ?>
+                    <li class="page-scroll">
+                        <a href="index.php?controller=user&task=logout">Déconnexion</a>
+                    </li>
+                <?php
+                }
+                }
+                ?>                <li class="page-scroll">
                     <a href="index.php?controller=user&task=login">Connexion/Inscription</a>
                 </li>
             </ul>
