@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -11,10 +12,10 @@
     <title>Mon superbe blog - <?= $pageTitle ?></title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Theme CSS -->
-    <link href="../public/css/freelancer.min.css" rel="stylesheet">
+    <link href="../../public/css/freelancer.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <script src="https://kit.fontawesome.com/34c6cb5b88.js" crossorigin="anonymous"></script>
@@ -43,23 +44,38 @@
                     data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="index.php">Farid TANGI.</a>
+            <a class="navbar-brand" href="index.php?controller=home&task=home">Farid TANGI.</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="hidden">
-                    <a href="?p=home"></a>
+                    <a href="index.php?controller=home&task=home"></a>
                 </li>
                 <li class="page-scroll">
-                    <a href="templates/blog.html.php">Blog</a>
+                    <a href="index.php?controller=article&task=blog">Blog</a>
                 </li>
                 <li class="page-scroll">
-                    <a href="templates/about.html.php">About</a>
+                    <a href="index.php?controller=home&task=about">About</a>
                 </li>
                 <li class="page-scroll">
-                    <a href="#">Contact</a>
+                    <a href="index.php?controller=home&task=contact">Contact</a>
+                </li>
+
+                <?php $_SESSION['auth'] = (int)$user['is_admin']; ?>
+                <?php if ($user['is_admin']) : ?>
+                    <ul>
+                        <li class="page-scroll">
+                            <a href="index.php?controller=home&task=dashboard">Dashboard</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="index.php?controller=user&task=logout">Déconnexion</a>
+                        </li>
+                    </ul>
+                <?php endif ?>
+                <li class="page-scroll">
+                    <a href="index.php?controller=user&task=login">Connexion/Inscription</a>
                 </li>
             </ul>
         </div>
@@ -67,6 +83,8 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
+
+
 
 <?= $pageContent ?>
 
@@ -116,20 +134,20 @@
     </div>
 </footer>
 <!-- jQuery -->
-<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../../vendor/jquery/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Plugin JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
 <!-- Contact Form JavaScript -->
-<script src="../public/js/jqBootstrapValidation.js"></script>
-<script src="../public/js/contact_me.js"></script>
+<script src="../../public/js/jqBootstrapValidation.js"></script>
+<script src="../../public/js/contact_me.js"></script>
 
 <!-- Theme JavaScript -->
-<script src="../public/js/freelancer.min.js"></script>
+<script src="../../public/js/freelancer.min.js"></script>
 
 </body>
 

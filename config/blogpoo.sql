@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 03, 2022 at 02:48 PM
+-- Generation Time: Jul 15, 2022 at 10:12 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -43,7 +43,10 @@ CREATE TABLE `articles` (
 
 INSERT INTO `articles` (`id`, `title`, `slug`, `author`, `extract`, `content`, `created_at`) VALUES
 (122, 'L\'avantage de louer en toute tranquilité', 'omnis-consequatur-ut-dolorem-provident-deleniti', '', 'Et et autem non quibusdam et. Numquam aliquid aliquam aliquid sit cumque ea reprehenderit. At ea qui rerum qui impedit.', '<p>Et possimus veritatis quia maiores enim. Illum maiores aperiam nobis nam. Eligendi laborum sunt enim ratione aliquid praesentium. Ab nihil asperiores ea eaque.</p><p>Molestiae qui minima cum eligendi neque et aut. Sapiente expedita sunt natus sint neque qui. Dicta excepturi sit consequatur molestias.</p><p>Non hic nostrum qui sit est. Soluta doloribus dolor voluptate nisi. Molestias velit quia ad porro quo eos est illum. Esse officia alias est velit sunt.</p><p>Et aspernatur repellat placeat. Ex voluptatum dolores aut totam qui perferendis ut fugit. Voluptatibus mollitia ut minus magni. Placeat dolorem modi et architecto dolorem.</p><p>Ut quod excepturi et sapiente in expedita rerum. Ut sint voluptas labore blanditiis minima.</p>', '2019-02-03 01:16:31'),
-(131, 'Le plaisir de louer autrement', 'consequatur-totam-perferendis-est-et-dolores-cumque-dolorum', '', 'Voluptatem itaque voluptatum totam aut dolor. Necessitatibus et quaerat qui neque sed tenetur. Labore deleniti et repellendus.', '<p>Voluptatum dolorem iste est iure. Repellendus fugiat asperiores incidunt vero laudantium rerum. Id veritatis et earum dolorem vel ut. Sapiente nulla sit natus et debitis quasi reprehenderit.</p><p>Debitis itaque tempore molestiae fuga autem. Quidem cum neque optio est ratione. Doloribus animi omnis qui provident et. Excepturi cum inventore libero veritatis sit et provident.</p><p>Dolores distinctio voluptates voluptatum repudiandae omnis. Magni ex non voluptas animi nemo quod. Et perspiciatis molestiae rem aliquid ut eius. Velit aliquam est eius pariatur nihil autem dolore.</p><p>Voluptatem culpa quibusdam aliquid quasi excepturi tenetur consectetur. Ipsa tempore nostrum ullam optio iure optio. Nisi beatae sit ratione enim ad ad quia.</p><p>Maxime sequi ducimus error consectetur non molestiae non voluptates. Quo perspiciatis accusantium accusantium blanditiis velit quae. Cum quis incidunt alias quia perspiciatis ut asperiores officia. Esse modi sit soluta ut cumque laboriosam.</p>', '2019-01-31 18:05:24');
+(144, 'titre titre', 'cat cat', 'frid frix', 'extract', 'articlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticle', '2022-07-15 12:01:07'),
+(131, 'Le plaisir de louer autrement', 'consequatur-totam-perferendis-est-et-dolores-cumque-dolorum', '', 'Voluptatem itaque voluptatum totam aut dolor. Necessitatibus et quaerat qui neque sed tenetur. Labore deleniti et repellendus.', '<p>Voluptatum dolorem iste est iure. Repellendus fugiat asperiores incidunt vero laudantium rerum. Id veritatis et earum dolorem vel ut. Sapiente nulla sit natus et debitis quasi reprehenderit.</p><p>Debitis itaque tempore molestiae fuga autem. Quidem cum neque optio est ratione. Doloribus animi omnis qui provident et. Excepturi cum inventore libero veritatis sit et provident.</p><p>Dolores distinctio voluptates voluptatum repudiandae omnis. Magni ex non voluptas animi nemo quod. Et perspiciatis molestiae rem aliquid ut eius. Velit aliquam est eius pariatur nihil autem dolore.</p><p>Voluptatem culpa quibusdam aliquid quasi excepturi tenetur consectetur. Ipsa tempore nostrum ullam optio iure optio. Nisi beatae sit ratione enim ad ad quia.</p><p>Maxime sequi ducimus error consectetur non molestiae non voluptates. Quo perspiciatis accusantium accusantium blanditiis velit quae. Cum quis incidunt alias quia perspiciatis ut asperiores officia. Esse modi sit soluta ut cumque laboriosam.</p>', '2019-01-31 18:05:24'),
+(146, 'dgbdbhsfbggfs', 'nsfgnfsgnfs', 'nfsngfnsfgnsgf', 'nsfgnsrtnsrnsfgns', 'fnrstyhnrnygsfgnsrfn', '2022-07-15 12:03:34'),
+(147, 'dgbdbhsfbggfs', 'nsfgnfsgnfs', 'nfsngfnsfgnsgf', 'nsfgnsrtnsrnsfgns', 'fnrstyhnrnygsfgnsrfn', '2022-07-15 12:04:11');
 
 -- --------------------------------------------------------
 
@@ -64,7 +67,9 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `author`, `content`, `created_at`, `article_id`) VALUES
-(217, 'FaridFaridFaridFarid', 'bgsbsdfbsfbsbgsbglmkfbqdolkfhnqmofkhnqzemokfghroîqrgfhokpqfdhg^àqiehjgfùlqkpmehjgf^àiofqpejghùkmqefhjg^poùqdsihjgfùqpkdfshgôiqfhgo^kqe', '2022-07-03 16:34:25', 122),
+(222, 'testFridFrix', 'hryhjfrsyjynfshgjnfhjh', '2022-07-06 10:41:31', 122),
+(220, 'tyzryrueyueue', 'ue(ueuyetutjtjeyjhytedje-', '2022-07-04 02:08:50', 122),
+(221, 'teeeeeeeeeeeeeeeeeeeeest', 'teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeest', '2022-07-04 02:09:10', 122),
 (109, 'abouvier', '<p>Impedit repellendus et velit enim qui. Aut nobis et veritatis qui suscipit consectetur. Et ad est ut omnis dolores. Occaecati iure quos molestiae quidem soluta cupiditate minima esse.</p><p>Iusto error alias tempore. Animi eius molestias voluptas dolore voluptates est. Reprehenderit dicta quisquam ducimus id eum omnis repellendus. Ullam velit asperiores repellat autem.</p><p>Iure at possimus dolor odit. Aspernatur sed et et omnis nisi vero eos. Rerum et voluptas sapiente aut. Quia doloribus cupiditate consequatur assumenda et.</p><p>Reiciendis inventore aut rem aspernatur nihil eaque soluta molestiae. Et sed consectetur est quasi aut quam commodi. Eos nesciunt aspernatur nobis est cupiditate.</p><p>Voluptate vitae fuga ab ipsam molestiae optio. Aperiam perferendis sed earum. Omnis vel non sint id. Ducimus illum aut quis maiores sapiente quaerat impedit.</p>', '2019-06-14 17:49:58', 123),
 (110, 'marin.ines', '<p>Non voluptatem voluptatem est voluptatem molestiae. Consectetur quis hic quasi. Eos voluptate placeat asperiores. Quae sit et dolor nam et.</p><p>Quo voluptates consequatur id pariatur voluptate. Necessitatibus non praesentium provident atque nulla quis voluptatem. Odit aut incidunt debitis eos delectus est sed. Est beatae facilis repellendus omnis dolore sint qui autem.</p><p>Esse recusandae ipsa qui sed voluptatem. Quo impedit eos velit. Suscipit officiis magni nobis labore et. Nesciunt consequatur quis voluptates ipsa eveniet. Totam magnam commodi voluptas dolorem voluptatem.</p><p>Molestiae omnis consequuntur nihil aut. Et eius quas illum. Qui modi earum et et quia. Beatae est odio ad consequatur explicabo.</p><p>Rerum alias quidem quidem distinctio odio quis beatae. Unde perferendis optio expedita autem veritatis rerum ea. Animi sint unde voluptas velit voluptas. Enim recusandae expedita sequi consequatur quam.</p>', '2019-06-18 08:49:23', 123),
 (111, 'margaux39', '<p>Doloribus explicabo sint dolores repudiandae velit consectetur sit. Ut animi soluta libero et porro voluptas tenetur. Amet voluptas distinctio fuga. Officia voluptatem molestiae aut non commodi consequatur.</p><p>In quia nemo esse temporibus explicabo et. Animi illo possimus possimus incidunt nemo. Labore voluptatibus voluptatem ut minus fuga eum repellat. Labore at voluptatem quas cumque labore.</p><p>Nihil delectus sapiente dolorum et. Ipsum ut ex totam quia id cupiditate. Libero vel optio vitae nihil laborum tempore.</p><p>Culpa deleniti deserunt ipsa placeat ut debitis. Voluptas magni qui aut nemo aut non. Incidunt excepturi aspernatur nihil consequuntur eum ut aut.</p><p>Eveniet nisi tempore reprehenderit voluptatem veritatis earum. Assumenda delectus perspiciatis dolorem qui.</p>', '2019-06-21 12:00:41', 123),
@@ -98,7 +103,9 @@ INSERT INTO `comments` (`id`, `author`, `content`, `created_at`, `article_id`) V
 (140, 'barbe.patricia', '<p>Officiis harum earum repellat quod aut excepturi tempore. Doloremque quasi autem ratione nihil aliquid. Autem enim et ut alias nesciunt quia ea ad. Iure cum iste quas recusandae natus.</p><p>Vero ipsam illum quo rerum harum quaerat aliquam id. Id dolor amet est impedit adipisci corrupti est. Et ipsa porro suscipit est.</p><p>Cumque at eveniet optio sint corrupti animi incidunt autem. A et aut error voluptatem amet ipsa.</p><p>Neque facilis in error soluta. Id saepe qui ad quod minima fuga. Qui qui et quia et dicta sed unde facilis.</p><p>Molestiae qui non vel aut vitae. Dolorem nemo fuga voluptatum minima sunt veniam. Harum veniam iste tenetur et enim non quod.</p>', '2019-04-11 19:07:38', 128),
 (141, 'uroy', '<p>Qui saepe totam dolores voluptatem. Ea quia corrupti sed eaque quam neque. Placeat quis minima debitis et et. Ipsa voluptates cupiditate alias sunt accusantium quia qui.</p><p>Eos et ut vel consequatur dolores et. Dolorem et magni esse. Et libero officia laudantium perferendis necessitatibus voluptas. Blanditiis occaecati quam ipsum pariatur quaerat ullam.</p><p>Sed animi eius voluptates quia natus unde. Enim iste beatae dolor et. Aut nisi est soluta reiciendis. Quos dolorem quaerat possimus dolores rerum nobis sint qui.</p><p>Rerum itaque ut non ut voluptas est. Fuga optio maiores officia in alias debitis qui. Harum sint quaerat cumque dolorum quibusdam repudiandae nesciunt.</p><p>Consequatur vel est aliquid dolorum eaque nam dolores. Ratione et esse ea aut qui. Veritatis aspernatur explicabo assumenda consequatur. Aut quisquam ipsam in ducimus.</p>', '2019-04-26 15:12:30', 129),
 (142, 'cecile70', '<p>Magnam reprehenderit enim placeat doloribus ad. Dolores commodi voluptatem sit omnis voluptas. Voluptatibus autem quia quia ea et.</p><p>At voluptates voluptatem suscipit accusantium blanditiis aut temporibus. Consequuntur sunt accusantium accusantium architecto ut. Est tenetur autem distinctio fuga et deserunt aliquid.</p><p>Molestiae mollitia nulla aut commodi omnis officia qui. Ut sit ut non et. Non excepturi rerum distinctio pariatur. Ut qui beatae dolor.</p><p>Sint asperiores vero ut dolores vero quia. Vitae est veniam dolor provident illum. Rerum iure mollitia voluptatem voluptatem voluptas. Est sunt voluptatem delectus consequuntur eos saepe fugit.</p><p>Incidunt et saepe magnam cupiditate veniam. Voluptatem voluptatem alias laudantium ut quo consequuntur. Eos dolorem voluptatem nihil doloribus reprehenderit. Architecto ipsa reprehenderit omnis vero deserunt qui nesciunt.</p>', '2019-04-02 18:40:25', 129),
-(215, 'Farid', 'fgbsfb', '2022-07-03 16:22:01', 122),
+(223, 'FridFrix', 'jjjjjjjjjjjjjjjjjjjjjjjjffffffffffffffffffffffffffffkkkkkkkkkkkkkkkkkkkkk', '2022-07-06 12:07:24', 122),
+(224, 'FaridFaridFaridFarid', 'vaeveavae', '2022-07-15 11:43:59', 131),
+(225, 'FridFrix', 'ndgf,hngd,h', '2022-07-15 12:11:46', 147),
 (148, 'jules55', '<p>Explicabo ullam ea et fuga blanditiis. Quam ratione hic sed nemo. Laborum enim aut fugit at commodi illo.</p><p>Sequi necessitatibus molestiae consequatur eos. Officiis inventore in tempora. Repellendus quis omnis non provident ipsa provident. Eius atque magni cum voluptate voluptatem enim.</p><p>Reiciendis consequatur aut fugiat ut qui voluptatem. Et dolore eum ex voluptatem ut est et voluptas. Architecto autem accusamus qui quibusdam eligendi enim et.</p><p>Fugiat pariatur ducimus distinctio saepe corporis. Totam aut architecto perspiciatis beatae ea. Quaerat expedita et sunt quia earum quia omnis. Aut nisi voluptate est officia praesentium suscipit quidem.</p><p>Autem consequatur dolores ea corrupti. Aperiam accusamus officiis impedit natus.</p>', '2019-06-16 22:30:51', 131),
 (149, 'francois.roger', '<p>Consequuntur dignissimos a iusto. Saepe praesentium sit quo unde nam modi magnam. A soluta quisquam inventore voluptatem quas exercitationem vitae. Iusto corrupti aliquid earum a consequuntur. Qui voluptates non minima ea ipsam delectus vero.</p><p>Ut quae magni tempora et deserunt repellat. Rerum iste aliquam molestiae molestiae cum ratione et. Tenetur asperiores laudantium minima et eos vitae.</p><p>Debitis rem cum et blanditiis. Saepe nesciunt ea et dolore tempora.</p><p>Enim non minima officia hic sit voluptatem modi. Qui deserunt unde est amet quasi. Voluptatem officiis dolore et sed recusandae nam.</p><p>Mollitia porro officiis cumque consequatur quidem quidem eos. Ut porro soluta enim sint nobis consequatur. Maxime perspiciatis vitae nobis esse sapiente est et. Molestias ut velit dicta corporis.</p>', '2019-06-20 21:19:19', 131),
 (150, 'renard.michele', '<p>Officia voluptate voluptas qui. Itaque qui nulla veniam facilis modi pariatur ut assumenda. Nam sed praesentium quis voluptatum. Ab rem asperiores quaerat aut quo tempora.</p><p>Nulla id distinctio sint esse ab sapiente. Velit aperiam aliquid in quasi. Repellat occaecati debitis sapiente sit. Adipisci placeat est dolor eos et et.</p><p>Qui et dolorem quis accusantium. Nisi voluptatem est ut quia mollitia sunt. Dolorum eos aut modi nihil.</p><p>Et aut inventore dolorem a. Impedit voluptatem dolorum deserunt saepe eos dolorem.</p><p>Dicta deleniti et at totam. Incidunt ut nesciunt neque vel et quia doloribus. Molestiae quisquam amet ea consequatur suscipit. Quia sed ea dolores cupiditate provident nihil vel. Sed eaque eligendi inventore quibusdam.</p>', '2019-03-18 00:08:40', 131),
@@ -122,9 +129,9 @@ INSERT INTO `comments` (`id`, `author`, `content`, `created_at`, `article_id`) V
 (176, 'leblanc.jules', '<p>Voluptates consequatur ea ut quia et rerum. Quasi totam praesentium est dolorum ipsam fugit voluptatem. Repellendus maiores at minus unde labore. Facilis sed laboriosam est ab repudiandae et. Ut similique et sunt sed in perspiciatis quos.</p><p>Eius et provident necessitatibus blanditiis. Repudiandae quam quaerat libero eum. Quos facere nostrum est quibusdam quisquam quo quos.</p><p>Placeat eligendi nisi expedita sint. Aut nobis culpa est deserunt natus cumque. Repudiandae atque rerum aliquid.</p><p>Numquam qui accusamus quasi rem. Praesentium quasi consequatur et ab occaecati. Assumenda blanditiis rerum quidem dolorem quis. Est neque non et perspiciatis consequatur eum temporibus.</p><p>Dolores quaerat ex aspernatur labore ipsam. Et perferendis totam suscipit voluptatem sint explicabo error. Alias sunt sit et tenetur necessitatibus. Facilis autem temporibus est quis quam facere quibusdam. Qui illum quia earum.</p>', '2019-06-03 00:56:27', 136),
 (177, 'blondel.olivie', '<p>Est sint nisi et delectus perferendis. Eligendi quia id perspiciatis nihil.</p><p>Dicta dolor enim provident voluptate velit. Eligendi ut sit placeat aliquid libero aut dignissimos doloremque. Inventore minus ab alias sit. Eos non omnis quidem explicabo nemo et.</p><p>Ducimus consectetur nisi sint. Ut laudantium aut commodi facere. Fuga maxime ea in in commodi sequi.</p><p>Magnam ex tempore nisi et dolorum quae molestias. Eum alias est molestias iure voluptas ipsam. Impedit nihil earum est et. Omnis voluptatem eaque facilis vel consequatur non.</p><p>Consequatur distinctio est perspiciatis omnis. Est nemo delectus voluptates pariatur fugit officia. Eum ut quia maxime est et.</p>', '2019-05-02 10:54:52', 136),
 (178, 'bertrand.auger', '<p>Sapiente id optio consequatur perspiciatis accusamus rerum expedita. Laborum veniam delectus illum. Quibusdam dignissimos veniam modi nemo quaerat voluptatem voluptas quia.</p><p>Rerum ea reprehenderit quia expedita magnam vero. Aut blanditiis perspiciatis sequi reprehenderit. Saepe iste magnam commodi qui. At libero sunt facere enim quam blanditiis excepturi perferendis.</p><p>Beatae inventore quod architecto dolore. Facilis et ducimus vitae. Quo a voluptatem eligendi velit quae minus. Voluptates earum ut quia aliquam exercitationem eligendi eligendi.</p><p>Culpa sit id sit dolor maiores distinctio. Quae quo id similique. Error dicta optio accusantium sed est velit illum. Autem est architecto qui.</p><p>Et vitae aliquid odio odit omnis. Est et magni modi non. Quis in rerum nesciunt qui est rem qui.</p>', '2019-06-22 01:16:18', 137),
-(179, 'noel58', '<p>Delectus et voluptatem aut nesciunt sed numquam repellendus. Voluptate aliquam non est inventore sequi consequatur vero sit. Ut accusantium quis ipsa sint in molestiae. Et totam temporibus perferendis rem.</p><p>Qui sit numquam minima ad repellat tempore in. Eaque labore corporis quas quaerat autem animi blanditiis. Voluptas dolores a sed. Architecto et eum aut enim magni ea sed eos.</p><p>Cupiditate adipisci nihil quos rerum. Eveniet maxime praesentium ut officiis dolorum. Animi id debitis laboriosam eligendi sunt voluptate. Quidem at voluptatem aut nesciunt incidunt eius.</p><p>Voluptates autem illum tenetur repellat officiis et eveniet. Hic aspernatur et error qui quam. In nulla tempora fugit reprehenderit laudantium in fugit. Et quo officiis perferendis aperiam nemo perferendis veniam.</p><p>Reiciendis minus quo impedit. Possimus soluta beatae magnam assumenda delectus voluptatem aut eos. Fuga ea minus omnis nam. Quam ut quasi beatae dolore minus itaque ad numquam. Quasi ut nihil repudiandae nam omnis aperiam non.</p>', '2019-04-27 15:43:07', 137),
-(180, 'lambert.claude', '<p>Nobis vitae natus qui atque est eos corrupti quam. Incidunt modi nesciunt et unde minima. Blanditiis omnis consequatur veritatis repellendus et sint et. Est recusandae aut nobis sint reprehenderit dolor rerum.</p><p>Doloremque fugiat minima alias dolorem vel. Sint quos neque repellat molestiae vel ipsum beatae. Et rerum ut omnis quis quia ducimus accusantium. Officiis dignissimos molestiae eos officia et impedit praesentium.</p><p>Illum non qui iure qui est quos. Ut occaecati sunt ducimus odit recusandae ex occaecati hic. Numquam eum vero animi qui qui soluta omnis. Minima in animi sed eos quia et nihil ullam.</p><p>Aut in aut quia sit sit eveniet nam. Qui omnis perspiciatis et. Numquam dolores voluptas aut aut.</p><p>Qui autem porro et ipsum repellat consequuntur. Ut maxime mollitia nisi error ut consequuntur et. Laudantium aspernatur ipsa alias et praesentium optio eveniet. Perferendis facilis amet temporibus ex ducimus omnis est.</p>', '2019-03-28 17:43:04', 137);
+(179, 'noel58', '<p>Delectus et voluptatem aut nesciunt sed numquam repellendus. Voluptate aliquam non est inventore sequi consequatur vero sit. Ut accusantium quis ipsa sint in molestiae. Et totam temporibus perferendis rem.</p><p>Qui sit numquam minima ad repellat tempore in. Eaque labore corporis quas quaerat autem animi blanditiis. Voluptas dolores a sed. Architecto et eum aut enim magni ea sed eos.</p><p>Cupiditate adipisci nihil quos rerum. Eveniet maxime praesentium ut officiis dolorum. Animi id debitis laboriosam eligendi sunt voluptate. Quidem at voluptatem aut nesciunt incidunt eius.</p><p>Voluptates autem illum tenetur repellat officiis et eveniet. Hic aspernatur et error qui quam. In nulla tempora fugit reprehenderit laudantium in fugit. Et quo officiis perferendis aperiam nemo perferendis veniam.</p><p>Reiciendis minus quo impedit. Possimus soluta beatae magnam assumenda delectus voluptatem aut eos. Fuga ea minus omnis nam. Quam ut quasi beatae dolore minus itaque ad numquam. Quasi ut nihil repudiandae nam omnis aperiam non.</p>', '2019-04-27 15:43:07', 137);
 INSERT INTO `comments` (`id`, `author`, `content`, `created_at`, `article_id`) VALUES
+(180, 'lambert.claude', '<p>Nobis vitae natus qui atque est eos corrupti quam. Incidunt modi nesciunt et unde minima. Blanditiis omnis consequatur veritatis repellendus et sint et. Est recusandae aut nobis sint reprehenderit dolor rerum.</p><p>Doloremque fugiat minima alias dolorem vel. Sint quos neque repellat molestiae vel ipsum beatae. Et rerum ut omnis quis quia ducimus accusantium. Officiis dignissimos molestiae eos officia et impedit praesentium.</p><p>Illum non qui iure qui est quos. Ut occaecati sunt ducimus odit recusandae ex occaecati hic. Numquam eum vero animi qui qui soluta omnis. Minima in animi sed eos quia et nihil ullam.</p><p>Aut in aut quia sit sit eveniet nam. Qui omnis perspiciatis et. Numquam dolores voluptas aut aut.</p><p>Qui autem porro et ipsum repellat consequuntur. Ut maxime mollitia nisi error ut consequuntur et. Laudantium aspernatur ipsa alias et praesentium optio eveniet. Perferendis facilis amet temporibus ex ducimus omnis est.</p>', '2019-03-28 17:43:04', 137),
 (181, 'georges86', '<p>Sed officia consequuntur nostrum vitae quaerat molestiae nisi. Qui deserunt eos accusamus eum sit. Mollitia consequatur id nihil cupiditate omnis qui.</p><p>Recusandae ut eaque sapiente sit voluptatem commodi beatae molestias. Voluptatem illo autem sapiente magnam. Illo hic omnis aliquam.</p><p>Nihil laudantium nam sed officiis. Aut placeat et sit consequuntur quaerat. Est enim ut praesentium non ut minima. Sed ut omnis qui consequatur vero qui.</p><p>Eveniet aut debitis cumque quod et. Occaecati et doloribus nemo blanditiis.</p><p>Voluptatibus est est est omnis. Aut nostrum et voluptas officiis. Accusantium qui aut possimus quas.</p>', '2019-06-16 05:17:29', 138),
 (182, 'clerc.pierre', '<p>In quia placeat eveniet. Quasi atque repellat voluptatem. Voluptatum et est dolor velit ut voluptatem. Iure aut qui quo minus autem maiores.</p><p>Ratione est sit libero eum esse consequatur ad. Porro repudiandae rerum voluptas rerum. Adipisci inventore qui eum beatae dolor quasi.</p><p>Asperiores maiores corrupti soluta delectus quas maiores rerum necessitatibus. Facilis et eveniet voluptas. Iste itaque architecto debitis ipsa. Et dicta dolores voluptate aut dolor.</p><p>Quo sint voluptas facere tempora perferendis. Itaque odit necessitatibus autem nihil. Neque iure omnis animi accusantium optio rem magni.</p><p>In animi ipsa rerum. Deleniti molestias doloribus optio atque modi et. Cupiditate omnis quia voluptatibus nisi ipsum. Nostrum nisi velit corporis.</p>', '2019-05-19 11:47:07', 138),
 (183, 'rtanguy', '<p>Eum quidem labore aut quia aut sit. Officiis iusto adipisci nulla totam sit amet.</p><p>Id illum ut et ab architecto et est. Aut est veniam ut.</p><p>Cupiditate natus saepe doloribus. Asperiores deserunt quasi odio voluptatem.</p><p>Eos id sunt odit qui optio nihil eveniet. Cupiditate molestias accusantium qui reprehenderit rem aut. Magni debitis eligendi deserunt dolorem dolor qui quasi. Nisi aut fugit quo tenetur.</p><p>Quia eum accusantium quo vel sunt alias. Est ex in quia et. Voluptatem eveniet necessitatibus consectetur sed.</p>', '2019-05-23 13:50:05', 138),
@@ -159,45 +166,44 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `creation_date` date DEFAULT NULL,
-  `is_admin` tinyint(1) NOT NULL
+  `is_admin` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `creation_date`, `is_admin`) VALUES
-(1, 'Léon', 'ofontaine@ifrance.com', '', NULL, 0),
-(2, 'Gabriel', 'zmichel@ifrance.com', '', NULL, 0),
-(3, 'Henri', 'amelie.pons@wanadoo.fr', '', NULL, 0),
-(4, 'Isaac', 'tguillot@marty.fr', '', NULL, 0),
-(5, 'Noël', 'bdavid@deoliveira.fr', '', NULL, 0),
-(6, 'Gilbert', 'martin.isabelle@dijoux.fr', '', NULL, 0),
-(7, 'Georges', 'timothee.benoit@voila.fr', '', NULL, 0),
-(8, 'Alfred', 'kpoirier@dbmail.com', '', NULL, 0),
-(9, 'Marc', 'sbarbe@roy.com', '', NULL, 0),
-(10, 'Rémy', 'wguillaume@gmail.com', '', NULL, 0),
-(11, 'Thomas', 'louise.gilles@dbmail.com', '', NULL, 0),
-(12, 'David', 'gilbert56@marie.com', '', NULL, 0),
-(13, 'Théophile', 'emmanuelle92@free.fr', '', NULL, 0),
-(14, 'Émile', 'marcel04@voila.fr', '', NULL, 0),
-(15, 'Brigitte', 'pierre08@moreno.fr', '', NULL, 0),
-(16, 'Lucie', 'lorraine25@live.com', '', NULL, 0),
-(17, 'Vincent', 'nath.remy@tele2.fr', '', NULL, 0),
-(18, 'Thierry', 'odupont@gimenez.com', '', NULL, 0),
-(19, 'Susanne', 'guillaume.marechal@charles.fr', '', NULL, 0),
-(20, 'Céline', 'vfernandes@vincent.com', '', NULL, 0),
-(21, 'Élise', 'bernadette26@tiscali.fr', '', NULL, 0),
-(22, 'Paulette', 'hubert.adele@barbier.net', '', NULL, 0),
-(23, 'Alphonse', 'valerie.tessier@gillet.com', '', NULL, 0),
-(24, 'Lucy', 'marchal.laurent@free.fr', '', NULL, 0),
-(25, 'Amélie', 'gerard47@launay.com', '', NULL, 0),
-(26, 'Guillaume', 'tessier.thierry@sfr.fr', '', NULL, 0),
-(27, 'Gabrielle', 'jules33@wanadoo.fr', '', NULL, 0),
-(28, 'Élise', 'david.noel@loiseau.org', '', NULL, 0),
-(29, 'François', 'wlemaitre@rodriguez.org', '', NULL, 0),
-(30, 'William', 'bailly.marguerite@clement.fr', '', NULL, 0);
+INSERT INTO `users` (`id`, `username`, `email`, `mdp`, `is_admin`) VALUES
+(1, 'Léon', 'ofontaine@ifrance.com', '', 0),
+(2, 'Gabriel', 'zmichel@ifrance.com', '', 0),
+(3, 'Henri', 'amelie.pons@wanadoo.fr', '', 0),
+(4, 'Isaac', 'tguillot@marty.fr', '', 0),
+(5, 'Noël', 'bdavid@deoliveira.fr', '', 0),
+(6, 'Gilbert', 'martin.isabelle@dijoux.fr', '', 0),
+(7, 'Georges', 'timothee.benoit@voila.fr', '', 0),
+(8, 'Alfred', 'kpoirier@dbmail.com', '', 0),
+(9, 'Marc', 'sbarbe@roy.com', '', 0),
+(10, 'Rémy', 'wguillaume@gmail.com', '', 0),
+(11, 'Thomas', 'louise.gilles@dbmail.com', '', 0),
+(12, 'David', 'gilbert56@marie.com', '', 0),
+(13, 'Théophile', 'emmanuelle92@free.fr', '', 0),
+(14, 'Émile', 'marcel04@voila.fr', '', 0),
+(15, 'Brigitte', 'pierre08@moreno.fr', '', 0),
+(16, 'Lucie', 'lorraine25@live.com', '', 0),
+(17, 'Vincent', 'nath.remy@tele2.fr', '', 0),
+(18, 'Thierry', 'odupont@gimenez.com', '', 0),
+(19, 'Susanne', 'guillaume.marechal@charles.fr', '', 0),
+(20, 'Céline', 'vfernandes@vincent.com', '', 0),
+(21, 'Élise', 'bernadette26@tiscali.fr', '', 0),
+(22, 'Paulette', 'hubert.adele@barbier.net', '', 0),
+(23, 'Alphonse', 'valerie.tessier@gillet.com', '', 0),
+(24, 'Lucy', 'marchal.laurent@free.fr', '', 0),
+(25, 'Amélie', 'gerard47@launay.com', '', 0),
+(26, 'Guillaume', 'tessier.thierry@sfr.fr', '', 0),
+(27, 'Gabrielle', 'jules33@wanadoo.fr', '', 0),
+(28, 'Élise', 'david.noel@loiseau.org', '', 0),
+(29, 'François', 'wlemaitre@rodriguez.org', '', 0),
+(30, 'William', 'bailly.marguerite@clement.fr', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -230,13 +236,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=226;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -1,14 +1,25 @@
 <?php
-namespace Controllers;
+
+namespace App\Controllers;
 
 
-class Comment extends Controller
+use App\Http;
+use App\Models\ArticleModel;
+use App\Models\CommentModel;
+
+class CommentController extends Controller
 {
-    protected $modelName = \Models\Comment::class;
+    protected CommentModel $commentModel;
+
+
+    public function __construct()
+    {
+        $this->commentModel = new CommentModel();
+    }
 
     public function insert()
     {
-        $articleModel = new \Models\Article();
+        $articleModel = new ArticleModel();
 
         /**
          * 1. On vérifie que les données ont bien été envoyées en POST
@@ -47,10 +58,10 @@ class Comment extends Controller
         }
 
 // 3. Insertion du commentaire
-        $this->model->insert($author, $content, $article_id);
+        $this->commentModel->insert($author, $content, $article_id);
 
 // 4. Redirection vers l'article en question :
-        \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
+        Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
     }
 
 
@@ -59,16 +70,15 @@ class Comment extends Controller
         /**
          * 1. Récupération du paramètre "id" en GET
          */
-        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+        if (empty($_GET['id']) && !ctype_digit($_GET['id'])) {
             die("Ho ! Fallait préciser le paramètre id en GET !");
         }
 
         $id = $_GET['id'];
-
         /**
          * 3. Vérification de l'existence du commentaire
          */
-        $commentaire = $this->model->find($id);
+        $commentaire = $this->commentModel->find($id);
         if (!$commentaire) {
             die("Aucun commentaire n'a l'identifiant $id !");
         }
@@ -77,16 +87,13 @@ class Comment extends Controller
          * 4. Suppression réelle du commentaire
          * On récupère l'identifiant de l'article avant de supprimer le commentaire
          */
-
         $article_id = $commentaire['article_id'];
-        $this->model->delete($id);
+        $this->commentModel->delete($id);
 
         /**
          * 5. Redirection vers l'article en question
          */
-
-
-        \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
+        Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
     }
 
 }

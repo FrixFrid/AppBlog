@@ -18,7 +18,7 @@ a:hover,
 a:focus,
 a:active,
 a.active {
-  color: #18BC9C;
+  color: #881817;
   outline: none;
 }
 h1,
@@ -69,7 +69,7 @@ hr.star-primary:after {
 }
 header {
   text-align: center;
-  background: #18BC9C;
+  background: #000000;
   color: white;
 }
 header .container {
@@ -78,6 +78,7 @@ header .container {
 }
 header img {
   display: block;
+  width: 30%;
   margin: 0 auto 20px;
 }
 header .intro-text .name {
@@ -104,7 +105,7 @@ header .intro-text .skills {
   }
 }
 .navbar-custom {
-  background: #2C3E50;
+  background: #881817;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
@@ -129,7 +130,7 @@ header .intro-text .skills {
   color: white;
 }
 .navbar-custom .navbar-nav li a:hover {
-  color: #18BC9C;
+  color: #000;
   outline: none;
 }
 .navbar-custom .navbar-nav li a:focus,
@@ -179,7 +180,8 @@ header .intro-text .skills {
   }
 }
 section {
-  padding: 100px 0;
+  width: 100%;
+  padding: 20px 50px;
 }
 section h2 {
   margin: 0;
@@ -302,14 +304,14 @@ footer h3 {
 }
 footer .footer-above {
   padding-top: 50px;
-  background-color: #2C3E50;
+  background-color: #000000;
 }
 footer .footer-col {
   margin-bottom: 50px;
 }
 footer .footer-below {
   padding: 25px 0;
-  background-color: #233140;
+  background-color: #881817;
 }
 .btn-outline {
   color: white;
@@ -323,7 +325,7 @@ footer .footer-below {
 .btn-outline:focus,
 .btn-outline:active,
 .btn-outline.active {
-  color: #18BC9C;
+  color: #881817;
   background: white;
   border: solid 2px white;
 }

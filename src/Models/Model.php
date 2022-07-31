@@ -1,5 +1,8 @@
 <?php
-namespace Models;
+namespace App\Models;
+
+
+use App\Database;
 
 abstract class Model
 {
@@ -8,20 +11,23 @@ abstract class Model
 
     public function __construct()
     {
-        $this->pdo = \Database::getPdo();
+        $this->pdo = Database::getPdo();
     }
 
 
-    public function findAll(?string $order = ""): array
+    public function findAll(?string $order = "", int $limit = null ): array
     {
         $sql = "SELECT * FROM {$this->table} ";
 
         if ($order) {
             $sql .= " ORDER BY " . $order;
         }
-
+        if ($limit) {
+            $sql .= " LIMIT " . $limit;
+        }
         $resultats = $this->pdo->query($sql);
         $article = $resultats->fetchAll();
+
 
         return $article;
     }

@@ -1,6 +1,20 @@
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <img class="img-responsive" src="/public/img/profile.png" alt="">
+                <div class="intro-text">
+                    <span class="name">Farid TANGI</span>
+                    <hr class="star-light">
+                    <span class="skills"><?= $article['title'] ?></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 <h1><?= $article['title'] ?></h1>
 <small>Ecrit le <?= $article['created_at'] ?></small>
-<p><?= $article['extract'] ?></p>
+<p><?= $article['extrait'] ?></p>
 <hr>
 <?= $article['content'] ?>
 
@@ -23,7 +37,9 @@
 
 <form action="index.php?controller=comment&task=insert" method="POST">
     <h3>Vous voulez réagir ? N'hésitez pas les bros !</h3>
+    <label>Pseudo :</label>
     <input type="text" name="author" placeholder="Votre pseudo !">
+    <label>Commentaire :</label>
     <textarea name="content" id="" cols="30" rows="10" placeholder="Votre commentaire ..."></textarea>
     <input type="hidden" name="article_id" value="<?= $article_id ?>">
     <button>Commenter !</button>
