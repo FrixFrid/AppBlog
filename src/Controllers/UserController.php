@@ -52,7 +52,12 @@
              die("Vous devez vous connecter avec un email et un mot de passe");
          }
 
-         $this->userModel->insert($username, $email, $mdp);
+         $isAdmin = false;
+         if (isset($_POST['is_admin'])) {
+            $isAdmin = true;
+         }
+
+         $this->userModel->insert($username, $email, $mdp, $isAdmin);
          Http::redirect("index.php?controller=user&task=login");
      }
 
@@ -60,7 +65,7 @@
      public function login()
      {
          $pageTitle = "login";
-         Renderer::render('auth/login', compact('pageTitle', 'login'));
+         Renderer::render('auth/login', compact('pageTitle'));
      }
 
      public function loginUser() {
