@@ -349,6 +349,82 @@ footer .footer-below {
 .open .dropdown-toggle.btn-primary {
   background-image: none;
 }
+
+.login__section {
+  width: 100%;
+}
+
+.login__title {
+  text-align: center;
+}
+
+.login__form {
+  display: flex;
+  justify-content: center;
+}
+
+.login {
+  width: 320px;
+  text-align: center;
+}
+
+.login__field {
+  padding: 20px 0px;
+  position: relative;
+}
+
+.login__icon {
+  position: absolute;
+  top: 30px;
+  color: #881817;
+}
+
+.login__input {
+  border: none;
+  border-bottom: 2px solid #881817;
+  background: none;
+  padding: 10px;
+  padding-left: 24px;
+  font-weight: 700;
+  width: 75%;
+  transition: .2s;
+}
+
+.login__input:active,
+.login__input:focus,
+.login__input:hover {
+  outline: none;
+  border-bottom-color: #000;
+}
+
+.login__submit {
+  background: #fff;
+  font-size: 14px;
+  margin-top: 30px;
+  padding: 16px 20px;
+  border-radius: 26px;
+  border: 1px solid #881817;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #881817;
+  box-shadow: 0px 2px 2px #000;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+  border-color: #000;
+  outline: none;
+}
+
+
+
 .btn-primary.disabled,
 .btn-primary[disabled],
 fieldset[disabled] .btn-primary,

@@ -12,15 +12,22 @@
         </div>
     </div>
 </header>
-<section>
-    <h1>Par ici la Connexion !</h1>
+<section class="login__section">
+    <h1 class="login__title">Par ici la Connexion !</h1>
     <br><br><br>
-    <form action="index.php?controller=user&task=loginUser" method="POST">
-        <label for="email">Email :</label>
-        <input type="email" name="email" placeholder="votre email de connexion" required>
-        <label for="mdp">Mot de passe :</label>
-        <input type="password" name="mdp" placeholder="votre mot de passe de connexion" required>
-        <button>Connexion</button>
+    <div class="login__form">
+    <form class="login" action="index.php?controller=user&task=loginUser" method="POST">
+        <div class="login__field">
+            <i class="login__icon fas fa-user"></i>
+        <input class="login__input" type="email" name="email" placeholder="votre email de connexion" required>
+        </div>
+        <div class="login__field">
+            <i class="login__icon fas fa-lock"></i>
+        <input class="login__input" type="password" name="mdp" placeholder="votre mot de passe de connexion" required>
+        </div>
+        <button class="login__submit">Connexion</button>
+        <br>
         <a href="index.php?controller=user&task=register">Vous n'avez pas de compte ? inscrivez-vous ici !</a>
     </form>
+    </div>
 </section>
