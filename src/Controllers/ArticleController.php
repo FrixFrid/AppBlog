@@ -83,33 +83,33 @@ class ArticleController extends Controller
 
     public function delete()
     {
-        /**
-         * 1. On vérifie que le GET possède bien un paramètre "id" (delete.php?id=202) et que c'est bien un nombre
-         */
-        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
-            die("Ho ?! Tu n'as pas précisé l'id de l'article !");
-        }
+            /**
+             * 1. On vérifie que le GET possède bien un paramètre "id" (delete.php?id=202) et que c'est bien un nombre
+             */
+            if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+                die("Ho ?! Tu n'as pas précisé l'id de l'article !");
+            }
 
-        $id = $_GET['id'];
+            $id = $_GET['id'];
 
 
-        /**
-         * 3. Vérification que l'article existe bel et bien
-         */
-        $article = $this->model->find($id);
-        if (!$article) {
-            die("L'article $id n'existe pas, vous ne pouvez donc pas le supprimer !");
-        }
+            /**
+             * 3. Vérification que l'article existe bel et bien
+             */
+            $article = $this->model->find($id);
+            if (!$article) {
+                die("L'article $id n'existe pas, vous ne pouvez donc pas le supprimer !");
+            }
 
-        /**
-         * 4. Réelle suppression de l'article
-         */
-        $this->model->delete($id);
+            /**
+             * 4. Réelle suppression de l'article
+             */
+            $this->model->delete($id);
 
-        /**
-         * 5. Redirection vers la page d'accueil
-         */
-        Http::redirect('index.php?controller=article&task=blog');
+            /**
+             * 5. Redirection vers la page d'accueil
+             */
+            Http::redirect('index.php?controller=home&task=dashboard');
     }
 
     public function insert()
@@ -161,7 +161,7 @@ class ArticleController extends Controller
         $this->articleModel->insert($title, $slug, $author, $extrait, $content);
 
 // 4. Redirection vers l'article en question :
-        Http::redirect("index.php?controller=article&task=blog");
+        Http::redirect("index.php?controller=home&task=dashboard");
     }
 
     public function UpdateArticle(): void
@@ -233,7 +233,7 @@ class ArticleController extends Controller
 
 
         // 4. Redirection vers l'article en question :
-        Http::redirect('index.php?controller=article&task=blog');
+        Http::redirect('index.php?controller=home&task=dashboard');
     }
 
 }

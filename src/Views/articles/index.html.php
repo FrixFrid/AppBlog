@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <header>
     <div class="container">
         <div class="row">
@@ -21,16 +24,16 @@
                     <h3><?= $article['title'] ?></h3>
                     <small>Ecrit le <?= $article['created_at'] ?></small>
                     <p><?= $article['extrait'] ?></p>
-                    <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire la suite |</a>
-                    <a href="index.php?controller=article&task=updateArticle&id=<?= $article['id'] ?>">Modifier
+                    <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire la suite</a>
+                <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) : ?>
+                    <a href="index.php?controller=article&task=updateArticle&id=<?= $article['id'] ?>">| Modifier
                         l'article |</a>
                     <a href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>"
                        onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cet article ?!`)">Supprimer</a>
+                <?php endif ?>
                 <?php endforeach ?>
             </div>
         </div>
     </div>
 </section>
-<br><br><br>
-<br><br><br><br><br><br>
-<a href="index.php?controller=home&task=insert">Ajouter un article</a>
+

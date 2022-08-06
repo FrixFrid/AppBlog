@@ -46,7 +46,7 @@ class HomeController
 
     public function dashboard(): void
     {
-        // $this->isAdmin;
-        Renderer::render('dashboard', compact('pageTitle', 'dashboard'));
+        $articles = $this->articleModel->findAll("created_at DESC");
+        Renderer::render('dashboard', compact('pageTitle', 'articles'));
     }
 }

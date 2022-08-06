@@ -34,7 +34,7 @@
                     <h3><?= $article['title'] ?></h3>
                     <small>Ecrit le <?= $article['created_at'] ?></small>
                     <p><?= $article['extrait'] ?></p>
-                    <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire la suite |</a>
+                    <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire la suite</a>
                 <?php endforeach ?>
             </div>
         </div>

@@ -20,7 +20,7 @@
         <input type="email" name="email" placeholder="votre email de connexion" required>
         <label for="mdp">Mot de passe :</label>
         <input type="password" name="mdp" placeholder="votre mot de passe de connexion" required>
-        <button>Connexion</button>
+        <input type="submit" name="valid_connection" value="Connexion">
         <a href="index.php?controller=user&task=register">Vous n'avez pas de compte ? inscrivez-vous ici !</a>
     </form>
 </section>

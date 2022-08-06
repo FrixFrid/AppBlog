@@ -68,31 +68,43 @@
          Renderer::render('auth/login', compact('pageTitle'));
      }
 
-     public function loginUser() {
-         $user = $this->userModel->findUser($_POST['email']);
-         if (password_verify($_POST['mdp'], $user['mdp'])) {
-             if ($user['is_admin']) {
-                $_SESSION['auth'] = $user['is_admin'];
-                 Http::redirect("index.php?controller=home&task=dashboard");
-             } else {
-                 Http::redirect("index.php?controller=home&task=home");
+
+     public function loginUser()
+     {
+         if (isset($_POST['valid_connection'])) {
+             if (isset($_POST['email']) && !empty($_POST['email']) &&
+                 isset($_POST['mdp']) && !empty($_POST['mdp'])) {
+                 $user = $this->userModel->findUser($_POST['email']);
+                 if (password_verify($_POST['mdp'], $user['mdp'])) {
+                     $username = htmlspecialchars($user['username']);
+                     $email = htmlspecialchars($user['email']);
+                     $isAdmin = $user['is_admin'];
+                     $_SESSION['email']= $email;
+                     $_SESSION['username'] = $username;
+                     $_SESSION['isAdmin'] = $isAdmin;
+                     if ($_SESSION['isAdmin'] == 1) {
+                         Http::redirect("index.php?controller=home&task=dashboard");
+                     }
+                     Http::redirect("index.php?controller=home&task=home");
+                 } else {
+                     Http::redirect("index.php?controller=user&task=login");
+                 }
              }
-         } else {
-             Http::redirect("index.php?controller=user&task=login");
          }
      }
 
      public function logout() {
          session_start();
+         session_unset();
          session_destroy();
         Http::redirect("index.php?controller=home&task=home");
      }
-
-     public function isAdmin() {
-         if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
-             return true;
-         } else {
-             Http::redirect("index.php?controller=user&task=login");
-         }
-     }
  }
+
+
+
+
+
+
+
+

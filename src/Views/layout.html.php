@@ -1,8 +1,3 @@
-<?php
-if (session_status() === PHP_SESSION_NONE){
-    session_start();
-}
-?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -66,29 +61,22 @@ if (session_status() === PHP_SESSION_NONE){
                 <li class="page-scroll">
                     <a href="index.php?controller=home&task=contact">Contact</a>
                 </li>
-                <?php
-                if (isset($_SESSION['auth']) && $_SESSION['auth'] == 1) {
-                ?>                        <li class="page-scroll">
-                            <a href="index.php?controller=home&task=dashboard">Dashboard</a>
-                        </li>
-                        <li class="page-scroll">
-                            <a href="index.php?controller=user&task=logout">Déconnexion</a>
-                        </li>
-                <?php
-                }
-                else { if (isset($_SESSION['auth']) && $_SESSION['auth'] == 0) {
-                    var_dump($_SESSION['auth']);
-                    die();
-                    ?>
+                <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) : ?>
+                    <li class="page-scroll">
+                        <a href="index.php?controller=home&task=dashboard">Dashboard</a>
+                    </li>
                     <li class="page-scroll">
                         <a href="index.php?controller=user&task=logout">Déconnexion</a>
                     </li>
-                <?php
-                }
-                }
-                ?>                <li class="page-scroll">
+                <?php elseif (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 0) :?>
+                    <li class="page-scroll">
+                        <a href="index.php?controller=user&task=logout">Déconnexion</a>
+                    </li>
+                <?php else : ?>
+                <li class="page-scroll">
                     <a href="index.php?controller=user&task=login">Connexion/Inscription</a>
                 </li>
+                <?php endif ?>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
