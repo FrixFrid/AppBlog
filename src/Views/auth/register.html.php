@@ -12,23 +12,29 @@
         </div>
     </div>
 </header>
-<section>
-<h1>Par ici l'inscription !</h1>
-
-<form action="index.php?controller=user&task=registerUser" method="POST">
-    <label>Pseudo :</label>
-    <input type="text" name="username" placeholder="Votre pseudo">
-    <label>Email :</label>
-    <input type="email" name="email" placeholder="votre email de connexion">
-    <label>Mot de passe :</label>
-    <input type="password" name="mdp" placeholder="votre mot de passe de connexion">
-    <label>Confirmation mot de passe :</label>
-    <input type="password" name="password_confirm" placeholder="confirmation de votre mot de passe de connexion">
+<section class="login__section">
+<h1 class="login__title">Par ici l'inscription !</h1>
+    <br><br><br>
+    <div class="login__form">
+<form class="login" action="index.php?controller=user&task=registerUser" method="POST">
+    <div class="login__field">
+    <input class="login__input" type="text" name="username" placeholder="Votre pseudo">
+    </div>
+    <div class="login__field">
+    <input class="login__input" type="email" name="email" placeholder="votre email de connexion">
+    </div>
+    <div class="login__field">
+    <input class="login__input" type="password" name="mdp" placeholder="votre mot de passe de connexion">
+    </div>
+    <div class="login__field">
+    <input class="login__input" type="password" name="password_confirm" placeholder="confirmation de votre mot de passe de connexion">
+    </div>
     <?php $_SESSION['is_admin'] = 1; ?>
     <?php if ($_SESSION['is_admin'] === 1) { ?>
     <label>Admin ?</label>
     <input type="checkbox" name="is_admin">
     <?php } ?>
-    <button>Inscription</button>
+    <button class="login__submit">Inscription</button>
 </form>
+    </div>
 </section>

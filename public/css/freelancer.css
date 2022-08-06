@@ -380,6 +380,7 @@ footer .footer-below {
 }
 
 .login__input {
+  text-align: center;
   border: none;
   border-bottom: 2px solid #881817;
   background: none;
