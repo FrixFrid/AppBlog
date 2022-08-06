@@ -45,6 +45,22 @@ if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) : ?>
         <button>Ajouter</button>
     </form>
 </section>
+<section>
+    <h3>Ajouter un utilisateur</h3>
+    <form action="index.php?controller=user&task=registerUser" method="POST">
+        <label>Pseudo :</label>
+        <input type="text" name="username" placeholder="Votre pseudo">
+        <label>Email :</label>
+        <input type="email" name="email" placeholder="votre email de connexion">
+        <label>Mot de passe :</label>
+        <input type="password" name="mdp" placeholder="votre mot de passe de connexion">
+        <label>Confirmation mot de passe :</label>
+        <input type="password" name="password_confirm" placeholder="confirmation de votre mot de passe de connexion">
+            <label>Admin ?</label>
+            <input type="checkbox" name="is_admin">
+        <button>Inscription</button>
+    </form>
+</section>
 <?php else : ?>
     <?php \App\Http::redirect('index.php?controller=user&task=login'); ?>
 <?php endif; ?>

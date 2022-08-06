@@ -24,11 +24,10 @@
     <input type="password" name="mdp" placeholder="votre mot de passe de connexion">
     <label>Confirmation mot de passe :</label>
     <input type="password" name="password_confirm" placeholder="confirmation de votre mot de passe de connexion">
-    <?php $_SESSION['is_admin'] = 1; ?>
-    <?php if ($_SESSION['is_admin'] === 1) { ?>
+    <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) : ?>
     <label>Admin ?</label>
     <input type="checkbox" name="is_admin">
-    <?php } ?>
+    <?php endif; ?>
     <button>Inscription</button>
 </form>
 </section>
