@@ -137,7 +137,6 @@ class ArticleController extends Controller
         }
 
         $extrait = null;
-        var_dump($_POST);
         if (!empty($_POST['extrait'])) {
             $extrait = $_POST['extrait'];
         }
@@ -150,18 +149,35 @@ class ArticleController extends Controller
         }
 
 
+        $imgArticle = null;
+        if (isset($_FILES['imgArticle']) && $_FILES['imgArticle']['error'] == 0)
+        {
+            if ($_FILES['imgArticle']['size'] <= 1000000)
+            {
+                $fileInfo = pathinfo($_FILES['imgArticle']['name']);
+                $extension = $fileInfo['extension'];
+                $allowedExtension = ['jpg', 'jpeg', 'png'];
+                if (in_array($extension, $allowedExtension))
+                {
+                    move_uploaded_file($_FILES['imgArticle']['tmp_name'], '/Applications/MAMP/htdocs/AppBlog/public/img/uploads/' . basename($_FILES['imgArticle']['name']));
+                    echo "L'envoi a bien été effectué !";
+                }
+            }
+        }
+
+
 // Vérification finale des infos envoyées dans le formulaire (donc dans le POST)
 // Si il n'y a pas d'auteur OU qu'il n'y a pas de contenu OU qu'il n'y a pas d'identifiant d'article
-        if (!$title || !$slug || !$author || !$extrait || !$content) {
+        if (!$title || !$slug || !$author || !$extrait || !$content || !$imgArticle) {
             die("Votre formulaire a été mal rempli !");
         }
 
 
 // 3. Insertion de l'article
-        $this->articleModel->insert($title, $slug, $author, $extrait, $content);
+        $this->articleModel->insert($title, $slug, $author, $extrait, $content, $imgArticle);
 
 // 4. Redirection vers l'article en question :
-        Http::redirect("index.php?controller=article&task=blog");
+        Http::redirect("index.php?controller=home&task=dashboard");
     }
 
     public function UpdateArticle(): void
