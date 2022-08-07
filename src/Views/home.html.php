@@ -37,10 +37,11 @@
                 <h4><?= $article['title'] ?></h4>
                     <small>Ecrit le <?= $article['created_at'] ?></small>
                     <p><?= $article['extrait'] ?></p>
+        </div>
                 <div class="card__footer">
                     <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire la suite |</a>
                 </div>
-            </div>
+
     </div>
     <?php endforeach ?>
     </div>
