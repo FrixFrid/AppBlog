@@ -150,20 +150,23 @@ class ArticleController extends Controller
 
 
         $imgArticle = null;
-        if (isset($_FILES['imgArticle']) && $_FILES['imgArticle']['error'] == 0)
-        {
-            if ($_FILES['imgArticle']['size'] <= 1000000)
-            {
-                $fileInfo = pathinfo($_FILES['imgArticle']['name']);
-                $extension = $fileInfo['extension'];
-                $allowedExtension = ['jpg', 'jpeg', 'png'];
-                if (in_array($extension, $allowedExtension))
-                {
-                    move_uploaded_file($_FILES['imgArticle']['tmp_name'], '/Applications/MAMP/htdocs/AppBlog/public/img/uploads/' . basename($_FILES['imgArticle']['name']));
-                    echo "L'envoi a bien été effectué !";
+        if (isset($_POST['valider'])) {
+            if (isset($_FILES['imgArticle']) && $_FILES['imgArticle']['error'] == 0) {
+                if ($_FILES['imgArticle']['size'] <= 1000000) {
+                    $fileInfo = pathinfo($_FILES['imgArticle']['name']);
+                    $extension = $fileInfo['extension'];
+                    $allowedExtension = ['jpg', 'jpeg', 'png'];
+                    if (in_array($extension, $allowedExtension)) {
+                        $deplacer_img = move_uploaded_file($_FILES['imgArticle']['tmp_name'], '/Applications/MAMP/htdocs/AppBlog/public/img/uploads/' . basename($_FILES['imgArticle']['name']));
+                        echo "L'envoi a bien été effectué !";
+                    }
                 }
             }
         }
+        $imgArticle = ($_FILES['imgArticle']['name']);
+        var_dump($imgArticle);
+        die();
+
 
 
 // Vérification finale des infos envoyées dans le formulaire (donc dans le POST)

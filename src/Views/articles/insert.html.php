@@ -13,5 +13,5 @@
     <textarea name="content" id="" cols="30" rows="10" placeholder="l'article"></textarea>
     <input type="file" class="form-control" name="imgArticle">
     <input type="hidden" name="id" value="<?= $id ?>">
-    <button>Ajouter</button>
+    <input type="submit" name="valider" value="Ajouter"/>
 </form>
