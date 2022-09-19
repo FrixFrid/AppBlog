@@ -59,8 +59,7 @@
 
      public function login()
      {
-         $pageTitle = "login";
-         Renderer::render('auth/login', compact('pageTitle', 'login'));
+         $this->render('auth/login');
      }
 
      public function loginUser() {

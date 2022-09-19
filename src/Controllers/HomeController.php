@@ -3,19 +3,14 @@ namespace App\Controllers;
 
 
 use App\Models\ArticleRepository;
-use App\Models\CommentRepository;
-use App\Controllers\UserController;
-use App\Renderer;
 
 class HomeController extends Controller
 {
     protected ArticleRepository $articleModel;
-    protected UserController $userController;
 
 
     public function __construct() {
         $this->articleModel = new ArticleRepository();
-        $this->userController = new UserController();
     }
 
     public function home(): void
@@ -27,27 +22,28 @@ class HomeController extends Controller
 
     public function about(): void
     {
-       Renderer::render('about', compact('pageTitle', 'about'));
+       $this->render("about");
     }
 
     public function contact(): void
     {
-        Renderer::render('contact', compact('pageTitle', 'contact'));
+        $this->render("contact");
     }
 
     public function login(): void
     {
-        Renderer::render('login', compact('pageTitle', 'login'));
+        $this->render('login');
+;
     }
 
     public function insert(): void
     {
-        Renderer::render('articles/insert', compact('pageTitle', 'insert'));
+        $this->render('articles/insert');
     }
 
     public function dashboard(): void
     {
         // $this->isAdmin;
-        Renderer::render('dashboard', compact('pageTitle', 'dashboard'));
+        $this->render('dashboard');
     }
 }

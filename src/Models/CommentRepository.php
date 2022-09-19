@@ -9,9 +9,16 @@ class CommentRepository extends AbstractRepository
     {
         $query = $this->pdo->prepare("SELECT * FROM comments WHERE article_id = :article_id");
         $query->execute(['article_id' => $article_id]);
-        $commentaires = $query->fetchAll();
-
-        return $commentaires;
+        $commentsArray = $query->fetchAll();
+        var_dump($commentsArray);
+        $comments = [];
+        foreach ($commentsArray as $commentArray) {
+            $comment = new Comment();
+            $comment->setAuthor('Toto');
+            $comments[]= $comment;
+        }
+        var_dump($comments);
+        return $comments;
     }
 
     public function insert(string $author, string $content, string $article_id): void

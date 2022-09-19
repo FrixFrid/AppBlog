@@ -7,18 +7,14 @@ use App\Models\Article;
 use App\Models\Comment;
 use App\Models\ArticleRepository;
 use App\Models\CommentRepository;
-use App\Renderer;
 
-class ArticleControlle extends Controller
+class ArticleController extends Controller
 {
-    protected Comment $comment;
-    protected Article $article;
-
+    protected CommentRepository $commentRepository;
 
     public function __construct() {
         $this->model = new ArticleRepository();
-        $this->comment = new Comment();
-        $this->article = new Article();
+        $this->commentRepository = new CommentRepository();
     }
 
     public function blog()
@@ -33,7 +29,7 @@ class ArticleControlle extends Controller
          */
         $pageTitle = "Blog";
 
-        Renderer::render('articles/index', compact('pageTitle', 'articles'));
+        $this->render('articles/index', compact('pageTitle', 'articles'));
     }
 
     public function show()
@@ -63,15 +59,13 @@ class ArticleControlle extends Controller
         /**
          * 4. Récupération des commentaires de l'article en question
          */
-        $comment = new Comment();
-        $comment->setArticleId($article_id);
+        $comments = $this->commentRepository->findAllWithArticle($article->getId());
 
         /**
          * 5. On affiche
          */
-        $pageTitle = $article['title'];
 
-        Renderer::render('articles/show', compact('pageTitle', 'article', 'comment', 'article_id'));
+        $this->render('articles/show', compact('article', 'comment', 'article_id'));
     }
 
     public function lastshow()

@@ -20,9 +20,11 @@ class ArticleRepository extends AbstractRepository
     public function find(int $id): Article
     {
         $articleArray = parent::find($id);
+        var_dump($articleArray);
         $article = new Article();
         $article->setId($articleArray['id']);
         $article->setTitle($articleArray['title']);
+        var_dump($article);
         return $article;
     }
 }
