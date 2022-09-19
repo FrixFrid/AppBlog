@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class ArticleModel extends Model
+class ArticleRepository extends AbstractRepository
 {
     protected $table = "articles";
 
@@ -15,5 +15,14 @@ class ArticleModel extends Model
     {
         $query = $this->pdo->prepare('UPDATE articles SET title = :title, slug = :slug, author = :author, extrait = :extrait, content = :content WHERE id = :id');
         $query->execute(compact('id', 'title', 'slug', 'author', 'extrait', 'content'));
+    }
+
+    public function find(int $id): Article
+    {
+        $articleArray = parent::find($id);
+        $article = new Article();
+        $article->setId($articleArray['id']);
+        $article->setTitle($articleArray['title']);
+        return $article;
     }
 }

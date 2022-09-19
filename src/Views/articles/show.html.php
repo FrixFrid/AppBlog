@@ -6,18 +6,17 @@
                 <div class="intro-text">
                     <span class="name">Farid TANGI</span>
                     <hr class="star-light">
-                    <span class="skills"><?= $article['title'] ?></span>
+                    <span class="skills"><?= $article->getTitle() ?></span>
                 </div>
             </div>
         </div>
     </div>
 </header>
-<h1><?= $article['title'] ?></h1>
+<h1><?= $article->getTitle() ?></h1>
 <small>Ecrit le <?= $article['created_at'] ?></small>
 <p><?= $article['extrait'] ?></p>
 <hr>
 <?= $article['content'] ?>
-
 <?php if (count($commentaires) === 0) : ?>
     <h2>Il n'y a pas encore de commentaires pour cet article ... SOYEZ LE PREMIER ! :D</h2>
 <?php else : ?>
@@ -41,6 +40,6 @@
     <input type="text" name="author" placeholder="Votre pseudo !">
     <label>Commentaire :</label>
     <textarea name="content" id="" cols="30" rows="10" placeholder="Votre commentaire ..."></textarea>
-    <input type="hidden" name="article_id" value="<?= $article_id ?>">
+    <input type="hidden" name="article_id" value="<?= $article->getId() ?>">
     <button>Commenter !</button>
 </form>

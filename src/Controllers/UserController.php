@@ -2,17 +2,17 @@
  namespace App\Controllers;
 
  use App\Http;
- use App\Models\UserModel;
+ use App\Models\UserRepository;
  use App\Renderer;
 
  class UserController extends Controller
  {
-     protected UserModel $userModel;
+     protected UserRepository $userModel;
 
      public function __construct()
      {
-         $this->model = new UserModel();
-         $this->userModel = new UserModel();
+         $this->model = new UserRepository();
+         $this->userModel = new UserRepository();
          if (session_status() === PHP_SESSION_NONE) {
              session_start();
          }

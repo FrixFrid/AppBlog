@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class CommentModel extends Model
+class CommentRepository extends AbstractRepository
 {
     protected $table = "comments";
 
@@ -18,5 +18,14 @@ class CommentModel extends Model
     {
         $query = $this->pdo->prepare('INSERT INTO comments SET author = :author, content = :content, article_id = :article_id, created_at = NOW()');
         $query->execute(compact('author', 'content', 'article_id'));
+    }
+
+    public function find(int $article_id): Comment
+    {
+        $commentArray = parent::find($article_id);
+        $comment = new Comment();
+        $comment->setArticleId($commentArray['article_id']);
+        $comment->setAuthor($commentArray['author']);
+        return $comment;
     }
 }

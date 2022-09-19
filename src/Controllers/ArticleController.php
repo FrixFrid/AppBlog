@@ -3,21 +3,22 @@
 namespace App\Controllers;
 
 
-use App\Http;
-use App\Models\ArticleModel;
-use App\Models\CommentModel;
+use App\Models\Article;
+use App\Models\Comment;
+use App\Models\ArticleRepository;
+use App\Models\CommentRepository;
 use App\Renderer;
 
-class ArticleController extends Controller
+class ArticleControlle extends Controller
 {
-    protected CommentModel $commentModel;
-    protected ArticleModel $articleModel;
+    protected Comment $comment;
+    protected Article $article;
 
 
     public function __construct() {
-        $this->model = new ArticleModel();
-        $this->commentModel = new CommentModel();
-        $this->articleModel = new ArticleModel();
+        $this->model = new ArticleRepository();
+        $this->comment = new Comment();
+        $this->article = new Article();
     }
 
     public function blog()
@@ -62,14 +63,15 @@ class ArticleController extends Controller
         /**
          * 4. Récupération des commentaires de l'article en question
          */
-        $commentaires = $this->commentModel->findAllWithArticle($article_id);
+        $comment = new Comment();
+        $comment->setArticleId($article_id);
 
         /**
          * 5. On affiche
          */
         $pageTitle = $article['title'];
 
-        Renderer::render('articles/show', compact('pageTitle', 'article', 'commentaires', 'article_id'));
+        Renderer::render('articles/show', compact('pageTitle', 'article', 'comment', 'article_id'));
     }
 
     public function lastshow()
@@ -137,7 +139,6 @@ class ArticleController extends Controller
         }
 
         $extrait = null;
-        var_dump($_POST);
         if (!empty($_POST['extrait'])) {
             $extrait = $_POST['extrait'];
         }
@@ -150,6 +151,7 @@ class ArticleController extends Controller
         }
 
 
+
 // Vérification finale des infos envoyées dans le formulaire (donc dans le POST)
 // Si il n'y a pas d'auteur OU qu'il n'y a pas de contenu OU qu'il n'y a pas d'identifiant d'article
         if (!$title || !$slug || !$author || !$extrait || !$content) {
@@ -158,10 +160,10 @@ class ArticleController extends Controller
 
 
 // 3. Insertion de l'article
-        $this->articleModel->insert($title, $slug, $author, $extrait, $content);
+        $this->article->insert($title, $slug, $author, $extrait, $content);
 
 // 4. Redirection vers l'article en question :
-        Http::redirect("index.php?controller=article&task=blog");
+        $this->redirect("index.php?controller=home&task=dashboard");
     }
 
     public function UpdateArticle(): void
@@ -229,7 +231,7 @@ class ArticleController extends Controller
 
 
         // mofification de l'article
-        $this->articleModel->update($_GET['id'], $title, $slug, $author, $extrait, $content);
+        $this->article->update($_GET['id'], $title, $slug, $author, $extrait, $content);
 
 
         // 4. Redirection vers l'article en question :

@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class UserModel extends Model
+class UserRepository extends AbstractRepository
 {
     protected $table = "users";
 

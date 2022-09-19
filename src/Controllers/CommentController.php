@@ -4,22 +4,22 @@ namespace App\Controllers;
 
 
 use App\Http;
-use App\Models\ArticleModel;
-use App\Models\CommentModel;
+use App\Models\ArticleRepository;
+use App\Models\CommentRepository;
 
 class CommentController extends Controller
 {
-    protected CommentModel $commentModel;
+    protected CommentRepository $commentModel;
 
 
     public function __construct()
     {
-        $this->commentModel = new CommentModel();
+        $this->commentModel = new CommentRepository();
     }
 
     public function insert()
     {
-        $articleModel = new ArticleModel();
+        $articleModel = new ArticleRepository();
 
         /**
          * 1. On vérifie que les données ont bien été envoyées en POST
