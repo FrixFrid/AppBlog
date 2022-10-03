@@ -15,7 +15,7 @@ class HomeController extends Controller
 
     public function home(): void
     {
-        $articles = $this->articleModel->findAll("created_at DESC", 3);
+        $articles = $this->articleModel->findAll("createdAt DESC", 3);
         //Renderer::render('home', compact('articles'));
         $this->render("home", ['articles'=> $articles]);
     }

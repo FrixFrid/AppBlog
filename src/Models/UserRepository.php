@@ -11,10 +11,12 @@ class UserRepository extends AbstractRepository
         $query->execute(compact('username', 'email', 'mdp'));
     }
 
-    public function findUser(string $email)
+    public function findUser(string $email, string $username, string $mdp)
     {
         $query = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
-        $query->execute(['email' => $email ]);
+        $query->execute(['email' => $email]);
+        $query->execute(['username' => $username]);
+        $query->execute(['mdp' => $mdp]);
         $user = $query->fetch();
         return $user;
     }

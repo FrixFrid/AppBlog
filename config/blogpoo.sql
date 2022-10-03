@@ -34,14 +34,14 @@ CREATE TABLE `articles` (
   `author` varchar(255) NOT NULL,
   `extract` varchar(255) NOT NULL,
   `content` text NOT NULL,
-  `created_at` datetime NOT NULL
+  `createdAt` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `articles`
 --
 
-INSERT INTO `articles` (`id`, `title`, `slug`, `author`, `extract`, `content`, `created_at`) VALUES
+INSERT INTO `articles` (`id`, `title`, `slug`, `author`, `extract`, `content`, `createdAt`) VALUES
 (122, 'L\'avantage de louer en toute tranquilité', 'omnis-consequatur-ut-dolorem-provident-deleniti', '', 'Et et autem non quibusdam et. Numquam aliquid aliquam aliquid sit cumque ea reprehenderit. At ea qui rerum qui impedit.', '<p>Et possimus veritatis quia maiores enim. Illum maiores aperiam nobis nam. Eligendi laborum sunt enim ratione aliquid praesentium. Ab nihil asperiores ea eaque.</p><p>Molestiae qui minima cum eligendi neque et aut. Sapiente expedita sunt natus sint neque qui. Dicta excepturi sit consequatur molestias.</p><p>Non hic nostrum qui sit est. Soluta doloribus dolor voluptate nisi. Molestias velit quia ad porro quo eos est illum. Esse officia alias est velit sunt.</p><p>Et aspernatur repellat placeat. Ex voluptatum dolores aut totam qui perferendis ut fugit. Voluptatibus mollitia ut minus magni. Placeat dolorem modi et architecto dolorem.</p><p>Ut quod excepturi et sapiente in expedita rerum. Ut sint voluptas labore blanditiis minima.</p>', '2019-02-03 01:16:31'),
 (144, 'titre titre', 'cat cat', 'frid frix', 'extract', 'articlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticlearticle', '2022-07-15 12:01:07'),
 (131, 'Le plaisir de louer autrement', 'consequatur-totam-perferendis-est-et-dolores-cumque-dolorum', '', 'Voluptatem itaque voluptatum totam aut dolor. Necessitatibus et quaerat qui neque sed tenetur. Labore deleniti et repellendus.', '<p>Voluptatum dolorem iste est iure. Repellendus fugiat asperiores incidunt vero laudantium rerum. Id veritatis et earum dolorem vel ut. Sapiente nulla sit natus et debitis quasi reprehenderit.</p><p>Debitis itaque tempore molestiae fuga autem. Quidem cum neque optio est ratione. Doloribus animi omnis qui provident et. Excepturi cum inventore libero veritatis sit et provident.</p><p>Dolores distinctio voluptates voluptatum repudiandae omnis. Magni ex non voluptas animi nemo quod. Et perspiciatis molestiae rem aliquid ut eius. Velit aliquam est eius pariatur nihil autem dolore.</p><p>Voluptatem culpa quibusdam aliquid quasi excepturi tenetur consectetur. Ipsa tempore nostrum ullam optio iure optio. Nisi beatae sit ratione enim ad ad quia.</p><p>Maxime sequi ducimus error consectetur non molestiae non voluptates. Quo perspiciatis accusantium accusantium blanditiis velit quae. Cum quis incidunt alias quia perspiciatis ut asperiores officia. Esse modi sit soluta ut cumque laboriosam.</p>', '2019-01-31 18:05:24'),
@@ -58,15 +58,15 @@ CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `author` varchar(255) NOT NULL,
   `content` text NOT NULL,
-  `created_at` datetime NOT NULL,
-  `article_id` int(11) NOT NULL
+  `createdAt` datetime NOT NULL,
+  `articleId` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `comments`
 --
 
-INSERT INTO `comments` (`id`, `author`, `content`, `created_at`, `article_id`) VALUES
+INSERT INTO `comments` (`id`, `author`, `content`, `createdAt`, `articleId`) VALUES
 (222, 'testFridFrix', 'hryhjfrsyjynfshgjnfhjh', '2022-07-06 10:41:31', 122),
 (220, 'tyzryrueyueue', 'ue(ueuyetutjtjeyjhytedje-', '2022-07-04 02:08:50', 122),
 (221, 'teeeeeeeeeeeeeeeeeeeeest', 'teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeest', '2022-07-04 02:09:10', 122),
@@ -130,7 +130,7 @@ INSERT INTO `comments` (`id`, `author`, `content`, `created_at`, `article_id`) V
 (177, 'blondel.olivie', '<p>Est sint nisi et delectus perferendis. Eligendi quia id perspiciatis nihil.</p><p>Dicta dolor enim provident voluptate velit. Eligendi ut sit placeat aliquid libero aut dignissimos doloremque. Inventore minus ab alias sit. Eos non omnis quidem explicabo nemo et.</p><p>Ducimus consectetur nisi sint. Ut laudantium aut commodi facere. Fuga maxime ea in in commodi sequi.</p><p>Magnam ex tempore nisi et dolorum quae molestias. Eum alias est molestias iure voluptas ipsam. Impedit nihil earum est et. Omnis voluptatem eaque facilis vel consequatur non.</p><p>Consequatur distinctio est perspiciatis omnis. Est nemo delectus voluptates pariatur fugit officia. Eum ut quia maxime est et.</p>', '2019-05-02 10:54:52', 136),
 (178, 'bertrand.auger', '<p>Sapiente id optio consequatur perspiciatis accusamus rerum expedita. Laborum veniam delectus illum. Quibusdam dignissimos veniam modi nemo quaerat voluptatem voluptas quia.</p><p>Rerum ea reprehenderit quia expedita magnam vero. Aut blanditiis perspiciatis sequi reprehenderit. Saepe iste magnam commodi qui. At libero sunt facere enim quam blanditiis excepturi perferendis.</p><p>Beatae inventore quod architecto dolore. Facilis et ducimus vitae. Quo a voluptatem eligendi velit quae minus. Voluptates earum ut quia aliquam exercitationem eligendi eligendi.</p><p>Culpa sit id sit dolor maiores distinctio. Quae quo id similique. Error dicta optio accusantium sed est velit illum. Autem est architecto qui.</p><p>Et vitae aliquid odio odit omnis. Est et magni modi non. Quis in rerum nesciunt qui est rem qui.</p>', '2019-06-22 01:16:18', 137),
 (179, 'noel58', '<p>Delectus et voluptatem aut nesciunt sed numquam repellendus. Voluptate aliquam non est inventore sequi consequatur vero sit. Ut accusantium quis ipsa sint in molestiae. Et totam temporibus perferendis rem.</p><p>Qui sit numquam minima ad repellat tempore in. Eaque labore corporis quas quaerat autem animi blanditiis. Voluptas dolores a sed. Architecto et eum aut enim magni ea sed eos.</p><p>Cupiditate adipisci nihil quos rerum. Eveniet maxime praesentium ut officiis dolorum. Animi id debitis laboriosam eligendi sunt voluptate. Quidem at voluptatem aut nesciunt incidunt eius.</p><p>Voluptates autem illum tenetur repellat officiis et eveniet. Hic aspernatur et error qui quam. In nulla tempora fugit reprehenderit laudantium in fugit. Et quo officiis perferendis aperiam nemo perferendis veniam.</p><p>Reiciendis minus quo impedit. Possimus soluta beatae magnam assumenda delectus voluptatem aut eos. Fuga ea minus omnis nam. Quam ut quasi beatae dolore minus itaque ad numquam. Quasi ut nihil repudiandae nam omnis aperiam non.</p>', '2019-04-27 15:43:07', 137);
-INSERT INTO `comments` (`id`, `author`, `content`, `created_at`, `article_id`) VALUES
+INSERT INTO `comments` (`id`, `author`, `content`, `createdAt`, `articleId`) VALUES
 (180, 'lambert.claude', '<p>Nobis vitae natus qui atque est eos corrupti quam. Incidunt modi nesciunt et unde minima. Blanditiis omnis consequatur veritatis repellendus et sint et. Est recusandae aut nobis sint reprehenderit dolor rerum.</p><p>Doloremque fugiat minima alias dolorem vel. Sint quos neque repellat molestiae vel ipsum beatae. Et rerum ut omnis quis quia ducimus accusantium. Officiis dignissimos molestiae eos officia et impedit praesentium.</p><p>Illum non qui iure qui est quos. Ut occaecati sunt ducimus odit recusandae ex occaecati hic. Numquam eum vero animi qui qui soluta omnis. Minima in animi sed eos quia et nihil ullam.</p><p>Aut in aut quia sit sit eveniet nam. Qui omnis perspiciatis et. Numquam dolores voluptas aut aut.</p><p>Qui autem porro et ipsum repellat consequuntur. Ut maxime mollitia nisi error ut consequuntur et. Laudantium aspernatur ipsa alias et praesentium optio eveniet. Perferendis facilis amet temporibus ex ducimus omnis est.</p>', '2019-03-28 17:43:04', 137),
 (181, 'georges86', '<p>Sed officia consequuntur nostrum vitae quaerat molestiae nisi. Qui deserunt eos accusamus eum sit. Mollitia consequatur id nihil cupiditate omnis qui.</p><p>Recusandae ut eaque sapiente sit voluptatem commodi beatae molestias. Voluptatem illo autem sapiente magnam. Illo hic omnis aliquam.</p><p>Nihil laudantium nam sed officiis. Aut placeat et sit consequuntur quaerat. Est enim ut praesentium non ut minima. Sed ut omnis qui consequatur vero qui.</p><p>Eveniet aut debitis cumque quod et. Occaecati et doloribus nemo blanditiis.</p><p>Voluptatibus est est est omnis. Aut nostrum et voluptas officiis. Accusantium qui aut possimus quas.</p>', '2019-06-16 05:17:29', 138),
 (182, 'clerc.pierre', '<p>In quia placeat eveniet. Quasi atque repellat voluptatem. Voluptatum et est dolor velit ut voluptatem. Iure aut qui quo minus autem maiores.</p><p>Ratione est sit libero eum esse consequatur ad. Porro repudiandae rerum voluptas rerum. Adipisci inventore qui eum beatae dolor quasi.</p><p>Asperiores maiores corrupti soluta delectus quas maiores rerum necessitatibus. Facilis et eveniet voluptas. Iste itaque architecto debitis ipsa. Et dicta dolores voluptate aut dolor.</p><p>Quo sint voluptas facere tempora perferendis. Itaque odit necessitatibus autem nihil. Neque iure omnis animi accusantium optio rem magni.</p><p>In animi ipsa rerum. Deleniti molestias doloribus optio atque modi et. Cupiditate omnis quia voluptatibus nisi ipsum. Nostrum nisi velit corporis.</p>', '2019-05-19 11:47:07', 138),
@@ -220,7 +220,7 @@ ALTER TABLE `articles`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_ARTICLES` (`article_id`);
+  ADD KEY `FK_ARTICLES` (`articleId`);
 
 --
 -- Indexes for table `users`

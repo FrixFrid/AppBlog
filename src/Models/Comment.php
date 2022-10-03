@@ -6,7 +6,42 @@ class Comment
 {
     private string $author;
     private string $content;
-    private int $article_id;
+    private int $articleId;
+    private int $id;
+    private string $createdAt;
+
+    /**
+     * @return string
+     */
+    public function getCreatedAt(): string
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param string $createdAt
+     */
+    public function setCreatedAt(string $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
 
 
     /**
@@ -46,15 +81,15 @@ class Comment
      */
     public function getArticleId(): int
     {
-        return $this->article_id;
+        return $this->articleId;
     }
 
     /**
-     * @param int $article_id
+     * @param int $articleId
      */
-    public function setArticleId(int $article_id): void
+    public function setArticleId(int $articleId): void
     {
-        $this->article_id = $article_id;
+        $this->articleId = $articleId;
     }
 
 

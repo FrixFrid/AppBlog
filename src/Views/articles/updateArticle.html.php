@@ -13,7 +13,7 @@
     </div>
 </header>
 <h1><?= $article['title'] ?></h1>
-<small>Ecrit le <?= $article['created_at'] ?></small>
+<small>Ecrit le <?= $article['createdAt'] ?></small>
 <p><?= $article['extrait'] ?></p>
 <hr>
 <?= $article['content'] ?>

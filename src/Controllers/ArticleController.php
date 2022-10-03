@@ -22,7 +22,7 @@ class ArticleController extends Controller
         /**
          * 2. Récupération des articles
          */
-        $articles = $this->model->findAll("created_at DESC");
+        $articles = $this->model->findAll("createdAt DESC");
 
         /**
          * 3. Affichage
@@ -53,8 +53,8 @@ class ArticleController extends Controller
         /**
          * 3. Récupération de l'article en question
          */
-        $article_id = $id;
-        $article = $this->model->find($article_id);
+        $articleId = $id;
+        $article = $this->model->find($articleId);
 
         /**
          * 4. Récupération des commentaires de l'article en question
@@ -65,7 +65,7 @@ class ArticleController extends Controller
          * 5. On affiche
          */
 
-        $this->render('articles/show', compact('article', 'comment', 'article_id'));
+        $this->render('articles/show', compact('article', 'comments', 'articleId'));
     }
 
     public function lastshow()
@@ -73,7 +73,7 @@ class ArticleController extends Controller
         /**
          * 2. Récupération des articles
          */
-        $articles = $this->model->findAll("created_at DESC", 3);
+        $this->model->findAll("createdAt DESC", 3);
     }
 
 
@@ -105,7 +105,7 @@ class ArticleController extends Controller
         /**
          * 5. Redirection vers la page d'accueil
          */
-        Http::redirect('index.php?controller=article&task=blog');
+        $this->redirect('index.php?controller=article&task=blog');
     }
 
     public function insert()
@@ -154,7 +154,7 @@ class ArticleController extends Controller
 
 
 // 3. Insertion de l'article
-        $this->article->insert($title, $slug, $author, $extrait, $content);
+        $this->model->insert($title, $slug, $author, $extrait, $content);
 
 // 4. Redirection vers l'article en question :
         $this->redirect("index.php?controller=home&task=dashboard");
@@ -174,15 +174,15 @@ class ArticleController extends Controller
             die("Vous devez préciser un paramètre `id` dans l'URL !");
         }
 
-        $article_id = $id;
-        $article = $this->model->find($article_id);
+        $articleId = $id;
+        $article = $this->model->find($articleId);
 
         /**
          * 5. On affiche
          */
-        $pageTitle = $article['title'];
+        $pageTitle = $this->model->updateArticle($id);
 
-        Renderer::render('articles/updateArticle', compact('pageTitle', 'article', 'article_id'));
+        $this->render('articles/updateArticle', compact('pageTitle', 'article', 'articleId'));
     }
 
     public function update(){
@@ -192,30 +192,37 @@ class ArticleController extends Controller
          * Ensuite, on vérifie qu'elles ne sont pas nulles
          */
 
-        $title = null;
+        $id = null;
+        $articleId = $id;
+        $article = $this->model->find($articleId);
+        // insert
+        //$article = new Article();
+
+
+
         if (!empty($_POST['title'])) {
-            $title = $_POST['title'];
+            $article->setTitle($_POST['title']);
         }
 
         $slug = null;
         if (!empty($_POST['slug'])) {
-            $slug = $_POST['slug'];
+            $article->setSlug($_POST['slug']);
         }
 
         $author = null;
         if (!empty($_POST['author'])) {
-            $author = $_POST['author'];
+            $article->setAuthor($_POST['author']);
         }
 
         $extrait = null;
         if (!empty($_POST['extrait'])) {
-            $extrait = $_POST['extrait'];
+            $article->setExtrait($_POST['extrait']);
         }
 
         $content = null;
         if (!empty($_POST['content'])) {
             // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire
-            $content = htmlspecialchars($_POST['content']);
+            $article->setContent(htmlspecialchars($_POST['content']));
         }
 
 
@@ -225,11 +232,11 @@ class ArticleController extends Controller
 
 
         // mofification de l'article
-        $this->article->update($_GET['id'], $title, $slug, $author, $extrait, $content);
+        $this->model->update($article);
 
 
         // 4. Redirection vers l'article en question :
-        Http::redirect('index.php?controller=article&task=blog');
+        $this->redirect('index.php?controller=article&task=blog');
     }
 
 }

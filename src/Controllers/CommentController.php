@@ -40,28 +40,28 @@ class CommentController extends Controller
         }
 
 // Enfin l'id de l'article
-        $article_id = null;
-        if (!empty($_POST['article_id']) && ctype_digit($_POST['article_id'])) {
-            $article_id = $_POST['article_id'];
+        $articleId = null;
+        if (!empty($_POST['articleId']) && ctype_digit($_POST['articleId'])) {
+            $articleId = $_POST['articleId'];
         }
 
 // Vérification finale des infos envoyées dans le formulaire (donc dans le POST)
 // Si il n'y a pas d'auteur OU qu'il n'y a pas de contenu OU qu'il n'y a pas d'identifiant d'article
-        if (!$author || !$article_id || !$content) {
+        if (!$author || !$articleId || !$content) {
             die("Votre formulaire a été mal rempli !");
         }
 
-        $article = $articleModel->find($article_id);
+        $article = $articleModel->find($articleId);
 // Si rien n'est revenu, on fait une erreur
         if (!$article) {
-            die("Ho ! L'article $article_id n'existe pas boloss !");
+            die("Ho ! L'article $articleId n'existe pas boloss !");
         }
 
 // 3. Insertion du commentaire
-        $this->commentModel->insert($author, $content, $article_id);
+        $this->commentModel->insert($author, $content, $articleId);
 
 // 4. Redirection vers l'article en question :
-        Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
+        Http::redirect("index.php?controller=article&task=show&id=" . $articleId);
     }
 
 
@@ -87,13 +87,13 @@ class CommentController extends Controller
          * 4. Suppression réelle du commentaire
          * On récupère l'identifiant de l'article avant de supprimer le commentaire
          */
-        $article_id = $commentaire['article_id'];
+        $articleId = $commentaire['articleId'];
         $this->commentModel->delete($id);
 
         /**
          * 5. Redirection vers l'article en question
          */
-        Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
+        Http::redirect("index.php?controller=article&task=show&id=" . $articleId);
     }
 
 }

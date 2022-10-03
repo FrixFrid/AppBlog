@@ -28,7 +28,6 @@ abstract class AbstractRepository
         $resultats = $this->pdo->query($sql);
         $article = $resultats->fetchAll();
 
-
         return $article;
     }
 
@@ -37,9 +36,7 @@ abstract class AbstractRepository
     {
         $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE id = :id");
         $query->execute(['id' => $id]);
-        $item = $query->fetch();
-
-        return $item;
+        return $query->fetch();
     }
 
 
@@ -49,4 +46,6 @@ abstract class AbstractRepository
         $query->execute(['id' => $id]);
     }
 }
+
+
 

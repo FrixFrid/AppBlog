@@ -32,7 +32,7 @@
             <div class="card-block col-md-4">
                 <?php foreach ($articles as $article) : ?>
                     <h3><?= $article['title'] ?></h3>
-                    <small>Ecrit le <?= $article['created_at'] ?></small>
+                    <small>Ecrit le <?= $article['createdAt'] ?></small>
                     <p><?= $article['extrait'] ?></p>
                     <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire la suite |</a>
                 <?php endforeach ?>

@@ -13,21 +13,21 @@
     </div>
 </header>
 <h1><?= $article->getTitle() ?></h1>
-<small>Ecrit le <?= $article['created_at'] ?></small>
+<small>Ecrit le <?= $article['createdAt'] ?></small>
 <p><?= $article['extrait'] ?></p>
 <hr>
 <?= $article['content'] ?>
-<?php if (count($commentaires) === 0) : ?>
+<?php if (count($comments) === 0) : ?>
     <h2>Il n'y a pas encore de commentaires pour cet article ... SOYEZ LE PREMIER ! :D</h2>
 <?php else : ?>
-    <h2>Il y a déjà <?= count($commentaires) ?> réactions : </h2>
-    <?php foreach ($commentaires as $commentaire) : ?>
-        <h3>Commentaire de <?= $commentaire['author'] ?></h3>
-        <small>Le <?= $commentaire['created_at'] ?></small>
+    <h2>Il y a déjà <?= count($comments) ?> réactions : </h2>
+    <?php foreach ($comments as $comment) : ?>
+        <h3>Commentaire de <?= $comment['author'] ?></h3>
+        <small>Le <?= $comment['createdAt'] ?></small>
         <blockquote>
-            <em><?= $commentaire['content'] ?></em>
+            <em><?= $comment['content'] ?></em>
         </blockquote>
-        <a href="index.php?controller=comment&task=delete&id=<?= $commentaire['id'] ?>" onclick="return window.confirm
+        <a href="index.php?controller=comment&task=delete&id=<?= $comment['id'] ?>" onclick="return window.confirm
         (`Êtes vous
         sûr de
         vouloir supprimer ce commentaire ?!`)">Supprimer</a>
@@ -40,6 +40,6 @@
     <input type="text" name="author" placeholder="Votre pseudo !">
     <label>Commentaire :</label>
     <textarea name="content" id="" cols="30" rows="10" placeholder="Votre commentaire ..."></textarea>
-    <input type="hidden" name="article_id" value="<?= $article->getId() ?>">
+    <input type="hidden" name="articleId" value="<?= $article->getId() ?>">
     <button>Commenter !</button>
 </form>
