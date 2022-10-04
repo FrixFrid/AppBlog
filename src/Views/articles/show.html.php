@@ -13,21 +13,21 @@
     </div>
 </header>
 <h1><?= $article->getTitle() ?></h1>
-<small>Ecrit le <?= $article['createdAt'] ?></small>
-<p><?= $article['extrait'] ?></p>
+<small>Ecrit le <?= $article->getCreatedAt() ?></small>
+<p><?= $article->getExtrait() ?></p>
 <hr>
-<?= $article['content'] ?>
+<?= $article->getContent() ?>
 <?php if (count($comments) === 0) : ?>
     <h2>Il n'y a pas encore de commentaires pour cet article ... SOYEZ LE PREMIER ! :D</h2>
 <?php else : ?>
     <h2>Il y a déjà <?= count($comments) ?> réactions : </h2>
     <?php foreach ($comments as $comment) : ?>
-        <h3>Commentaire de <?= $comment['author'] ?></h3>
-        <small>Le <?= $comment['createdAt'] ?></small>
+        <h3>Commentaire de <?= $comment->getAuthor() ?></h3>
+        <small>Le <?= $comment->getCreatedAt() ?></small>
         <blockquote>
-            <em><?= $comment['content'] ?></em>
+            <em><?= $comment->getContent() ?></em>
         </blockquote>
-        <a href="index.php?controller=comment&task=delete&id=<?= $comment['id'] ?>" onclick="return window.confirm
+        <a href="index.php?controller=comment&task=delete&id=<?= $comment->getId() ?>" onclick="return window.confirm
         (`Êtes vous
         sûr de
         vouloir supprimer ce commentaire ?!`)">Supprimer</a>

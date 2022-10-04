@@ -34,4 +34,5 @@ class ArticleRepository extends AbstractRepository
         $query = $this->pdo->prepare("UPDATE {$this->table} SET title, slug, author, extrait, content WHERE id");
         return $query->execute([$article->getId(), $article->getTitle(), $article->getSlug(), $article->getAuthor(), $article->getExtrait(), $article->getContent()]);
     }
+
 }

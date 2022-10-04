@@ -10,16 +10,16 @@ class CommentRepository extends AbstractRepository
         $query = $this->pdo->prepare("SELECT * FROM comments WHERE articleId = :articleId");
         $query->execute(['articleId' => $articleId]);
         $commentsArray = $query->fetchAll();
-        var_dump($commentsArray);
         $comments = [];
         foreach ($commentsArray as $commentArray) {
             $comment = new Comment();
-            $comment->setAuthor('author');
-            $comment->setContent('content');
+            $comment->setId($commentArray['id']);
+            $comment->setAuthor($commentArray['author']);
+            $comment->setContent($commentArray['content']);
+            $comment->setCreatedAt($commentArray['createdAt']);
             $comment->setArticleId($articleId);
             $comments[]= $comment;
         }
-        var_dump($comments);
         return $comments;
     }
 
@@ -35,6 +35,13 @@ class CommentRepository extends AbstractRepository
         $comment = new Comment();
         $comment->setArticleId($commentArray['articleId']);
         $comment->setAuthor($commentArray['author']);
+        $comment->setCreatedAt($commentArray['createdAt']);
         return $comment;
+    }
+
+    public function update(Comment $comment): bool
+    {
+        $query = $this->pdo->prepare("UPDATE {$this->table} SET :author, :content, :articleId, :createdAt WHERE :id");
+        return $query->execute([$comment->getAuthor(), $comment->getContent(), $comment->getArticleId(), $comment->getCreatedAt(), $comment->getId()]);
     }
 }

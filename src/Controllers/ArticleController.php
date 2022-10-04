@@ -60,7 +60,6 @@ class ArticleController extends Controller
          * 4. Récupération des commentaires de l'article en question
          */
         $comments = $this->commentRepository->findAllWithArticle($article->getId());
-
         /**
          * 5. On affiche
          */
