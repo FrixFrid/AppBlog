@@ -156,7 +156,7 @@ class ArticleController extends Controller
         $this->model->insert($title, $slug, $author, $extrait, $content);
 
 // 4. Redirection vers l'article en question :
-        $this->redirect("index.php?controller=home&task=dashboard");
+        $this->redirect("index.php?controller=home&task=home");
     }
 
     public function UpdateArticle(): void

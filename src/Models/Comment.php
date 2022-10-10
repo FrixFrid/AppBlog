@@ -4,28 +4,11 @@ namespace App\Models;
 
 class Comment
 {
+    private int $id;
     private string $author;
     private string $content;
-    private int $articleId;
-    private int $id;
     private string $createdAt;
-
-    /**
-     * @return string
-     */
-    public function getCreatedAt(): string
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * @param string $createdAt
-     */
-    public function setCreatedAt(string $createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
-
+    private int $articleId;
 
     /**
      * @return int
@@ -42,7 +25,6 @@ class Comment
     {
         $this->id = $id;
     }
-
 
     /**
      * @return string
@@ -77,6 +59,22 @@ class Comment
     }
 
     /**
+     * @return string
+     */
+    public function getCreatedAt(): string
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param string $createdAt
+     */
+    public function setCreatedAt(string $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
      * @return int
      */
     public function getArticleId(): int
@@ -91,6 +89,4 @@ class Comment
     {
         $this->articleId = $articleId;
     }
-
-
 }

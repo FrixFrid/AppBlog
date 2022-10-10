@@ -4,10 +4,10 @@ namespace App\Models;
 
 class User
 {
+    private $id;
     private $username;
     private $email;
     private $mdp;
-    private $id;
 
     /**
      * @return mixed

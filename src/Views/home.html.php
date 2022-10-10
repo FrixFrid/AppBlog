@@ -36,7 +36,7 @@
         <div class="card__body">
                     <span class="tag tag-blue"><?= $article['slug'] ?></span>
                 <h4><?= $article['title'] ?></h4>
-                    <small>Ecrit le <?= $article['created_at'] ?></small>
+                    <small>Ecrit le <?= $article['createdAt'] ?></small>
 
                     <p><?= $article['extrait'] ?></p>
         </div>

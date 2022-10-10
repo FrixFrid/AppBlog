@@ -45,6 +45,12 @@ abstract class AbstractRepository
         $query = $this->pdo->prepare("DELETE FROM {$this->table} WHERE id = :id");
         $query->execute(['id' => $id]);
     }
+
+    public function updateArticle(int $id)
+    {
+        $query = $this->pdo->prepare("UPDATE {$this->table} SET id WHERE id");
+        $query->execute(['id' => $id]);
+    }
 }
 
 

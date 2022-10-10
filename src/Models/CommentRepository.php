@@ -29,19 +29,22 @@ class CommentRepository extends AbstractRepository
         $query->execute(compact('author', 'content', 'articleId'));
     }
 
-    public function find(int $articleId): Comment
+    public function find(int $id): Comment
     {
-        $commentArray = parent::find($articleId);
+        $commentArray = parent::find($id);
         $comment = new Comment();
-        $comment->setArticleId($commentArray['articleId']);
+        $comment->setId($commentArray['id']);
         $comment->setAuthor($commentArray['author']);
+        $comment->setContent($commentArray['content']);
         $comment->setCreatedAt($commentArray['createdAt']);
+        $comment->setArticleId($commentArray['articleId']);
+
         return $comment;
     }
 
     public function update(Comment $comment): bool
     {
-        $query = $this->pdo->prepare("UPDATE {$this->table} SET :author, :content, :articleId, :createdAt WHERE :id");
-        return $query->execute([$comment->getAuthor(), $comment->getContent(), $comment->getArticleId(), $comment->getCreatedAt(), $comment->getId()]);
+        $query = $this->pdo->prepare("UPDATE {$this->table} SET :author, :content, :createdAt, :articleId WHERE :id");
+        return $query->execute([$comment->getId(), $comment->getAuthor(), $comment->getContent(), $comment->getCreatedAt(), $comment->getArticleId()]);
     }
 }

@@ -11,8 +11,6 @@ class ArticleRepository extends AbstractRepository
         $query->execute(compact('title', 'slug', 'author', 'extrait', 'content'));
     }
 
-
-
     public function find(int $id): Article
     {
         $articleArray = parent::find($id);
@@ -28,11 +26,9 @@ class ArticleRepository extends AbstractRepository
         return $article;
     }
 
-
     public function update(Article $article): bool
     {
         $query = $this->pdo->prepare("UPDATE {$this->table} SET title, slug, author, extrait, content WHERE id");
         return $query->execute([$article->getId(), $article->getTitle(), $article->getSlug(), $article->getAuthor(), $article->getExtrait(), $article->getContent()]);
     }
-
 }

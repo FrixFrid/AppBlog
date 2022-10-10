@@ -17,7 +17,7 @@ class HomeController extends Controller
     {
         $articles = $this->articleModel->findAll("createdAt DESC", 3);
         //Renderer::render('home', compact('articles'));
-        $this->render("home", ['articles'=> $articles]);
+        $this->render("home", ['articles' => $articles]);
     }
 
     public function about(): void
