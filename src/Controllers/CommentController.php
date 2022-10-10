@@ -94,7 +94,7 @@ class CommentController extends Controller
          * 5. Redirection vers l'article en question
          */
 
-        $this->redirect("index.php?controller=article&task=show&id=" . $articleId);
+        $this->redirect("index.php?controller=article&task=show&id=" . $commentaire->getArticleId());
     }
 
 }

@@ -5,10 +5,11 @@ class ArticleRepository extends AbstractRepository
 {
     protected $table = "articles";
 
-    public function insert(string $title, string $slug, string $author, string $extrait, string $content)
+    public function insert(string $title, string $slug, string $author, string $extrait, string $content): int
     {
         $query = $this->pdo->prepare('INSERT INTO articles SET title = :title, slug = :slug, author = :author, extrait = :extrait, content = :content, createdAt = NOW()');
         $query->execute(compact('title', 'slug', 'author', 'extrait', 'content'));
+        return $this->pdo->lastInsertId();
     }
 
     public function find(int $id): Article
@@ -28,7 +29,7 @@ class ArticleRepository extends AbstractRepository
 
     public function update(Article $article): bool
     {
-        $query = $this->pdo->prepare("UPDATE {$this->table} SET title, slug, author, extrait, content WHERE id");
-        return $query->execute([$article->getId(), $article->getTitle(), $article->getSlug(), $article->getAuthor(), $article->getExtrait(), $article->getContent()]);
+        $query = $this->pdo->prepare("UPDATE {$this->table} SET title = :title, slug = :slug, author = :author, extrait = :extrait, content = :content WHERE id = :id");
+        return $query->execute(['title' => $article->getTitle(), 'slug' => $article->getSlug(), 'author' => $article->getAuthor(), 'extrait' => $article->getExtrait(), 'content' => $article->getContent(), 'id' => $article->getId()]);
     }
 }

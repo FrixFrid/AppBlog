@@ -64,7 +64,7 @@ class ArticleController extends Controller
          * 5. On affiche
          */
 
-        $this->render('articles/show', compact('article', 'comments', 'articleId'));
+        $this->render('articles/show', compact('article', 'comments'));
     }
 
     public function lastshow()
@@ -153,10 +153,10 @@ class ArticleController extends Controller
 
 
 // 3. Insertion de l'article
-        $this->model->insert($title, $slug, $author, $extrait, $content);
+        $id = $this->model->insert($title, $slug, $author, $extrait, $content);
 
 // 4. Redirection vers l'article en question :
-        $this->redirect("index.php?controller=home&task=home");
+        $this->redirect("index.php?controller=article&task=show&id=" . $id);
     }
 
     public function UpdateArticle(): void
@@ -173,27 +173,37 @@ class ArticleController extends Controller
             die("Vous devez préciser un paramètre `id` dans l'URL !");
         }
 
-        $articleId = $id;
-        $article = $this->model->find($articleId);
+        $article = $this->model->find($id);
 
         /**
          * 5. On affiche
          */
-        $pageTitle = $this->model->updateArticle($id);
 
-        $this->render('articles/updateArticle', compact('pageTitle', 'article', 'articleId'));
+        $this->render('articles/updateArticle', compact('article'));
     }
 
     public function update(){
+
+        $id = null;
+
         /**
          * 1. On vérifie que les données ont bien été envoyées en POST
          * D'abord, on récupère les informations à partir du POST
          * Ensuite, on vérifie qu'elles ne sont pas nulles
          */
 
-        $id = null;
-        $articleId = $id;
-        $article = $this->model->find($articleId);
+        if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
+            $id = $_GET['id'];
+        }
+
+// On peut désormais décider : erreur ou pas ?!
+        if (!$id) {
+            die("Vous devez préciser un paramètre `id` dans l'URL !");
+        }
+
+
+
+        $article = $this->model->find($id);
         // insert
         //$article = new Article();
 
@@ -235,7 +245,7 @@ class ArticleController extends Controller
 
 
         // 4. Redirection vers l'article en question :
-        $this->redirect('index.php?controller=article&task=blog');
+        $this->redirect('index.php?controller=article&task=updateArticle&id=' . $article->getId());
     }
 
 }
