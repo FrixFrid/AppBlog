@@ -43,3 +43,9 @@
     <input type="hidden" name="articleId" value="<?= $article->getId() ?>">
     <button>Commenter !</button>
 </form>
+<br>
+<br>
+<br>
+<button><a href="index.php?controller=article&task=blog">Retour au blog</a></button>
+
+

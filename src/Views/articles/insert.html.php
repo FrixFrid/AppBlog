@@ -1,3 +1,18 @@
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <img class="img-responsive" src="/public/img/profile.png" alt="">
+                <div class="intro-text">
+                    <span class="name">Farid TANGI</span>
+                    <hr class="star-light">
+                    <span class="skills">Ajouter un article</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
 <section class="login__section">
     <h1 class="login__title">Ajouter un article</h1>
     <div class="login__form">
@@ -17,7 +32,7 @@
                     <div class="login__field">
     <textarea class="login__input" name="content" id="" cols="30" rows="10" placeholder="l'article"></textarea>
                     </div>
-    <input type="hidden" name="id" value="<?= $id ?>">
+    <input type="hidden" name="id" value="<?= $article['id'] ?>">
     <button class="login__submit">Ajouter</button>
     </div>
 </form>

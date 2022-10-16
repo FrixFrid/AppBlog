@@ -41,7 +41,7 @@
                     <p><?= $article['extrait'] ?></p>
         </div>
                 <div class="card__footer">
-                    <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire la suite |</a>
+                    <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire la suite</a>
                 </div>
 
     </div>

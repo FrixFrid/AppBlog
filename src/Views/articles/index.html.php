@@ -16,17 +16,17 @@
     <h1>Mes articles</h1>
 
     <div class="container__card">
-        <?php foreach ($articles as $article) : ?>
+        <?php foreach ($articles as $article) { ?>
         <div class="card">
-        <div class="card__header">
-            <img src="<?= $article['imgArticle'] ?>"class="card__image" width="600">
-        </div>
+            <div class="card__header">
+                <img src="<?= $article['imgArticle'] ?>" class="card__image" width="600">
+            </div>
             <div class="card__body">
                 <span class="tag tag-blue"><?= $article['slug'] ?></span>
                 <h4><?= $article['title'] ?></h4>
-                    <small>Ecrit le <?= $article['createdAt'] ?></small>
+                <small>Ecrit le <?= $article['createdAt'] ?></small>
 
-                    <p><?= $article['extrait'] ?></p>
+                <p><?= $article['extrait'] ?></p>
             </div>
                 <div class="card__footer">
                 <button class="btn__card"><a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire la suite</a></button>
@@ -37,9 +37,9 @@
                 </div>
 
         </div>
-        <?php endforeach ?>
+        <?php } ?>
     </div>
 </section>
 <br><br><br>
 <br><br><br><br><br><br>
-<a href="index.php?controller=home&task=insert">Ajouter un article</a>
+<button><a href="index.php?controller=home&task=insert">Ajouter un article</a></button>
