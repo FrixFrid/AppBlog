@@ -1,20 +1,56 @@
 <?php
 namespace App\Models;
 
+use Twig\Node\Expression\ArrayExpression;
+
 class ArticleRepository extends AbstractRepository
 {
     protected $table = "articles";
 
     public function insert(string $title, string $slug, string $author, string $extrait, string $content): int
     {
-        $query = $this->pdo->prepare('INSERT INTO articles SET title = :title, slug = :slug, author = :author, extrait = :extrait, content = :content, createdAt = NOW()');
-        $query->execute(compact('title', 'slug', 'author', 'extrait', 'content'));
+        $query = $this->pdo->prepare('INSERT INTO {$this->table} SET title = :title, slug = :slug, author = :author, extrait = :extrait, content = :content, createdAt = NOW()');
+        $query->execute([
+            'title' => $title,
+            'slug' => $slug,
+            'author' => $author,
+            'extrait' => $extrait,
+            'content' => $content,
+        ]);
         return $this->pdo->lastInsertId();
     }
 
     public function find(int $id): Article
     {
         $articleArray = parent::find($id);
+        return $this->hydrate($articleArray);
+    }
+
+    public function findAll(?string $order = "", int $limit = null): array
+    {
+        $articlesArray = parent::findAll($order, $limit);
+        $articles = [];
+        foreach ($articlesArray as $articleArray) {
+            $articles[] = $this->hydrate($articleArray);
+        }
+        return $articles;
+    }
+
+    public function update(Article $article): bool
+    {
+        $query = $this->pdo->prepare("UPDATE {$this->table} SET title = :title, slug = :slug, author = :author, extrait = :extrait, content = :content WHERE id = :id");
+        return $query->execute([
+            'title' => $article->getTitle(),
+            'slug' => $article->getSlug(),
+            'author' => $article->getAuthor(),
+            'extrait' => $article->getExtrait(),
+            'content' => $article->getContent(),
+            'id' => $article->getId()
+        ]);
+    }
+
+    private function hydrate(array $articleArray): Article
+    {
         $article = new Article();
         $article->setId($articleArray['id']);
         $article->setTitle($articleArray['title']);
@@ -25,11 +61,5 @@ class ArticleRepository extends AbstractRepository
         $article->setCreatedAt($articleArray['createdAt']);
 
         return $article;
-    }
-
-    public function update(Article $article): bool
-    {
-        $query = $this->pdo->prepare("UPDATE {$this->table} SET title = :title, slug = :slug, author = :author, extrait = :extrait, content = :content WHERE id = :id");
-        return $query->execute(['title' => $article->getTitle(), 'slug' => $article->getSlug(), 'author' => $article->getAuthor(), 'extrait' => $article->getExtrait(), 'content' => $article->getContent(), 'id' => $article->getId()]);
     }
 }

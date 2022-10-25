@@ -1,3 +1,9 @@
+
+<?php
+if (session_status() === PHP_SESSION_NONE){
+    session_start();
+}
+?>
 <header>
     <div class="container">
         <div class="row">
@@ -30,10 +36,12 @@
             </div>
                 <div class="card__footer">
                 <button class="btn__card"><a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire la suite</a></button>
-                    <button class="btn__card"><a href="index.php?controller=article&task=updateArticle&id=<?= $article['id'] ?>">Modifier
+                    <?php if(isset($_SESSION['auth'])) { ?>
+                    <button class="btn__card"><a href="index.php?controller=article&task=updateArticle&id=<?php $article['id'] ?>">Modifier
                         l'article</a></button>
                     <button class="btn__card"><a href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>"
                        onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cet article ?!`)">Supprimer</a></button>
+                    <?php } ?>
                 </div>
 
         </div>
@@ -42,4 +50,6 @@
 </section>
 <br><br><br>
 <br><br><br><br><br><br>
+<?php if(isset($_SESSION['auth'])) { ?>
 <button><a href="index.php?controller=home&task=insert">Ajouter un article</a></button>
+<?php } ?>

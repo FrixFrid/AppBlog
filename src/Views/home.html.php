@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_ACTIVE){
+    session_start();
+}
+?>
 <header>
     <div class="container">
         <div class="row">
@@ -28,7 +33,7 @@
     <h2>Mes derniers articles de blog</h2>
 
     <div class="container__card">
-    <?php foreach ($articles as $article) : ?>
+    <?php foreach ($articles as $article) { ?>
     <div class="card">
         <div class="card__header">
         <img src="<?= $article['imgArticle'] ?>" class="card__image" width="600">
@@ -45,7 +50,7 @@
                 </div>
 
     </div>
-    <?php endforeach ?>
+    <?php } ?>
     </div>
 
 </section>

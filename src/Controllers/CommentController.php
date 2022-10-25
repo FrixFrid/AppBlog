@@ -9,7 +9,7 @@ use App\Models\CommentRepository;
 
 class CommentController extends Controller
 {
-    protected CommentRepository $commentModel;
+    protected CommentRepository $commentRepository;
 
 
     public function __construct()

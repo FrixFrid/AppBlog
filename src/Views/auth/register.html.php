@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE){
+    session_start();
+}
+?>
 <header>
     <div class="container">
         <div class="row">
@@ -29,8 +34,7 @@
     <div class="login__field">
     <input class="login__input" type="password" name="password_confirm" placeholder="confirmation de votre mot de passe de connexion">
     </div>
-    <?php $_SESSION['is_admin'] = 1; ?>
-    <?php if ($_SESSION['is_admin'] === 1) { ?>
+    <?php if (!isset($_SESSION) === true && ($user->getIsAdmin()) === 1) { ; ?>
     <label>Admin ?</label>
     <input type="checkbox" name="is_admin">
     <?php } ?>

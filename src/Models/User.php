@@ -8,6 +8,9 @@ class User
     private $username;
     private $email;
     private $mdp;
+    private $is_admin;
+
+
 
     /**
      * @return mixed
@@ -71,5 +74,21 @@ class User
     public function setMdp(string $mdp): void
     {
         $this->mdp = $mdp;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsAdmin()
+    {
+        return $this->is_admin;
+    }
+
+    /**
+     * @param mixed $is_admin
+     */
+    public function setIsAdmin($is_admin): void
+    {
+        $this->is_admin = $is_admin;
     }
 }

@@ -75,6 +75,11 @@ class ArticleController extends Controller
         $this->model->findAll("createdAt DESC", 3);
     }
 
+    public function showDash()
+    {
+        $this->model->findAll("createdAt DESC");
+    }
+
 
     public function delete()
     {

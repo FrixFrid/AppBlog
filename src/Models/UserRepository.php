@@ -13,19 +13,31 @@ class UserRepository extends AbstractRepository
         $user->setUsername($userArray['username']);
         $user->setEmail($userArray['email']);
         $user->setMdp($userArray['mdp']);
+        $user->setIsAdmin($userArray['is_admin']);
         return $user;
     }
 
-    public function insert(string $username, string $email, string $mdp): void
+    public function insert(string $username, string $email, string $mdp, bool $is_admin): void
     {
-        $query = $this->pdo->prepare("INSERT INTO {$this->table} SET username = :username, email = :email, mdp = :mdp");
-        $query->execute(compact('username', 'email', 'mdp'));
+        $query = $this->pdo->prepare("INSERT INTO {$this->table} SET username = :username, email = :email, mdp = :mdp, is_admin = :is_admin");
+        $query->execute([
+            'username' => $username,
+            'email' => $email,
+            'mdp' => $mdp,
+            'is_admin' => (int)$is_admin
+        ]);
     }
 
     public function update(User $user): bool
     {
         $query = $this->pdo->prepare("UPDATE {$this->table} SET :id, :username, :email, :mdp, WHERE :id");
-        return $query->execute([$user->getId(),$user->getUsername(), $user->getEmail(), $user->getMdp()]);
+        return $query->execute([
+            $user->getId(),
+            $user->getUsername(),
+            $user->getEmail(),
+            $user->getMdp(),
+            $user->getIsAdmin()
+        ]);
     }
 
     public function findUserLogin(string $email)

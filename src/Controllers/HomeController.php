@@ -3,20 +3,22 @@ namespace App\Controllers;
 
 
 use App\Models\ArticleRepository;
+use App\Models\UserRepository;
 
 class HomeController extends Controller
 {
-    protected ArticleRepository $articleModel;
+    protected ArticleRepository $article;
+    protected UserRepository $userRepository;
 
 
     public function __construct() {
-        $this->articleModel = new ArticleRepository();
+        $this->model = new ArticleRepository();
+        $this->userRepository = new UserRepository();
     }
 
     public function home(): void
     {
-        $articles = $this->articleModel->findAll("createdAt DESC", 3);
-        //Renderer::render('home', compact('articles'));
+        $articles = $this->model->findAll("createdAt DESC", 3);
         $this->render("home", ['articles' => $articles]);
     }
 
@@ -39,11 +41,5 @@ class HomeController extends Controller
     public function insert(): void
     {
         $this->render('articles/insert');
-    }
-
-    public function dashboard(): void
-    {
-        // $this->isAdmin;
-        $this->render('dashboard');
     }
 }

@@ -1,10 +1,13 @@
 <?php
-if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) { ?>
-    <section>
+if (session_status() === PHP_SESSION_NONE){
+    session_start();
+}
+?>
+<section>
         <br>
         <h1>Mon Dashboard</h1>
         <br>
-        <h2>Bienvenue <?= htmlspecialchars($_SESSION['username']) ?></h2>
+        <h2>Bienvenue</h2>
     </section>
     <section>
         <h3>Liste des articles</h3>
@@ -18,8 +21,8 @@ if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) { ?>
             <?php foreach ($articles as $article) { ?>
                 <?= '<tbody>'; ?>
                 <?= '<tr>' ?>
-                <?= '<td>' . $article->getTitle() ?>
-                <?= '<td>' . $article->getCreatedAt() ?>
+                <?= '<td>' . $article->getTitle(); ?>
+                <?= '<td>' . $article->getCreatedAt(); ?>
                 <td><button><a href="index.php?controller=article&task=updateArticle&id=<?= $article->getId() ?>">Modifier l'article </a></button></td>
                 <td><button><a href="index.php?controller=article&task=delete&id=<?= $article->getId() ?>">Supprimer l'article</a></button></td>
             <?php } ?>
@@ -41,7 +44,6 @@ if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) { ?>
             <input type="text" name="extrait" placeholder="extrait de l'article">
             <label>Article :</label>
             <textarea name="content" id="" cols="30" rows="10" placeholder="l'article"></textarea>
-            <input type="hidden" name="id" value="<?= $id ?>">
             <button>Ajouter</button>
         </form>
     </section>
@@ -61,5 +63,3 @@ if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) { ?>
             <button>Inscription</button>
         </form>
     </section>
-
-<?php } ?>

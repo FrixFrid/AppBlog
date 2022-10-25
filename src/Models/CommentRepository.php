@@ -7,7 +7,7 @@ class CommentRepository extends AbstractRepository
 
     public function findAllWithArticle(int $articleId): array
     {
-        $query = $this->pdo->prepare("SELECT * FROM comments WHERE articleId = :articleId");
+        $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE articleId = :articleId");
         $query->execute(['articleId' => $articleId]);
         $commentsArray = $query->fetchAll();
         $comments = [];
@@ -25,8 +25,12 @@ class CommentRepository extends AbstractRepository
 
     public function insert(string $author, string $content, string $articleId): void
     {
-        $query = $this->pdo->prepare('INSERT INTO comments SET author = :author, content = :content, articleId = :articleId, createdAt = NOW()');
-        $query->execute(compact('author', 'content', 'articleId'));
+        $query = $this->pdo->prepare('INSERT INTO {$this->table} SET author = :author, content = :content, articleId = :articleId, createdAt = NOW()');
+        $query->execute([
+            'author' => $author,
+            'content' => $content,
+            'articleId' => $articleId
+        ]);
     }
 
     public function find(int $id): Comment
@@ -45,6 +49,12 @@ class CommentRepository extends AbstractRepository
     public function update(Comment $comment): bool
     {
         $query = $this->pdo->prepare("UPDATE {$this->table} SET :author, :content, :createdAt, :articleId WHERE :id");
-        return $query->execute([$comment->getId(), $comment->getAuthor(), $comment->getContent(), $comment->getCreatedAt(), $comment->getArticleId()]);
+        return $query->execute([
+            $comment->getId(),
+            $comment->getAuthor(),
+            $comment->getContent(),
+            $comment->getCreatedAt(),
+            $comment->getArticleId()
+        ]);
     }
 }

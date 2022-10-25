@@ -1,8 +1,3 @@
-<?php
-if (session_status() === PHP_SESSION_NONE){
-    session_start();
-}
-?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -69,7 +64,7 @@ if (session_status() === PHP_SESSION_NONE){
                 <?php
                 if (isset($_SESSION['auth']) && $_SESSION['auth'] == 1) {
                 ?>                        <li class="page-scroll">
-                            <a href="index.php?controller=home&task=dashboard">Dashboard</a>
+                            <a href="index.php?controller=user&task=dashboard">Dashboard</a>
                         </li>
                         <li class="page-scroll">
                             <a href="index.php?controller=user&task=logout">Déconnexion</a>
@@ -77,8 +72,6 @@ if (session_status() === PHP_SESSION_NONE){
                 <?php
                 }
                 else { if (isset($_SESSION['auth']) && $_SESSION['auth'] == 0) {
-                    var_dump($_SESSION['auth']);
-                    die();
                     ?>
                     <li class="page-scroll">
                         <a href="index.php?controller=user&task=logout">Déconnexion</a>

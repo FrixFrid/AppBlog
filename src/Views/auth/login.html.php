@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE){
+    session_start();
+}
+?>
 <header>
     <div class="container">
         <div class="row">
@@ -27,7 +32,9 @@
         </div>
         <button class="login__submit">Connexion</button>
         <br>
+        <?php if (empty($_SESSION)) { ?>
         <a href="index.php?controller=user&task=register">Vous n'avez pas de compte ? inscrivez-vous ici !</a>
+        <?php } ?>
     </form>
     </div>
 </section>
