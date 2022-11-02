@@ -7,33 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Mon superbe blog - <?= $pageTitle ?></title>
-
     <!-- Bootstrap Core CSS -->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Theme CSS -->
     <link href="../../public/css/freelancer.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <script src="https://kit.fontawesome.com/34c6cb5b88.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
           type="text/css">
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 
 <body id="page-top" class="index">
-
 <!-- NAVIGATION -->
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
     <div class="container">
@@ -63,23 +56,25 @@
                 </li>
                 <?php
                 if (isset($_SESSION['auth']) && $_SESSION['auth'] == 1) {
-                ?>                        <li class="page-scroll">
-                            <a href="index.php?controller=user&task=dashboard">Dashboard</a>
-                        </li>
-                        <li class="page-scroll">
-                            <a href="index.php?controller=user&task=logout">Déconnexion</a>
-                        </li>
-                <?php
-                }
-                else { if (isset($_SESSION['auth']) && $_SESSION['auth'] == 0) {
                     ?>
+                    <li class="page-scroll">
+                        <a href="index.php?controller=user&task=dashboard">Dashboard</a>
+                    </li>
                     <li class="page-scroll">
                         <a href="index.php?controller=user&task=logout">Déconnexion</a>
                     </li>
-                <?php
+                    <?php
+                } else {
+                    if (isset($_SESSION['auth']) && $_SESSION['auth'] == 0) {
+                        ?>
+                        <li class="page-scroll">
+                            <a href="index.php?controller=user&task=logout">Déconnexion</a>
+                        </li>
+                        <?php
+                    }
                 }
-                }
-                ?>                <li class="page-scroll">
+                ?>
+                <li class="page-scroll">
                     <a href="index.php?controller=user&task=login">Connexion/Inscription</a>
                 </li>
             </ul>
@@ -88,8 +83,6 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-
-
 
 <?= $pageContent ?>
 
@@ -118,7 +111,6 @@
                         <li>
                             <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
                         </li>
-
                     </ul>
                 </div>
                 <div class="footer-col col-md-4">
@@ -140,20 +132,14 @@
 </footer>
 <!-- jQuery -->
 <script src="../../vendor/jquery/jquery.min.js"></script>
-
 <!-- Bootstrap Core JavaScript -->
 <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
-
 <!-- Plugin JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
 <!-- Contact Form JavaScript -->
 <script src="../../public/js/jqBootstrapValidation.js"></script>
 <script src="../../public/js/contact_me.js"></script>
-
 <!-- Theme JavaScript -->
 <script src="../../public/js/freelancer.min.js"></script>
-
 </body>
-
 </html>

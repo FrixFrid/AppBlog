@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 class CommentRepository extends AbstractRepository
@@ -18,14 +19,15 @@ class CommentRepository extends AbstractRepository
             $comment->setContent($commentArray['content']);
             $comment->setCreatedAt($commentArray['createdAt']);
             $comment->setArticleId($articleId);
-            $comments[]= $comment;
+            $comments[] = $comment;
         }
+
         return $comments;
     }
 
     public function insert(string $author, string $content, string $articleId): void
     {
-        $query = $this->pdo->prepare('INSERT INTO {$this->table} SET author = :author, content = :content, articleId = :articleId, createdAt = NOW()');
+        $query = $this->pdo->prepare("INSERT INTO {$this->table} SET author = :author, content = :content, articleId = :articleId, createdAt = NOW()");
         $query->execute([
             'author' => $author,
             'content' => $content,

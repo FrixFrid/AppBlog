@@ -5,6 +5,7 @@ namespace App\Models;
 class Article
 {
     private int $id;
+    private string $imgArticle = "";
     private string $title;
     private string $slug;
     private string $author;
@@ -26,6 +27,22 @@ class Article
     public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImgArticle(): string
+    {
+        return $this->imgArticle;
+    }
+
+    /**
+     * @param string $imgArticle
+     */
+    public function setImgArticle(string $imgArticle): void
+    {
+        $this->imgArticle = $imgArticle;
     }
 
     /**

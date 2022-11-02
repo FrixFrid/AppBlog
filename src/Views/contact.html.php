@@ -1,8 +1,9 @@
 <?php
-if (session_status() === PHP_SESSION_NONE){
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
+
 <header>
     <div class="container">
         <div class="row">
@@ -17,6 +18,7 @@ if (session_status() === PHP_SESSION_NONE){
         </div>
     </div>
 </header>
+
 <section>
     <h1>Contactez moi pour échanger sur votre projet</h1>
     <form>

@@ -1,7 +1,6 @@
 <?php
-namespace App\Models;
 
-use Twig\Node\Expression\ArrayExpression;
+namespace App\Models;
 
 class ArticleRepository extends AbstractRepository
 {
@@ -9,7 +8,7 @@ class ArticleRepository extends AbstractRepository
 
     public function insert(string $title, string $slug, string $author, string $extrait, string $content): int
     {
-        $query = $this->pdo->prepare('INSERT INTO {$this->table} SET title = :title, slug = :slug, author = :author, extrait = :extrait, content = :content, createdAt = NOW()');
+        $query = $this->pdo->prepare("INSERT INTO {$this->table} SET title = :title, slug = :slug, author = :author, extrait = :extrait, content = :content, createdAt = NOW()");
         $query->execute([
             'title' => $title,
             'slug' => $slug,
@@ -17,12 +16,14 @@ class ArticleRepository extends AbstractRepository
             'extrait' => $extrait,
             'content' => $content,
         ]);
+
         return $this->pdo->lastInsertId();
     }
 
     public function find(int $id): Article
     {
         $articleArray = parent::find($id);
+
         return $this->hydrate($articleArray);
     }
 
@@ -33,6 +34,7 @@ class ArticleRepository extends AbstractRepository
         foreach ($articlesArray as $articleArray) {
             $articles[] = $this->hydrate($articleArray);
         }
+
         return $articles;
     }
 

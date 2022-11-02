@@ -4,16 +4,14 @@ namespace App\Models;
 
 class User
 {
-    private $id;
-    private $username;
-    private $email;
-    private $mdp;
-    private $is_admin;
-
-
+    private int $id;
+    private string $username;
+    private string $email;
+    private string $mdp;
+    private bool $is_admin;
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -21,7 +19,7 @@ class User
     }
 
     /**
-     * @param mixed $id
+     * @param int $id
      */
     public function setId($id): void
     {
@@ -29,7 +27,7 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getUsername()
     {
@@ -37,7 +35,7 @@ class User
     }
 
     /**
-     * @param mixed $username
+     * @param string $username
      */
     public function setUsername(string $username): void
     {
@@ -45,7 +43,7 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getEmail()
     {
@@ -53,7 +51,7 @@ class User
     }
 
     /**
-     * @param mixed $email
+     * @param string $email
      */
     public function setEmail(string $email): void
     {
@@ -61,7 +59,7 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getMdp()
     {
@@ -69,7 +67,7 @@ class User
     }
 
     /**
-     * @param mixed $mdp
+     * @param string $mdp
      */
     public function setMdp(string $mdp): void
     {
@@ -77,7 +75,7 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getIsAdmin()
     {
@@ -85,7 +83,7 @@ class User
     }
 
     /**
-     * @param mixed $is_admin
+     * @param bool $is_admin
      */
     public function setIsAdmin($is_admin): void
     {

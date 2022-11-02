@@ -1,6 +1,6 @@
 <?php
-namespace App;
 
+namespace App;
 
 class App
 {
@@ -9,16 +9,15 @@ class App
         $controllerName = "Home";
         $task = "home";
 
-        if (!empty($_GET['controller'])){
+        if (!empty($_GET['controller'])) {
             $controllerName = ucfirst($_GET['controller']);
         }
 
-        if (!empty($_GET['task'])){
+        if (!empty($_GET['task'])) {
             $task = $_GET['task'];
         }
 
         $controllerName = "App\\Controllers\\" . $controllerName . "Controller";
-
         $controller = new $controllerName();
         $controller->$task();
     }

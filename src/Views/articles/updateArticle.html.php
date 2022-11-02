@@ -1,8 +1,9 @@
 <?php
-if (session_status() === PHP_SESSION_NONE){
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
+
 <header>
     <div class="container">
         <div class="row">
@@ -17,6 +18,7 @@ if (session_status() === PHP_SESSION_NONE){
         </div>
     </div>
 </header>
+
 <h1><?= $article->getTitle() ?></h1>
 <small>Ecrit le <?= $article->getCreatedAt() ?></small>
 <p><?= $article->getExtrait() ?></p>
@@ -27,13 +29,13 @@ if (session_status() === PHP_SESSION_NONE){
     <label>Titre :</label>
     <input type="text" name="title" value="<?= $article->getTitle(); ?>">
     <label>Catégorie :</label>
-    <input type="text" name="slug" value="<?= $article->getSlug();?>">
+    <input type="text" name="slug" value="<?= $article->getSlug(); ?>">
     <label>Auteur :</label>
-    <input type="text" name="author" value="<?= $article->getAuthor();?>">
+    <input type="text" name="author" value="<?= $article->getAuthor(); ?>">
     <label>Extrait :</label>
-    <input type="text" name="extrait" value="<?= $article->getExtrait();?>">
+    <input type="text" name="extrait" value="<?= $article->getExtrait(); ?>">
     <label>Article :</label>
-    <textarea name="content" id="" cols="30" rows="10"><?= $article->getContent();?></textarea>
+    <textarea name="content" id="" cols="30" rows="10"><?= $article->getContent(); ?></textarea>
     <input type="hidden" name="id" value="<?= $article->getId() ?>">
     <button>Modifier</button>
 </form>

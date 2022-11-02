@@ -1,8 +1,9 @@
 <?php
-if (session_status() === PHP_SESSION_ACTIVE){
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
+
 <header>
     <div class="container">
         <div class="row">
@@ -17,6 +18,7 @@ if (session_status() === PHP_SESSION_ACTIVE){
         </div>
     </div>
 </header>
+
 <section class="about">
     <h2>Qui je suis</h2>
     <p>Je suis en alternance dans le parcours PHP/SYMFONY chez Openclassrooms au sein de mon agence...
@@ -33,24 +35,22 @@ if (session_status() === PHP_SESSION_ACTIVE){
     <h2>Mes derniers articles de blog</h2>
 
     <div class="container__card">
-    <?php foreach ($articles as $article) { ?>
-    <div class="card">
-        <div class="card__header">
-        <img src="<?= $article['imgArticle'] ?>" class="card__image" width="600">
-    </div>
-        <div class="card__body">
-                    <span class="tag tag-blue"><?= $article['slug'] ?></span>
-                <h4><?= $article['title'] ?></h4>
-                    <small>Ecrit le <?= $article['createdAt'] ?></small>
-
-                    <p><?= $article['extrait'] ?></p>
-        </div>
-                <div class="card__footer">
-                    <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire la suite</a>
+        <?php foreach ($articles as $article) { ?>
+            <div class="card">
+                <div class="card__header">
+                    <img src="<?= $article->getImgArticle() ?>" class="card__image" width="600">
                 </div>
+                <div class="card__body">
+                    <span class="tag tag-blue"><?= $article->getSlug() ?></span>
+                    <h4><?= $article->getTitle() ?></h4>
+                    <small>Ecrit le <?= $article->getCreatedAt() ?></small>
 
+                    <p><?= $article->getExtrait() ?></p>
+                </div>
+                <div class="card__footer">
+                    <a href="index.php?controller=article&task=show&id=<?= $article->getId() ?>">Lire la suite</a>
+                </div>
+            </div>
+        <?php } ?>
     </div>
-    <?php } ?>
-    </div>
-
 </section>

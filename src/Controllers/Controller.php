@@ -1,6 +1,6 @@
 <?php
-namespace App\Controllers;
 
+namespace App\Controllers;
 
 use App\Models\AbstractRepository;
 
@@ -14,7 +14,6 @@ abstract class Controller
         ob_start();
         require('../src/Views/' . $path . '.html.php');
         $pageContent = ob_get_clean();
-
         require('../src/Views/layout.html.php');
     }
 

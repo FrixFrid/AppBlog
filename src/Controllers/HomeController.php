@@ -1,6 +1,6 @@
 <?php
-namespace App\Controllers;
 
+namespace App\Controllers;
 
 use App\Models\ArticleRepository;
 use App\Models\UserRepository;
@@ -10,8 +10,8 @@ class HomeController extends Controller
     protected ArticleRepository $article;
     protected UserRepository $userRepository;
 
-
-    public function __construct() {
+    public function __construct()
+    {
         $this->model = new ArticleRepository();
         $this->userRepository = new UserRepository();
     }
@@ -19,12 +19,12 @@ class HomeController extends Controller
     public function home(): void
     {
         $articles = $this->model->findAll("createdAt DESC", 3);
-        $this->render("home", ['articles' => $articles]);
+        $this->render('home', ['articles' => $articles]);
     }
 
     public function about(): void
     {
-       $this->render("about");
+        $this->render('about');
     }
 
     public function contact(): void
@@ -34,8 +34,7 @@ class HomeController extends Controller
 
     public function login(): void
     {
-        $this->render('login');
-;
+        $this->render('login');;
     }
 
     public function insert(): void

@@ -1,6 +1,6 @@
 <?php
-namespace App\Models;
 
+namespace App\Models;
 
 use App\Database;
 
@@ -21,10 +21,9 @@ abstract class AbstractRepository
         return $query->fetch();
     }
 
-    public function findAll(?string $order = "", int $limit = null ): array
+    public function findAll(?string $order = "", int $limit = null): array
     {
         $sql = "SELECT * FROM {$this->table} ";
-
         if ($order) {
             $sql .= " ORDER BY " . $order;
         }

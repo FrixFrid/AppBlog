@@ -1,8 +1,9 @@
 <?php
-if (session_status() === PHP_SESSION_NONE){
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
+
 <header>
     <div class="container">
         <div class="row">
@@ -17,6 +18,7 @@ if (session_status() === PHP_SESSION_NONE){
         </div>
     </div>
 </header>
+
 <h1><?= $article->getTitle() ?></h1>
 <small>Ecrit le <?= $article->getCreatedAt() ?></small>
 <p><?= $article->getExtrait() ?></p>
