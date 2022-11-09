@@ -18,6 +18,7 @@ class CommentRepository extends AbstractRepository
             $comment->setAuthor($commentArray['author']);
             $comment->setContent($commentArray['content']);
             $comment->setCreatedAt($commentArray['createdAt']);
+            $comment->setIsValidate($commentArray['is_validate']);
             $comment->setArticleId($articleId);
             $comments[] = $comment;
         }
@@ -25,12 +26,13 @@ class CommentRepository extends AbstractRepository
         return $comments;
     }
 
-    public function insert(string $author, string $content, string $articleId): void
+    public function insert(string $author, string $content,bool $is_validate, string $articleId)
     {
-        $query = $this->pdo->prepare("INSERT INTO {$this->table} SET author = :author, content = :content, articleId = :articleId, createdAt = NOW()");
+        $query = $this->pdo->prepare("INSERT INTO {$this->table} SET author = :author, content = :content,is_validate = :is_validate, articleId = :articleId, createdAt = NOW()");
         $query->execute([
             'author' => $author,
             'content' => $content,
+            'is_validate' => (int)$is_validate,
             'articleId' => $articleId
         ]);
     }
@@ -43,6 +45,7 @@ class CommentRepository extends AbstractRepository
         $comment->setAuthor($commentArray['author']);
         $comment->setContent($commentArray['content']);
         $comment->setCreatedAt($commentArray['createdAt']);
+        $comment->setIsValidate($commentArray['is_validate']);
         $comment->setArticleId($commentArray['articleId']);
 
         return $comment;
@@ -56,6 +59,7 @@ class CommentRepository extends AbstractRepository
             $comment->getAuthor(),
             $comment->getContent(),
             $comment->getCreatedAt(),
+            $comment->getIsValidate(),
             $comment->getArticleId()
         ]);
     }

@@ -30,18 +30,20 @@ if (session_status() === PHP_SESSION_NONE) {
     <h2>Il y a déjà <?= count($comments) ?> réactions : </h2>
     <?php foreach ($comments as $comment) : ?>
         <h3>Commentaire de <?= $comment->getAuthor() ?></h3>
-        <small>Le <?= $comment->getCreatedAt() ?></small>
+        <small>Le <?=  $comment->getCreatedAt() ?></small>
         <blockquote>
             <em><?= $comment->getContent() ?></em>
         </blockquote>
+        <?php if (isset($_SESSION['auth'])) { ?>
         <a href="index.php?controller=comment&task=delete&id=<?= $comment->getId() ?>" onclick="return window.confirm
         (`Êtes vous
         sûr de
         vouloir supprimer ce commentaire ?!`)">Supprimer</a>
+        <?php } ?>
     <?php endforeach ?>
 <?php endif ?>
 
-<form action="index.php?controller=comment&task=insert" method="POST">
+<form action="index.php?controller=comment&task=validate" method="POST">
     <h3>Vous voulez réagir ? N'hésitez pas les bros !</h3>
     <label>Pseudo :</label>
     <input type="text" name="author" placeholder="Votre pseudo !">

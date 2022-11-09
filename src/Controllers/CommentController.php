@@ -28,8 +28,12 @@ class CommentController extends Controller
 
         $content = null;
         if (!empty($_POST['content'])) {
-            // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire
             $content = htmlspecialchars($_POST['content']);
+        }
+
+        $is_validate = false;
+        if (isset($_POST['is_validate'])) {
+            $is_validate = true;
         }
 
         $articleId = null;
@@ -44,29 +48,33 @@ class CommentController extends Controller
         $article = $this->model->find($articleId);
 
         if (!$article) {
-            die("Ho ! L'article $articleId n'existe pas boloss !");
+            die("Ho ! L'article $articleId n'existe pas !");
         }
 
-        $this->model->insert($author, $content, $articleId);
+        $this->model->insert($author, $content, $is_validate, $articleId);
         $this->redirect("index.php?controller=article&task=show&id=" . $articleId);
+    }
+
+    public function validate() {
+        $comments = $this->model->findAll("createdAt");
+        $this->render('dashboard', ['commentsPending' => $comments]);
     }
 
     public function delete()
     {
         if (empty($_GET['id']) && !ctype_digit($_GET['id'])) {
-            die("Ho ! Fallait préciser le paramètre id en GET !");
+            die("Erreur !");
         }
 
         $id = $_GET['id'];
-        $commentaire = $this->model->find($id);
-        if (!$commentaire) {
+        $comment = $this->model->find($id);
+        if (!$comment) {
             die("Aucun commentaire n'a l'identifiant $id !");
         }
 
         $this->model->delete($id);
-        $this->redirect("index.php?controller=article&task=show&id=" . $commentaire->getArticleId());
+        $this->redirect("index.php?controller=user&task=show&id=" . $comment->getArticleId());
     }
-
 }
 
 

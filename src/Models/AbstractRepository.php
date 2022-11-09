@@ -30,9 +30,9 @@ abstract class AbstractRepository
         if ($limit) {
             $sql .= " LIMIT " . $limit;
         }
-        $resultats = $this->pdo->query($sql);
+        $results = $this->pdo->query($sql);
 
-        return $resultats->fetchAll();
+        return $results->fetchAll();
     }
 
     public function delete(int $id): void

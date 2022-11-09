@@ -3,17 +3,20 @@
 namespace App\Controllers;
 
 use App\Models\ArticleRepository;
+use App\Models\CommentRepository;
 use App\Models\User;
 use App\Models\UserRepository;
 
 class UserController extends Controller
 {
     private ArticleRepository $articleRepository;
+    private CommentRepository $commentRepository;
 
     public function __construct()
     {
         $this->model = new UserRepository();
         $this->articleRepository = new ArticleRepository();
+        $this->commentRepository = new CommentRepository();
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }

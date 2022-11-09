@@ -77,7 +77,7 @@ class User
     /**
      * @return bool
      */
-    public function getIsAdmin()
+    public function getIsAdmin(): bool
     {
         return $this->is_admin;
     }

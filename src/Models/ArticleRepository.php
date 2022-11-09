@@ -6,15 +6,16 @@ class ArticleRepository extends AbstractRepository
 {
     protected $table = "articles";
 
-    public function insert(string $title, string $slug, string $author, string $extrait, string $content): int
+    public function insert(string $title, string $slug, string $author, string $extrait, string $content, $imgArticle): int
     {
-        $query = $this->pdo->prepare("INSERT INTO {$this->table} SET title = :title, slug = :slug, author = :author, extrait = :extrait, content = :content, createdAt = NOW()");
+        $query = $this->pdo->prepare("INSERT INTO {$this->table} SET title = :title, slug = :slug, author = :author, extrait = :extrait, content = :content, imgArticle = :imgArticle, createdAt = NOW()");
         $query->execute([
             'title' => $title,
             'slug' => $slug,
             'author' => $author,
             'extrait' => $extrait,
             'content' => $content,
+            'imgArticle' => $imgArticle
         ]);
 
         return $this->pdo->lastInsertId();
@@ -40,13 +41,14 @@ class ArticleRepository extends AbstractRepository
 
     public function update(Article $article): bool
     {
-        $query = $this->pdo->prepare("UPDATE {$this->table} SET title = :title, slug = :slug, author = :author, extrait = :extrait, content = :content WHERE id = :id");
+        $query = $this->pdo->prepare("UPDATE {$this->table} SET title = :title, slug = :slug, author = :author, extrait = :extrait, content = :content, imgArticle = :imgArticle WHERE id = :id");
         return $query->execute([
             'title' => $article->getTitle(),
             'slug' => $article->getSlug(),
             'author' => $article->getAuthor(),
             'extrait' => $article->getExtrait(),
             'content' => $article->getContent(),
+            'imgArticle' => $article->getImgArticle(),
             'id' => $article->getId()
         ]);
     }
@@ -60,6 +62,7 @@ class ArticleRepository extends AbstractRepository
         $article->setAuthor($articleArray['author']);
         $article->setExtrait($articleArray['extrait']);
         $article->setContent($articleArray['content']);
+        $article->setImgArticle($articleArray['imgArticle']);
         $article->setCreatedAt($articleArray['createdAt']);
 
         return $article;

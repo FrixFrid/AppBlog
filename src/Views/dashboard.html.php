@@ -41,6 +41,36 @@ if (session_status() === PHP_SESSION_NONE) {
 </section>
 
 <section>
+    <h3>Commentaires à valider</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Pseudo</th>
+            <th>Commentaire</th>
+            <th>date</th>
+        </tr>
+        </thead>
+        <?php foreach ($commentsPending as $comment) { ?>
+            <?= '<tbody>'; ?>
+            <?= '<tr>' ?>
+            <?= '<td>' . $comment->getAuthor(); ?>
+            <?= '<td>' . $comment->getComment(); ?>
+            <?= '<td>' . $comment->getCreatedAt(); ?>
+            <td>
+                <button><a href="index.php?controller=comment&task=validate&id=<?= $article->getId() ?>">Approuver le commentaire </a></button>
+            </td>
+            <td>
+                <button><a href="index.php?controller=comment&task=delete&id=<?= $article->getId() ?>">Supprimer
+                        le commentaire</a></button>
+            </td>
+        <?php } ?>
+
+    </table>
+    <div class="card-block col-md-4">
+    </div>
+</section>
+
+<section>
     <h3>Ajouter un article</h3>
     <form action="index.php?controller=article&task=insert" method="POST">
         <label>Titre :</label>
@@ -53,6 +83,8 @@ if (session_status() === PHP_SESSION_NONE) {
         <input type="text" name="extrait" placeholder="extrait de l'article">
         <label>Article :</label>
         <textarea name="content" id="" cols="30" rows="10" placeholder="l'article"></textarea>
+        <label>Image :</label>
+        <input type="file" name="imgArticle">
         <button>Ajouter</button>
     </form>
 </section>

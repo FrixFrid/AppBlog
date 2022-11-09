@@ -85,7 +85,7 @@ class ArticleController extends Controller
         $this->model->delete($id);
 
         //Redirection vers la page du blog
-        $this->redirect('index.php?controller=article&task=blog');
+        $this->redirect('index.php?controller=user&task=dashboard');
     }
 
     public function insert()
@@ -120,14 +120,28 @@ class ArticleController extends Controller
             $content = htmlspecialchars($_POST['content']);
         }
 
+        $imgArticle = null;
+        if (isset($_FILES['imgArticle']) && $_FILES['imgArticle']['error'] == 0) {
+            if ($_FILES['imgArticle']['size'] <= 5000000) {
+                $fileInfo = pathinfo($_FILES['imgArticle']['name']);
+                $extension = $fileInfo['extension'];
+                $allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
+                if (in_array($extension, $allowedExtensions)) {
+                    move_uploaded_file($_FILES['imgArticle']['tmp_name'],
+                        '/Applications/MAMP/htdocs/AppBlog/public/img/uploads/' . basename($_FILES['imgArticle']['name']));
+                }
+            }
+            $imgArticle = $_FILES['imgArticle'];
+        }
+
         // Vérification finale des infos envoyées dans le formulaire (donc dans le POST)
         // Si il n'y a pas d'auteur OU qu'il n'y a pas de contenu OU qu'il n'y a pas d'identifiant d'article
-        if (!$title || !$slug || !$author || !$extrait || !$content) {
+        if (!$title || !$slug || !$author || !$extrait || !$content || !$imgArticle) {
             die("Votre formulaire a été mal rempli !");
         }
 
         //Insertion de l'article
-        $id = $this->model->insert($title, $slug, $author, $extrait, $content);
+        $id = $this->model->insert($title, $slug, $author, $extrait, $content, $imgArticle);
         //Redirection vers l'article en question :
         $this->redirect("index.php?controller=article&task=show&id=" . $id);
     }
@@ -189,6 +203,7 @@ class ArticleController extends Controller
         $this->model->update($article);
 
         //Redirection vers l'article en question :
+        $pageTitle = $article->getTitle();
         $this->redirect('index.php?controller=article&task=updateArticle&id=' . $article->getId());
     }
 

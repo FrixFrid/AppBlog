@@ -8,6 +8,7 @@ class Comment
     private string $author;
     private string $content;
     private string $createdAt;
+    private bool $is_validate = false;
     private int $articleId;
 
     /**
@@ -72,6 +73,22 @@ class Comment
     public function setCreatedAt(string $createdAt): void
     {
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsValidate(): bool
+    {
+        return $this->is_validate;
+    }
+
+    /**
+     * @param bool $is_validate
+     */
+    public function setIsValidate(bool $is_validate): void
+    {
+        $this->isValidate = $is_validate;
     }
 
     /**

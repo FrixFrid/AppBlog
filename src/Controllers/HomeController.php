@@ -18,23 +18,30 @@ class HomeController extends Controller
 
     public function home(): void
     {
+        $pageTitle = "Accueil";
         $articles = $this->model->findAll("createdAt DESC", 3);
-        $this->render('home', ['articles' => $articles]);
+        $this->render('home', ['pageTitle' => $pageTitle,
+            'articles' => $articles
+        ]);
     }
+
 
     public function about(): void
     {
-        $this->render('about');
+        $pageTitle = "A propos";
+        $this->render('about', ['pageTitle' => $pageTitle]);
     }
 
     public function contact(): void
     {
-        $this->render("contact");
+        $pageTitle = "Contact";
+        $this->render('contact', ['pageTitle' => $pageTitle]);
     }
 
     public function login(): void
     {
-        $this->render('login');;
+        $pageTitle = "Connexion";
+        $this->render('login', ['pageTitle' => $pageTitle]);
     }
 
     public function insert(): void
