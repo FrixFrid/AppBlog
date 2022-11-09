@@ -131,8 +131,12 @@ class ArticleController extends Controller
                         '/Applications/MAMP/htdocs/AppBlog/public/img/uploads/' . basename($_FILES['imgArticle']['name']));
                 }
             }
-            $imgArticle = $_FILES['imgArticle'];
+            $imgArticle = implode($_FILES['imgArticle']);
+            var_dump($imgArticle);
+            die();
         }
+
+
 
         // Vérification finale des infos envoyées dans le formulaire (donc dans le POST)
         // Si il n'y a pas d'auteur OU qu'il n'y a pas de contenu OU qu'il n'y a pas d'identifiant d'article
