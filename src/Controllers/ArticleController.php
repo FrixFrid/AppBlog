@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Controllers;
+namespace AppBlog\Controllers;
 
-use App\Models\Article;
-use App\Models\Comment;
-use App\Models\ArticleRepository;
-use App\Models\CommentRepository;
+use AppBlog\Models\Article;
+use AppBlog\Models\Comment;
+use AppBlog\Models\ArticleRepository;
+use AppBlog\Models\CommentRepository;
 
 class ArticleController extends Controller
 {
@@ -21,71 +21,43 @@ class ArticleController extends Controller
     {
         //Récupération des articles
         $articles = $this->model->findAll("createdAt DESC");
-
         //Affichege des articles dans le blog
         $pageTitle = "Blog";
-        $this->render('articles/index', [
+        $this->render('blog', [
             'pageTitle' => $pageTitle,
             'articles' => $articles
         ]);
     }
 
-
-    public function show()
+    public function show(int $id)
     {
-        $id = null;
-        if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
-            $id = $_GET['id'];
-        }
-
-        if (!$id) {
-            die("Vous devez préciser un paramètre `id` dans l'URL !");
-        }
-
         //Récupération de l'article en question
-        $articleId = $id;
-        $article = $this->model->find($articleId);
+        $article = $this->model->find($id);
 
         //Récupération des commentaires de l'article en question
         $comments = $this->commentRepository->findAllWithArticle($article->getId());
         //On affiche
-        $this->render('articles/show', [
+        $this->render('showArticle', [
             'article' => $article,
             'comments' => $comments
         ]);
     }
 
-    public function lastshow()
+    public function delete($id)
     {
-        //Récupération des articles
-        $this->model->findAll("createdAt DESC", 3);
-    }
-
-    public function showDash()
-    {
-        $this->model->findAll("createdAt DESC");
-    }
-
-    public function delete()
-    {
-        //On vérifie que le GET possède bien un paramètre "id" (delete.php?id=202) et que c'est bien un nombre
-        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
-            die("Ho ?! Tu n'as pas précisé l'id de l'article !");
-        }
-
-        $id = $_GET['id'];
-
         //Vérification que l'article existe bel et bien
         $article = $this->model->find($id);
         if (!$article) {
             die("L'article $id n'existe pas, vous ne pouvez donc pas le supprimer !");
         }
 
+        $articleId = $_GET['id'];
         //Réelle suppression de l'article
         $this->model->delete($id);
+        $this->commentRepository->deleteByArticleId($articleId);
 
         //Redirection vers la page du blog
-        $this->redirect('index.php?controller=user&task=dashboard');
+        $this->redirect('/dashboard');
     }
 
     public function insert()
@@ -94,6 +66,8 @@ class ArticleController extends Controller
         //D'abord, on récupère les informations à partir du POST
         //Ensuite, on vérifie qu'elles ne sont pas nulles
         // On commence par le titre
+
+
         $title = null;
         if (!empty($_POST['title'])) {
             $title = $_POST['title'];
@@ -126,17 +100,14 @@ class ArticleController extends Controller
                 $fileInfo = pathinfo($_FILES['imgArticle']['name']);
                 $extension = $fileInfo['extension'];
                 $allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
+                $uniqueName = uniqid('img', true);
                 if (in_array($extension, $allowedExtensions)) {
                     move_uploaded_file($_FILES['imgArticle']['tmp_name'],
-                        '/Applications/MAMP/htdocs/AppBlog/public/img/uploads/' . basename($_FILES['imgArticle']['name']));
+                        './uploads/' . basename($uniqueName) . '.' . $extension);
                 }
             }
-            $imgArticle = implode($_FILES['imgArticle']);
-            var_dump($imgArticle);
-            die();
+            $imgArticle = $uniqueName . '.' . $extension;
         }
-
-
 
         // Vérification finale des infos envoyées dans le formulaire (donc dans le POST)
         // Si il n'y a pas d'auteur OU qu'il n'y a pas de contenu OU qu'il n'y a pas d'identifiant d'article
@@ -147,38 +118,21 @@ class ArticleController extends Controller
         //Insertion de l'article
         $id = $this->model->insert($title, $slug, $author, $extrait, $content, $imgArticle);
         //Redirection vers l'article en question :
-        $this->redirect("index.php?controller=article&task=show&id=" . $id);
+        $this->redirect("/blog/article/" . $id);
     }
 
-    public function UpdateArticle(): void
+    public function update($id)
     {
         $id = null;
         if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
             $id = $_GET['id'];
         }
-
         if (!$id) {
             die("Vous devez préciser un paramètre `id` dans l'URL !");
         }
-
-        $article = $this->model->find($id);
-        $this->render('articles/updateArticle', ['article' => $article]);
-    }
-
-    public function update()
-    {
-
-        $id = null;
-        if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
-            $id = $_GET['id'];
-        }
-
-        if (!$id) {
-            die("Vous devez préciser un paramètre `id` dans l'URL !");
-        }
-
         $article = $this->model->find($id);
 
+        $title = null;
         if (!empty($_POST['title'])) {
             $article->setTitle($_POST['title']);
         }
@@ -203,12 +157,20 @@ class ArticleController extends Controller
             $article->setContent(htmlspecialchars($_POST['content']));
         }
 
+        $imgArticle = null;
+        if (!empty($_POST['imgArticle'])) {
+            $article->setImgArticle($_POST['imgArticle']);
+        }
+
         //mofification de l'article
         $this->model->update($article);
-
         //Redirection vers l'article en question :
-        $pageTitle = $article->getTitle();
-        $this->redirect('index.php?controller=article&task=updateArticle&id=' . $article->getId());
+        $this->redirect('/blog/article/' . $article->getId());
     }
 
+    public function updateArticle($article)
+    {
+        $article = $this->model->find($article);
+        $this->render('update', ['article' => $article]);
+    }
 }

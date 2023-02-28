@@ -1,25 +1,26 @@
 <?php
 
-namespace App\Controllers;
+namespace AppBlog\Controllers;
 
-use App\Models\AbstractRepository;
+use AppBlog\Models\AbstractRepository;
 
 abstract class Controller
 {
     protected AbstractRepository $model;
 
-    public function render(string $path, array $variables = [])
+    public function render(string $path, array $variables = []): void
     {
         extract($variables);
         ob_start();
-        require('../src/Views/' . $path . '.html.php');
+        require ('../src/Views/' . $path . '.html.php');
         $pageContent = ob_get_clean();
-        require('../src/Views/layout.html.php');
+        require ('../src/Views/layout.html.php');
     }
 
     public function redirect(string $url)
     {
-        header("Location: $url");
+        ob_end_clean();
+        header('Location: ' . $url);
         exit();
     }
 }

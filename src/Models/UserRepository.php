@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace AppBlog\Models;
 
 class UserRepository extends AbstractRepository
 {
@@ -30,7 +30,7 @@ class UserRepository extends AbstractRepository
         ]);
     }
 
-    public function update(User $user): bool
+    public function updateUser(User $user): bool
     {
         $query = $this->pdo->prepare("UPDATE {$this->table} SET :id, :username, :email, :mdp, WHERE :id");
         return $query->execute([

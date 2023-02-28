@@ -3,16 +3,33 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
-
+<!-- ...::: Start Breadcrumb Section :::... -->
+<div class="breadcrumb-section section-bg overflow-hidden pos-relative">
+    <div class="breadcrumb-shape-top-left"></div>
+    <div class="breadcrumb-shape-bottom-right"></div>
+    <div class="breadcrumb-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                        <h2 class="title">Dashboard</h2>
+                        <ul class="breadcrumb-link">
+                            <li><a href="/home">Accueil</a></li>
+                            <li class="active" aria-current="page">Dashboard</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ...::: End Breadcrumb Section :::... -->
+<br>
+<div class="contact-section section-gap-tb-165">
+    <div class="contact-box pos-relative">
+        <div class="container">
 <section>
-    <br>
-    <h1>Mon Dashboard</h1>
-    <br>
-    <h2>Bienvenue</h2>
-</section>
-
-<section>
-    <h3>Liste des articles</h3>
+    <h3 style="text-align: center">Liste des articles</h3>
     <table>
         <thead>
         <tr>
@@ -26,22 +43,25 @@ if (session_status() === PHP_SESSION_NONE) {
             <?= '<td>' . $article->getTitle(); ?>
             <?= '<td>' . $article->getCreatedAt(); ?>
             <td>
-                <button><a href="index.php?controller=article&task=updateArticle&id=<?= $article->getId() ?>">Modifier
-                        l'article </a></button>
+                <button class="btn btn btn-outline-one icon-space-left"><a href="/blog/article/<?= $article->getId() ?>/update">Modifier l'article </a></button>
             </td>
             <td>
-                <button><a href="index.php?controller=article&task=delete&id=<?= $article->getId() ?>">Supprimer
-                        l'article</a></button>
+                <button class="btn btn btn-outline-one icon-space-left"><a href="/blog/article/<?= $article->getId() ?>/delete">Supprimer l'article</a></button>
             </td>
         <?php } ?>
 
     </table>
-    <div class="card-block col-md-4">
-    </div>
 </section>
-
+        </div>
+    </div>
+</div>
+<hr>
+<hr>
+<div class="contact-section section-gap-tb-165">
+    <div class="contact-box pos-relative">
+        <div class="container">
 <section>
-    <h3>Commentaires à valider</h3>
+    <h3 style="text-align: center">Commentaires à valider</h3>
     <table>
         <thead>
         <tr>
@@ -50,58 +70,118 @@ if (session_status() === PHP_SESSION_NONE) {
             <th>date</th>
         </tr>
         </thead>
-        <?php foreach ($commentsPending as $comment) { ?>
+        <?php foreach ($comments as $comment) { ?>
             <?= '<tbody>'; ?>
             <?= '<tr>' ?>
             <?= '<td>' . $comment->getAuthor(); ?>
-            <?= '<td>' . $comment->getComment(); ?>
+            <?= '<td>' . $comment->getContent(); ?>
             <?= '<td>' . $comment->getCreatedAt(); ?>
+            <?= '<td>' . $comment->getIsValidate(); ?>
             <td>
-                <button><a href="index.php?controller=comment&task=validate&id=<?= $article->getId() ?>">Approuver le commentaire </a></button>
+                <button class="btn btn btn-outline-one icon-space-left"><a href="/article/comment/<?= $comment->getId() ?>/validate">Approuver le commentaire </a></button>
             </td>
             <td>
-                <button><a href="index.php?controller=comment&task=delete&id=<?= $article->getId() ?>">Supprimer
+                <button class="btn btn btn-outline-one icon-space-left"><a href="/article/comment/<?= $comment->getId() ?>/delete">Supprimer
                         le commentaire</a></button>
             </td>
         <?php } ?>
 
     </table>
+    <hr>
+    <hr>
     <div class="card-block col-md-4">
     </div>
 </section>
-
-<section>
-    <h3>Ajouter un article</h3>
-    <form action="index.php?controller=article&task=insert" method="POST">
-        <label>Titre :</label>
-        <input type="text" name="title" placeholder="Titre de l'article">
-        <label>Catégorie :</label>
-        <input type="text" name="slug" placeholder="catégorie de l'article">
-        <label>Auteur :</label>
-        <input type="text" name="author" placeholder="auteur de l'article">
-        <label>Extrait :</label>
-        <input type="text" name="extrait" placeholder="extrait de l'article">
-        <label>Article :</label>
-        <textarea name="content" id="" cols="30" rows="10" placeholder="l'article"></textarea>
-        <label>Image :</label>
-        <input type="file" name="imgArticle">
-        <button>Ajouter</button>
+        </div>
+    </div>
+</div>
+<div class="section-globale">
+    <div class="contact-section section-gap-tb-165">
+        <div class="contact-box pos-relative">
+            <div class="container">
+            <section class="login-section">
+    <h3 class="login__title" style="text-align: center">Ajouter un article</h3>
+    <div class="contact-form-box">
+    <form method="POST" enctype="multipart/form-data" action="/blog/article/insert">
+        <div class="row mb-n6">
+        <div class="col-xl-6 mb-6">
+            <div class="default-form-group">
+                <input name="title" type="text" placeholder="Titre de l'article">
+            </div>
+        </div>
+            <div class="col-xl-6 mb-6">
+                <div class="default-form-group">
+                    <input name="slug" type="text" placeholder="Catégorie de l'article">
+                </div>
+            </div>
+            <div class="col-xl-6 mb-6">
+                <div class="default-form-group">
+                    <input name="author" type="text" placeholder="Auteur de l'article">
+                </div>
+            </div>
+            <div class="col-xl-6 mb-6">
+                <div class="default-form-group">
+                    <input name="extrait" type="text" placeholder="Extrait de l'article">
+                </div>
+            </div>
+            <div class="col-xl-6 mb-6">
+                <div class="default-form-group">
+                    <textarea name="content" type="text" cols="30" rows="10" placeholder="Article"></textarea>
+                </div>
+            </div>
+            <div class="col-xl-6 mb-6">
+            <label>Image :</label>
+            <input type="file" name="imgArticle">
+            </div>
+            <div class="col-6 mb-6">
+                <div class="default-form-group tex-center">
+                    <button type="submit" class="btn btn-lg btn-outline-one">Ajouter</button>
+                </div>
+            </div>
+        </div>
     </form>
+    </div>
 </section>
-
-<section>
-    <h3>Ajouter un utilisateur</h3>
-    <form action="index.php?controller=user&task=registerUser" method="POST">
-        <label>Pseudo :</label>
-        <input type="text" name="username" placeholder="Votre pseudo">
-        <label>Email :</label>
-        <input type="email" name="email" placeholder="votre email de connexion">
-        <label>Mot de passe :</label>
-        <input type="password" name="mdp" placeholder="votre mot de passe de connexion">
-        <label>Confirmation mot de passe :</label>
-        <input type="password" name="password_confirm" placeholder="confirmation de votre mot de passe de connexion">
-        <label>Admin ?</label>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <hr>
+    <div class="contact-section section-gap-tb-165">
+        <div class="contact-box pos-relative">
+            <div class="container">
+            <section class="contact-form-box">
+    <h3 class="login__title" style="text-align: center">Ajouter un utilisateur</h3>
+    <form action="/registerUser" method="POST">
+        <div class="row mb-n6">
+        <div class="col-xl-6 mb-6">
+            <div class="default-form-group">
+                <input name="username" type="text" placeholder="Pseudo">
+            </div>
+        </div>
+        <div class="col-xl-6 mb-6">
+            <div class="default-form-group">
+                <input name="email" type="email" placeholder="Email">
+            </div>
+        </div>
+        <div class="col-xl-6 mb-6">
+            <div class="default-form-group">
+                <input name="mdp" type="password" placeholder="Mot de passe">
+            </div>
+        </div>
+        <div class="col-xl-6 mb-6">
+            <div class="default-form-group">
+                <input name="password_confirm" type="password" placeholder="Confirmation du Mot de passe">
+            </div>
+        </div>
+        <div class="col-xl-6 mb-6">
+            <label>Admin ?</label>
         <input type="checkbox" name="is_admin">
-        <button>Inscription</button>
+            </div>
+                <button class="btn btn-lg btn-outline-one">Inscription</button>
+        </div>
     </form>
 </section>
+        </div>
+    </div>
+    </div>

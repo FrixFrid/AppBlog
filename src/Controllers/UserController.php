@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Controllers;
+namespace AppBlog\Controllers;
 
-use App\Models\ArticleRepository;
-use App\Models\CommentRepository;
-use App\Models\User;
-use App\Models\UserRepository;
+use AppBlog\Models\ArticleRepository;
+use AppBlog\Models\CommentRepository;
+use AppBlog\Models\Comment;
+use AppBlog\Models\User;
+use AppBlog\Models\UserRepository;
 
 class UserController extends Controller
 {
@@ -17,15 +18,6 @@ class UserController extends Controller
         $this->model = new UserRepository();
         $this->articleRepository = new ArticleRepository();
         $this->commentRepository = new CommentRepository();
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-    }
-
-    public function register()
-    {
-        $pageTitle = "register";
-        $this->render('auth/register', ['pageTitle' => $pageTitle]);
     }
 
     public function registerUser()
@@ -57,34 +49,33 @@ class UserController extends Controller
             die("Vous devez vous connecter avec un email et un mot de passe");
         }
         $this->model->insert($username, $email, $mdp, $is_admin);
-        $this->redirect("index.php?controller=user&task=login");
+        $this->redirect("/login");
     }
 
     public function login()
     {
-        $this->render('auth/login');
-    }
-
-    public function loginUser()
-    {
-        $user = $this->model->findUserLogin($_POST['email']);
-        if (password_verify($_POST['mdp'], $user['mdp'])) {
-            if ($user['is_admin']) {
-                $_SESSION['auth'] = $user['is_admin'];
-                $this->redirect("index.php?controller=user&task=dashboard");
+        if (isset($_POST['email'])) {
+            $user = $this->model->findUserLogin($_POST['email']);
+            if (password_verify($_POST['mdp'], $user['mdp'])) {
+                if ($user['is_admin']) {
+                    $_SESSION['auth'] = $user['is_admin'];
+                    $this->redirect("/dashboard");
+                } else {
+                    $this->redirect("/");
+                }
             } else {
-                $this->redirect("index.php?controller=home&task=home");
+              $this->redirect("/login");
             }
-        } else {
-            $this->redirect("index.php?controller=user&task=login");
         }
+       $this->render('/login');
     }
 
     public function logout()
     {
-        session_start();
+        if (session_status() == PHP_SESSION_ACTIVE) {
         session_destroy();
-        $this->redirect("index.php?controller=home&task=home");
+        }
+        $this->redirect("/");
     }
 
     public function isAdmin($user)
@@ -92,13 +83,17 @@ class UserController extends Controller
         if (isset($_SESSION['auth']) && $user['is_admin'] === 1) {
             return true;
         } else {
-            $this->redirect("index.php?controller=user&task=login");
+            $this->redirect("/login");
         }
     }
 
     public function dashboard()
     {
         $articles = $this->articleRepository->findAll("createdAt");
-        $this->render('dashboard', ['articles' => $articles]);
+        $comments = $this->commentRepository->findNotValidated();
+        $this->render('dashboard', [
+            'articles' => $articles,
+            'comments' => $comments //variable comments attendu
+        ]);
     }
 }

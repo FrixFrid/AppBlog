@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controllers;
+namespace AppBlog\Controllers;
 
-use App\Models\ArticleRepository;
-use App\Models\UserRepository;
+use AppBlog\Models\ArticleRepository;
+use AppBlog\Models\UserRepository;
 
 class HomeController extends Controller
 {
@@ -16,7 +16,7 @@ class HomeController extends Controller
         $this->userRepository = new UserRepository();
     }
 
-    public function home(): void
+    public function home()
     {
         $pageTitle = "Accueil";
         $articles = $this->model->findAll("createdAt DESC", 3);
@@ -26,26 +26,41 @@ class HomeController extends Controller
     }
 
 
-    public function about(): void
+    public function about()
     {
         $pageTitle = "A propos";
         $this->render('about', ['pageTitle' => $pageTitle]);
     }
 
-    public function contact(): void
+    public function contact()
     {
         $pageTitle = "Contact";
         $this->render('contact', ['pageTitle' => $pageTitle]);
     }
 
-    public function login(): void
+    public function logout()
     {
-        $pageTitle = "Connexion";
-        $this->render('login', ['pageTitle' => $pageTitle]);
+        $pageTitle = "Logout";
+        $this->render('logout', ['pageTitle' => $pageTitle]);
     }
 
-    public function insert(): void
+    public function register()
     {
-        $this->render('articles/insert');
+        $pageTitle = "register";
+        $this->render('register', ['pageTitle' => $pageTitle]);
     }
+
+
+    public function insert()
+    {
+        $pageTitle = 'Insert';
+        $this->render('insert', ['pageTitle' => $pageTitle]);
+    }
+
+    public function page404()
+    {
+        $pageTitle = '404';
+        $this->render('404', ['pageTitle' => $pageTitle]);
+    }
+
 }

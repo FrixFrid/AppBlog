@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace AppBlog\Models;
 
-use App\Database;
+use AppBlog\Models\bdd\Database;
 
 abstract class AbstractRepository
 {

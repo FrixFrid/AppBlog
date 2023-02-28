@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace AppBlog\Models;
 
 class ArticleRepository extends AbstractRepository
 {
     protected $table = "articles";
 
-    public function insert(string $title, string $slug, string $author, string $extrait, string $content, $imgArticle): int
+    public function insert(string $title, string $slug, string $author, string $extrait, string $content, $imgArticle): string
     {
         $query = $this->pdo->prepare("INSERT INTO {$this->table} SET title = :title, slug = :slug, author = :author, extrait = :extrait, content = :content, imgArticle = :imgArticle, createdAt = NOW()");
         $query->execute([
@@ -39,7 +39,7 @@ class ArticleRepository extends AbstractRepository
         return $articles;
     }
 
-    public function update(Article $article): bool
+    public function update($article)
     {
         $query = $this->pdo->prepare("UPDATE {$this->table} SET title = :title, slug = :slug, author = :author, extrait = :extrait, content = :content, imgArticle = :imgArticle WHERE id = :id");
         return $query->execute([

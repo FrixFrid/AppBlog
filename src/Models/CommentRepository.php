@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Models;
+namespace AppBlog\Models;
 
-class CommentRepository extends AbstractRepository
+class   CommentRepository extends AbstractRepository
 {
     protected $table = "comments";
 
     public function findAllWithArticle(int $articleId): array
     {
-        $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE articleId = :articleId");
+        $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE articleId = :articleId AND is_validate = true");
         $query->execute(['articleId' => $articleId]);
         $commentsArray = $query->fetchAll();
         $comments = [];
@@ -26,20 +26,21 @@ class CommentRepository extends AbstractRepository
         return $comments;
     }
 
-    public function insert(string $author, string $content,bool $is_validate, string $articleId)
+    public function insert(string $author, string $content, int $articleId, bool $is_validate)
     {
-        $query = $this->pdo->prepare("INSERT INTO {$this->table} SET author = :author, content = :content,is_validate = :is_validate, articleId = :articleId, createdAt = NOW()");
+        $query = $this->pdo->prepare("INSERT INTO {$this->table} SET author = :author, content = :content, articleId = :articleId, is_validate = :is_validate, createdAt = NOW()");
         $query->execute([
             'author' => $author,
             'content' => $content,
-            'is_validate' => (int)$is_validate,
-            'articleId' => $articleId
+            'articleId' => $articleId,
+            'is_validate' => (int)$is_validate
         ]);
     }
 
     public function find(int $id): Comment
     {
         $commentArray = parent::find($id);
+        if(empty($commentArray)) throw new \Exception("Comment not found with id : $id");
         $comment = new Comment();
         $comment->setId($commentArray['id']);
         $comment->setAuthor($commentArray['author']);
@@ -51,16 +52,67 @@ class CommentRepository extends AbstractRepository
         return $comment;
     }
 
-    public function update(Comment $comment): bool
+    public function updateComment($comment)
     {
-        $query = $this->pdo->prepare("UPDATE {$this->table} SET :author, :content, :createdAt, :articleId WHERE :id");
+        $query = $this->pdo->prepare("UPDATE {$this->table} SET :author, :content, :createdAt, :getIsValidate, :articleId WHERE :id");
         return $query->execute([
-            $comment->getId(),
             $comment->getAuthor(),
             $comment->getContent(),
             $comment->getCreatedAt(),
             $comment->getIsValidate(),
             $comment->getArticleId()
         ]);
+    }
+
+    public function validateComment(Comment $comment)
+    {
+        $query = $this->pdo->prepare("UPDATE {$this->table} SET is_validate = true WHERE id = :id");
+        return $query->execute([
+            'id' => $comment->getId()
+        ]);
+    }
+
+    public function findValidatedComment()
+    {
+        $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE is_validate = true");
+        $query->execute([]);
+        $commentsArray = $query->fetchAll();
+        $comments = [];
+        foreach ($commentsArray as $commentArray) {
+            $comment = new Comment();
+            $comment->setId($commentArray['id']);
+            $comment->setAuthor($commentArray['author']);
+            $comment->setContent($commentArray['content']);
+            $comment->setCreatedAt($commentArray['createdAt']);
+            $comment->setIsValidate($commentArray['is_validate']);
+            $comment->setArticleId($commentArray['articleId']);
+            $comments[] = $comment;
+        }
+        return $comments;
+    }
+
+    public function findNotValidated()
+    {
+        $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE is_validate = false");
+        $query->execute([]);
+        $commentsArray = $query->fetchAll();
+        $comments = [];
+        foreach ($commentsArray as $commentArray) {
+            $comment = new Comment();
+            $comment->setId($commentArray['id']);
+            $comment->setAuthor($commentArray['author']);
+            $comment->setContent($commentArray['content']);
+            $comment->setCreatedAt($commentArray['createdAt']);
+            $comment->setIsValidate($commentArray['is_validate']);
+            $comment->setArticleId($commentArray['articleId']);
+            $comments[] = $comment;
+        }
+        return $comments;
+    }
+
+    public function deleteByArticleId($articleId) {
+        $query = $this->pdo->prepare("DELETE FROM comments WHERE articleId = :articleId");
+        $query->bindValue(":articleId", $articleId);
+        return $query->execute();
     }
 }

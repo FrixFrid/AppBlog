@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Controllers;
+namespace AppBlog\Controllers;
 
-use App\Models\Article;
-use App\Models\Comment;
-use App\Models\ArticleRepository;
-use App\Models\CommentRepository;
+use AppBlog\Models\Article;
+use AppBlog\Models\Comment;
+use AppBlog\Models\ArticleRepository;
+use AppBlog\Models\CommentRepository;
 
 class CommentController extends Controller
 {
@@ -14,13 +14,11 @@ class CommentController extends Controller
     public function __construct()
     {
         $this->model = new CommentRepository();
-        $this->articleRepository = new ArticleRepository();
+        $this->commentRepository = new CommentRepository();
     }
 
     public function insert()
     {
-        $this->model->insert = new ArticleRepository();
-
         $author = null;
         if (!empty($_POST['author'])) {
             $author = $_POST['author'];
@@ -29,11 +27,6 @@ class CommentController extends Controller
         $content = null;
         if (!empty($_POST['content'])) {
             $content = htmlspecialchars($_POST['content']);
-        }
-
-        $is_validate = false;
-        if (isset($_POST['is_validate'])) {
-            $is_validate = true;
         }
 
         $articleId = null;
@@ -45,19 +38,26 @@ class CommentController extends Controller
             die("Votre formulaire a été mal rempli !");
         }
 
-        $article = $this->model->find($articleId);
+        $is_validate = false;
+        if (isset($is_validate)) {
+            $is_validate = (isset($_POST['is_validate']) && $_POST['is_validate'] === '1');
+            var_dump($is_validate);
+            die();
+        }
 
-        if (!$article) {
+
+        try {
+            $article = $this->model->findAllWithArticle($articleId);
+        } catch (\Exception $e) {
+            die("Error :" . $e->getMessage());
+        }
+
+        if (!$articleId) {
             die("Ho ! L'article $articleId n'existe pas !");
         }
 
-        $this->model->insert($author, $content, $is_validate, $articleId);
-        $this->redirect("index.php?controller=article&task=show&id=" . $articleId);
-    }
-
-    public function validate() {
-        $comments = $this->model->findAll("createdAt");
-        $this->render('dashboard', ['commentsPending' => $comments]);
+        $this->model->insert($author, $content, $articleId, $is_validate);
+        $this->redirect("/blog/article/" . $articleId);
     }
 
     public function delete()
@@ -73,9 +73,26 @@ class CommentController extends Controller
         }
 
         $this->model->delete($id);
-        $this->redirect("index.php?controller=user&task=show&id=" . $comment->getArticleId());
+        $this->redirect("index.php?controller=user&task=dashboard");
+    }
+
+    public function validateComment()
+    {
+        if (empty($_GET['id']) && !ctype_digit($_GET['id'])) {
+            die("Erreur !");
+        }
+
+        $id = $_GET['id'];
+        $comment = $this->model->find($id);
+        if (!$comment) {
+            die("Aucun commentaire n'a l'identifiant $id !");
+        }
+        $this->model->validateComment($comment);
+        $this->redirect("/dashboard");
     }
 }
+
+
 
 
 
