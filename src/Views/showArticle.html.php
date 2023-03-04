@@ -52,7 +52,8 @@
                             <li>
                                 <?php foreach ($comments as $comment) : ?>
                                     <div class="comment-single-item">
-                                        <div class="image"><img src="assets/images/users/user-1.jpg" alt=""></div>
+                                        <?php $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower( trim( $comment->getEmail()))) ?>
+                                        <div class="image"><img src="<?= $grav_url ?>" alt=""></div>
                                         <div class="content">
                                             <div class="top">
                                                 <div class="author-meta">
@@ -67,7 +68,7 @@
                                             </div>
                                         </div>
                                         <?php if (isset($_SESSION['auth'])) { ?>
-                                            <a href="/article/comment/<?= $comment->getId() ?>/delete" onclick="return window.confirm
+                                            <a href="/article/<?= $comment->getId() ?>/comment/delete" onclick="return window.confirm
         (`Êtes vous
         sûr de
         vouloir supprimer ce commentaire ?!`)">Supprimer</a>
@@ -88,7 +89,7 @@
                     <!-- Start Comment Form Box -->
                     <div class="comment-form-box">
                         <h3 class="title">Laisser un commentaire</h3>
-                        <form class="default-form" method="post">
+                        <form class="default-form" method="post" action="/article/<?= $article->getId() ?>/comment/insert">
                             <div class="row mb-n6">
                                 <div class="col-xl-6 mb-6">
                                     <div class="default-form-group">
@@ -97,7 +98,7 @@
                                 </div>
                                 <div class="col-xl-6 mb-6">
                                     <div class="default-form-group">
-                                        <input type="email" placeholder="Email" required>
+                                        <input name="email" type="email" placeholder="Email" required>
                                     </div>
                                 </div>
                                 <div class="col-xl-12 mb-6">

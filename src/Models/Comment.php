@@ -10,6 +10,8 @@ class Comment
     private string $createdAt;
     private bool $is_validate = false;
     private int $articleId;
+    private string $email;
+
 
     /**
      * @return int
@@ -88,7 +90,7 @@ class Comment
      */
     public function setIsValidate(bool $is_validate): void
     {
-        $this->isValidate = $is_validate;
+        $this->is_validate = $is_validate;
     }
 
     /**
@@ -106,4 +108,21 @@ class Comment
     {
         $this->articleId = $articleId;
     }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
 }

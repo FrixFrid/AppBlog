@@ -12,12 +12,14 @@ class UserController extends Controller
 {
     private ArticleRepository $articleRepository;
     private CommentRepository $commentRepository;
+    private UserRepository $userRepository;
 
     public function __construct()
     {
         $this->model = new UserRepository();
         $this->articleRepository = new ArticleRepository();
         $this->commentRepository = new CommentRepository();
+        $this->userRepository = new UserRepository();
     }
 
     public function registerUser()
@@ -40,9 +42,9 @@ class UserController extends Controller
             }
         }
 
-        $is_admin = false;
+        $is_admin = 0;
         if (isset($_POST['is_admin'])) {
-            $is_admin = true;
+            $is_admin = 1;
         }
 
         if (!$username || !$email || !$mdp) {
@@ -54,20 +56,29 @@ class UserController extends Controller
 
     public function login()
     {
+        $pageTitle = "Login";
+        $this->render('login', [
+            'pageTitle' => $pageTitle,
+        ]);
+    }
+
+    public function loginUser()
+    {
         if (isset($_POST['email'])) {
             $user = $this->model->findUserLogin($_POST['email']);
             if (password_verify($_POST['mdp'], $user['mdp'])) {
                 if ($user['is_admin']) {
                     $_SESSION['auth'] = $user['is_admin'];
                     $this->redirect("/dashboard");
+                var_dump($_SESSION);
+                die();
                 } else {
                     $this->redirect("/");
                 }
             } else {
-              $this->redirect("/login");
+                $this->redirect("/login");
             }
         }
-       $this->render('/login');
     }
 
     public function logout()
@@ -89,11 +100,16 @@ class UserController extends Controller
 
     public function dashboard()
     {
+        $id = null;
+        $pageTitle = "Dashboard";
         $articles = $this->articleRepository->findAll("createdAt");
         $comments = $this->commentRepository->findNotValidated();
+        $users = $this->userRepository->findUser($id);
         $this->render('dashboard', [
+            'pageTitle' => $pageTitle,
             'articles' => $articles,
-            'comments' => $comments //variable comments attendu
+            'comments' => $comments,
+            'users' => $users
         ]);
     }
 }

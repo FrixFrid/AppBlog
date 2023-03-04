@@ -56,9 +56,10 @@ CREATE TABLE `comments` (
   `id` int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
   `author` varchar(255) NOT NULL,
   `content` text NOT NULL,
+  'email' varchar(100),
   `createdAt` datetime NOT NULL,
   `is_validate` tinyint(1) NOT NULL DEFAULT '0',
-  `articleId` int(11) NOT NULL
+  `articleId` int(11) NOT NULL,
       FOREIGN KEY (articleId) REFERENCES articles (id) ON DELETE CASCADE
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

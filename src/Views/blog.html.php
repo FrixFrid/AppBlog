@@ -48,7 +48,6 @@
                                     <a href="/blog/article/<?= $article->getId() ?>/update" class="icon-space-right"><i class="icofont-edit"></i>Modifier</a>
                                     <a href="/blog/article/<?= $article->getId() ?>/delete" onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cet article ?!`)" class="icon-space-right"><i class="icofont-ui-delete"></i>Supprimer</a>
                                     <?php } ?>
-                                    <?php var_dump($article->getId()); ?>
                                 </div>
                             </div>
                         </div>

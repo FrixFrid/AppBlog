@@ -17,6 +17,7 @@ class   CommentRepository extends AbstractRepository
             $comment->setId($commentArray['id']);
             $comment->setAuthor($commentArray['author']);
             $comment->setContent($commentArray['content']);
+            $comment->setEmail($commentArray['email']);
             $comment->setCreatedAt($commentArray['createdAt']);
             $comment->setIsValidate($commentArray['is_validate']);
             $comment->setArticleId($articleId);
@@ -26,12 +27,13 @@ class   CommentRepository extends AbstractRepository
         return $comments;
     }
 
-    public function insert(string $author, string $content, int $articleId, bool $is_validate)
+    public function insert(string $author, string $content, string $email, int $articleId, bool $is_validate)
     {
-        $query = $this->pdo->prepare("INSERT INTO {$this->table} SET author = :author, content = :content, articleId = :articleId, is_validate = :is_validate, createdAt = NOW()");
+        $query = $this->pdo->prepare("INSERT INTO {$this->table} SET author = :author, content = :content, email = :email, articleId = :articleId, is_validate = :is_validate, createdAt = NOW()");
         $query->execute([
             'author' => $author,
             'content' => $content,
+            'email' => $email,
             'articleId' => $articleId,
             'is_validate' => (int)$is_validate
         ]);
@@ -45,6 +47,7 @@ class   CommentRepository extends AbstractRepository
         $comment->setId($commentArray['id']);
         $comment->setAuthor($commentArray['author']);
         $comment->setContent($commentArray['content']);
+        $comment->setEmail($commentArray['email']);
         $comment->setCreatedAt($commentArray['createdAt']);
         $comment->setIsValidate($commentArray['is_validate']);
         $comment->setArticleId($commentArray['articleId']);
@@ -54,21 +57,22 @@ class   CommentRepository extends AbstractRepository
 
     public function updateComment($comment)
     {
-        $query = $this->pdo->prepare("UPDATE {$this->table} SET :author, :content, :createdAt, :getIsValidate, :articleId WHERE :id");
+        $query = $this->pdo->prepare("UPDATE {$this->table} SET :author, :content, :createdAt, :email, :getIsValidate, :articleId WHERE :id");
         return $query->execute([
             $comment->getAuthor(),
             $comment->getContent(),
+            $comment->getEmail(),
             $comment->getCreatedAt(),
             $comment->getIsValidate(),
             $comment->getArticleId()
         ]);
     }
 
-    public function validateComment(Comment $comment)
+    public function validateComment(int $id)
     {
         $query = $this->pdo->prepare("UPDATE {$this->table} SET is_validate = true WHERE id = :id");
         return $query->execute([
-            'id' => $comment->getId()
+            'id' => $id
         ]);
     }
 
@@ -83,6 +87,7 @@ class   CommentRepository extends AbstractRepository
             $comment->setId($commentArray['id']);
             $comment->setAuthor($commentArray['author']);
             $comment->setContent($commentArray['content']);
+            $comment->setEmail($commentArray['email']);
             $comment->setCreatedAt($commentArray['createdAt']);
             $comment->setIsValidate($commentArray['is_validate']);
             $comment->setArticleId($commentArray['articleId']);
@@ -102,6 +107,7 @@ class   CommentRepository extends AbstractRepository
             $comment->setId($commentArray['id']);
             $comment->setAuthor($commentArray['author']);
             $comment->setContent($commentArray['content']);
+            $comment->setEmail($commentArray['email']);
             $comment->setCreatedAt($commentArray['createdAt']);
             $comment->setIsValidate($commentArray['is_validate']);
             $comment->setArticleId($commentArray['articleId']);
@@ -111,7 +117,7 @@ class   CommentRepository extends AbstractRepository
     }
 
     public function deleteByArticleId($articleId) {
-        $query = $this->pdo->prepare("DELETE FROM comments WHERE articleId = :articleId");
+        $query = $this->pdo->prepare("DELETE FROM {$this->table} WHERE articleId = :articleId");
         $query->bindValue(":articleId", $articleId);
         return $query->execute();
     }

@@ -66,18 +66,24 @@
                             <?php
                             if (isset($_SESSION['auth']) && $_SESSION['auth'] == 1) {
                             ?>
-                            <li class="header-nav">
-                                <a href="/dashboard">Dashboard</a>
-                            </li>
-                            <li class="header-nav">
-                                <a href="/logout"">Déconnexion</a>
-                            </li>
+                                <li class="header-nav">
+                                    <a href="/dashboard">Dashboard</a>
+                                </li>
+                                <li class="header-nav">
+                                    <a href="/logout"">Déconnexion</a>
+                                </li>
                                 <?php
+                            } elseif (isset($_SESSION['auth']) && $_SESSION['auth'] == 0) {
+                                ?>
+                                <li class="header-nav">
+                                    <a href="/logout"">Déconnexion</a>
+                                </li>
+                            <?php
                             } else {
                             ?>
-                            <li class="header-nav">
-                                <a href="/login"">Connexion</a>
-                            </li>
+                                <li class="header-nav">
+                                    <a href="/login">Connexion/Inscription</a>
+                                </li>
                             <?php } ?>
                         </ul>
                         <!-- End Header Menu -->
@@ -141,12 +147,17 @@
                                 <a href="/logout"">Déconnexion</a>
                             </li>
                             <?php
-                        } else {
+                        } elseif (isset($_SESSION['auth']) && $_SESSION['auth'] == 0) {
+                            ?>
+                            <li class="header-nav">
+                                <a href="/logout"">Déconnexion</a>
+                            </li>
+                            <?php
+                            }
                             ?>
                         <li class="header-nav">
                             <a href="/login"">Connexion/Inscription</a>
                         </li>
-                        <?php } ?>
                     </ul>
                 </div> <!-- End Mobile Menu Nav -->
             </div> <!-- End Mobile Menu -->

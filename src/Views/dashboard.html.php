@@ -1,8 +1,3 @@
-<?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-?>
 <!-- ...::: Start Breadcrumb Section :::... -->
 <div class="breadcrumb-section section-bg overflow-hidden pos-relative">
     <div class="breadcrumb-shape-top-left"></div>
@@ -78,10 +73,10 @@ if (session_status() === PHP_SESSION_NONE) {
             <?= '<td>' . $comment->getCreatedAt(); ?>
             <?= '<td>' . $comment->getIsValidate(); ?>
             <td>
-                <button class="btn btn btn-outline-one icon-space-left"><a href="/article/comment/<?= $comment->getId() ?>/validate">Approuver le commentaire </a></button>
+                <button class="btn btn btn-outline-one icon-space-left"><a href="/article/<?= $comment->getId() ?>/comment/validate">Approuver le commentaire </a></button>
             </td>
             <td>
-                <button class="btn btn btn-outline-one icon-space-left"><a href="/article/comment/<?= $comment->getId() ?>/delete">Supprimer
+                <button class="btn btn btn-outline-one icon-space-left"><a href="/article/<?= $comment->getId() ?>/comment/delete">Supprimer
                         le commentaire</a></button>
             </td>
         <?php } ?>
@@ -146,6 +141,39 @@ if (session_status() === PHP_SESSION_NONE) {
         </div>
     </div>
     <hr>
+    <hr>
+    <section>
+        <h3 style="text-align: center">Commentaires à valider</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Pseudo</th>
+                <th>Commentaire</th>
+                <th>date</th>
+            </tr>
+            </thead>
+            <?php foreach ($users as $user) { ?>
+                <?= '<tbody>'; ?>
+                <?= '<tr>' ?>
+                <?= '<td>' . $user->getUsername(); ?>
+                <?= '<td>' . $user->getEmail(); ?>
+                <?= '<td>' . $user->getIsAdmin(); ?>
+                <td>
+                    <button class="btn btn btn-outline-one icon-space-left"><a href="/article/<?= $user->getId() ?>/comment/validate">Approuver le commentaire </a></button>
+                </td>
+                <td>
+                    <button class="btn btn btn-outline-one icon-space-left"><a href="/article/<?= $user->getId() ?>/comment/delete">Supprimer
+                            le commentaire</a></button>
+                </td>
+            <?php } ?>
+
+        </table>
+        <hr>
+        <hr>
+        <div class="card-block col-md-4">
+        </div>
+    </section>
+<hr>
     <hr>
     <div class="contact-section section-gap-tb-165">
         <div class="contact-box pos-relative">

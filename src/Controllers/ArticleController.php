@@ -37,7 +37,9 @@ class ArticleController extends Controller
         //Récupération des commentaires de l'article en question
         $comments = $this->commentRepository->findAllWithArticle($article->getId());
         //On affiche
+        $pageTitle = $article->getTitle();
         $this->render('showArticle', [
+            'pageTitle' => $pageTitle,
             'article' => $article,
             'comments' => $comments
         ]);
@@ -51,7 +53,7 @@ class ArticleController extends Controller
             die("L'article $id n'existe pas, vous ne pouvez donc pas le supprimer !");
         }
 
-        $articleId = $_GET['id'];
+        $articleId = $id;
         //Réelle suppression de l'article
         $this->model->delete($id);
         $this->commentRepository->deleteByArticleId($articleId);
@@ -123,13 +125,6 @@ class ArticleController extends Controller
 
     public function update($id)
     {
-        $id = null;
-        if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
-            $id = $_GET['id'];
-        }
-        if (!$id) {
-            die("Vous devez préciser un paramètre `id` dans l'URL !");
-        }
         $article = $this->model->find($id);
 
         $title = null;

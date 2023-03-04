@@ -29,65 +29,54 @@ class CommentController extends Controller
             $content = htmlspecialchars($_POST['content']);
         }
 
-        $articleId = null;
-        if (!empty($_POST['articleId']) && ctype_digit($_POST['articleId'])) {
-            $articleId = $_POST['articleId'];
+        $email = null;
+        if (!empty($_POST['email'])) {
+            $email = htmlspecialchars(($_POST['email']));
         }
 
-        if (!$author || !$articleId || !$content) {
+        $articleId = null;
+        if (!empty($_POST['articleId']) && ctype_digit($_POST['articleId'])) {
+            $articleId = intval($_POST['articleId']);
+        }
+
+
+        if (!$author || !$content || !$email || !$articleId) {
             die("Votre formulaire a été mal rempli !");
         }
 
         $is_validate = false;
-        if (isset($is_validate)) {
+        if (!isset($is_validate)) {
             $is_validate = (isset($_POST['is_validate']) && $_POST['is_validate'] === '1');
-            var_dump($is_validate);
-            die();
         }
 
-
         try {
-            $article = $this->model->findAllWithArticle($articleId);
+            $this->model->findAllWithArticle($articleId);
         } catch (\Exception $e) {
             die("Error :" . $e->getMessage());
         }
 
-        if (!$articleId) {
-            die("Ho ! L'article $articleId n'existe pas !");
-        }
-
-        $this->model->insert($author, $content, $articleId, $is_validate);
+        $this->model->insert($author, $content, $email, $articleId, $is_validate);
         $this->redirect("/blog/article/" . $articleId);
     }
 
-    public function delete()
+    public function delete($id)
     {
-        if (empty($_GET['id']) && !ctype_digit($_GET['id'])) {
-            die("Erreur !");
-        }
-
-        $id = $_GET['id'];
-        $comment = $this->model->find($id);
+        $comment = $this->model->findNotValidated();
         if (!$comment) {
             die("Aucun commentaire n'a l'identifiant $id !");
         }
 
         $this->model->delete($id);
-        $this->redirect("index.php?controller=user&task=dashboard");
+        $this->redirect("/dashboard");
     }
 
-    public function validateComment()
+    public function validateComment($id)
     {
-        if (empty($_GET['id']) && !ctype_digit($_GET['id'])) {
-            die("Erreur !");
-        }
-
-        $id = $_GET['id'];
-        $comment = $this->model->find($id);
+        $comment = $this->model->findNotValidated();
         if (!$comment) {
             die("Aucun commentaire n'a l'identifiant $id !");
         }
-        $this->model->validateComment($comment);
+        $this->model->validateComment($id);
         $this->redirect("/dashboard");
     }
 }

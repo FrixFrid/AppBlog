@@ -1,8 +1,3 @@
-<?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-?>
 <!-- ...::: Start Breadcrumb Section :::... -->
 <div class="breadcrumb-section section-bg overflow-hidden pos-relative">
     <div class="breadcrumb-shape-top-left"></div>
@@ -30,7 +25,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="contact-box pos-relative">
             <div class="container">
 <div class="contact-form-box">
-    <form id="contact-form" class="default-form contact-form" method="POST">
+    <form class="default-form contact-form" method="POST" action="/loginUser">
         <div class="row mb-n6">
             <div class="col-xl-6 mb-6">
                 <div class="default-form-group">
@@ -44,7 +39,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
             <div class="col-12 mb-6">
                 <div class="default-form-group tex-center">
-                    <button class="btn btn-lg btn-outline-one" type="submit" name="submit" value="Connexion">Connexion</button>
+                    <button class="btn btn-lg btn-outline-one" type="submit" ">Connexion</button>
                 </div>
             </div>
         </div>
