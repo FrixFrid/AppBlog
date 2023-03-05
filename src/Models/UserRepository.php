@@ -15,7 +15,6 @@ class UserRepository extends AbstractRepository
         $user->setEmail($userArray['email']);
         $user->setMdp($userArray['mdp']);
         $user->setIsAdmin($userArray['is_admin']);
-
         return $user;
     }
 
@@ -23,7 +22,6 @@ class UserRepository extends AbstractRepository
     {
         $usersArray = parent::findAll();
         $users = [];
-
         foreach ($usersArray as $userArray) {
             $user = new User();
             $user->setId($userArray['id']);
@@ -63,7 +61,6 @@ class UserRepository extends AbstractRepository
     {
         $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE email = :email");
         $query->execute(['email' => $email]);
-
         return $query->fetch();
     }
 }

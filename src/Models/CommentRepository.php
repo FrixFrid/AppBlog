@@ -23,7 +23,6 @@ class   CommentRepository extends AbstractRepository
             $comment->setArticleId($articleId);
             $comments[] = $comment;
         }
-
         return $comments;
     }
 
@@ -51,7 +50,6 @@ class   CommentRepository extends AbstractRepository
         $comment->setCreatedAt($commentArray['createdAt']);
         $comment->setIsValidate($commentArray['is_validate']);
         $comment->setArticleId($commentArray['articleId']);
-
         return $comment;
     }
 
@@ -74,26 +72,6 @@ class   CommentRepository extends AbstractRepository
         return $query->execute([
             'id' => $id
         ]);
-    }
-
-    public function findValidatedComment()
-    {
-        $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE is_validate = true");
-        $query->execute([]);
-        $commentsArray = $query->fetchAll();
-        $comments = [];
-        foreach ($commentsArray as $commentArray) {
-            $comment = new Comment();
-            $comment->setId($commentArray['id']);
-            $comment->setAuthor($commentArray['author']);
-            $comment->setContent($commentArray['content']);
-            $comment->setEmail($commentArray['email']);
-            $comment->setCreatedAt($commentArray['createdAt']);
-            $comment->setIsValidate($commentArray['is_validate']);
-            $comment->setArticleId($commentArray['articleId']);
-            $comments[] = $comment;
-        }
-        return $comments;
     }
 
     public function findNotValidated()

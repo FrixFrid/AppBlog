@@ -24,7 +24,6 @@ class ArticleRepository extends AbstractRepository
     public function find(int $id): Article
     {
         $articleArray = parent::find($id);
-
         return $this->hydrate($articleArray);
     }
 
@@ -64,7 +63,6 @@ class ArticleRepository extends AbstractRepository
         $article->setContent($articleArray['content']);
         $article->setImgArticle($articleArray['imgArticle']);
         $article->setCreatedAt($articleArray['createdAt']);
-
         return $article;
     }
 }

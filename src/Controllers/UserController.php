@@ -32,12 +32,10 @@ class UserController extends Controller
             // éventuels qui pourraient être inclus dans la valeur de la clé 'username'. La valeur nettoyée est ensuite stockée dans la variable $username.
             $username = htmlspecialchars($_POST['username']);
         }
-
         $email = null;
         if (!empty($_POST['email'])) {
             $email = htmlspecialchars($_POST['email']);
         }
-
         $mdp = null;
         $password_confirm = null;
         if (!empty($_POST['mdp'])) {
@@ -45,12 +43,10 @@ class UserController extends Controller
                 $password_confirm = $mdp = (password_hash($_POST['mdp'], PASSWORD_BCRYPT));
             }
         }
-
         $is_admin = 0;
         if (isset($_POST['is_admin'])) {
             $is_admin = 1;
         }
-
         if (!$username || !$email || !$mdp) {
             die("Vous devez vous connecter avec un email et un mot de passe");
         }
@@ -60,17 +56,11 @@ class UserController extends Controller
 
     public function delete($id)
     {
-        //Vérification que l'utilisateur existe bel et bien
         $user = $this->model->find($id);
         if (!$user) {
             die("L'utilisateur n'existe pas, vous ne pouvez donc pas le supprimer !");
         }
-
-        $userId = $id;
-        //Réelle suppression de l'article
         $this->model->delete($id);
-
-        //Redirection vers la page du blog
         $this->redirect('/dashboard');
     }
 
