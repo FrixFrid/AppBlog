@@ -19,7 +19,6 @@ abstract class Controller
 
     public function redirect(string $url)
     {
-        ob_end_clean();
         header('Location: ' . $url);
         exit();
     }

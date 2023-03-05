@@ -37,7 +37,6 @@ class UserController extends Controller
             $email = htmlspecialchars($_POST['email']);
         }
         $mdp = null;
-        $password_confirm = null;
         if (!empty($_POST['mdp'])) {
             if ($_POST['mdp'] === $_POST['password_confirm']) {
                 $password_confirm = $mdp = (password_hash($_POST['mdp'], PASSWORD_BCRYPT));

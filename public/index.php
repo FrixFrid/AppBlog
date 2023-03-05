@@ -6,8 +6,7 @@ use AppBlog\Controllers\ArticleController;
 use AppBlog\Controllers\CommentController;
 
 require_once('../vendor/autoload.php');
-
-session_start();
+require_once('../config/config.php');
 
 $homeController = new HomeController();
 $userController = new UserController();

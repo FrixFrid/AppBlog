@@ -79,20 +79,29 @@ class ArticleController extends Controller
         }
         $imgArticle = null;
         if (isset($_FILES['imgArticle']) && $_FILES['imgArticle']['error'] == 0) {
-            if ($_FILES['imgArticle']['size'] <= 5000000) {
+            if ($_FILES['imgArticle']['size'] <= 500000) {
                 $fileInfo = pathinfo($_FILES['imgArticle']['name']);
                 $extension = $fileInfo['extension'];
                 $allowedExtensions = ['JPG', 'JPEG', 'PNG', 'GIF', 'jpg', 'jpeg', 'gif', 'png'];
                 $uniqueName = uniqid('img', true);
                 if (in_array($extension, $allowedExtensions)) {
+                    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                    $mime_type = finfo_file($finfo, $_FILES['imgArticle']['tmp_name']);
+                    finfo_close($finfo);
+
+                    $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                    if (in_array($mime_type, $allowedMimeTypes)) {
                     move_uploaded_file($_FILES['imgArticle']['tmp_name'],
                         './img/uploads/' . basename($uniqueName) . '.' . $extension);
+            $imgArticle = $uniqueName . '.' . $extension;
+                    } else {
+                        die('Erreur : ');
+                    }
                 }
             }
-            $imgArticle = $uniqueName . '.' . $extension;
         }
         if (!$title || !$slug || !$author || !$extrait || !$content || !$imgArticle) {
-            die("Votre formulaire a été mal rempli !");
+            die("Erreur !");
         }
         $id = $this->model->insert($title, $slug, $author, $extrait, $content, $imgArticle);
         $this->redirect("/blog/article/" . $id);
