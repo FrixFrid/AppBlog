@@ -69,35 +69,28 @@ class ArticleController extends Controller
 
     public function insert()
     {
-        //1. On vérifie que les données ont bien été envoyées en POST
-        //D'abord, on récupère les informations à partir du POST
-        //Ensuite, on vérifie qu'elles ne sont pas nulles
-        // On commence par le titre
-
-
         $title = null;
         if (!empty($_POST['title'])) {
-            $title = $_POST['title'];
+            $title = htmlspecialchars($_POST['title']);
         }
 
         $slug = null;
         if (!empty($_POST['slug'])) {
-            $slug = $_POST['slug'];
+            $slug = htmlspecialchars($_POST['slug']);
         }
 
         $author = null;
         if (!empty($_POST['author'])) {
-            $author = $_POST['author'];
+            $author = htmlspecialchars($_POST['author']);
         }
 
         $extrait = null;
         if (!empty($_POST['extrait'])) {
-            $extrait = $_POST['extrait'];
+            $extrait = htmlspecialchars($_POST['extrait']);
         }
 
         $content = null;
         if (!empty($_POST['content'])) {
-            // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire
             $content = htmlspecialchars($_POST['content']);
         }
 
@@ -134,27 +127,27 @@ class ArticleController extends Controller
 
         $title = null;
         if (!empty($_POST['title'])) {
-            $article->setTitle($_POST['title']);
+            htmlspecialchars($article->setTitle($_POST['title']));
         }
 
         $slug = null;
         if (!empty($_POST['slug'])) {
-            $article->setSlug($_POST['slug']);
+            htmlspecialchars($article->setSlug($_POST['slug']));
         }
 
         $author = null;
         if (!empty($_POST['author'])) {
-            $article->setAuthor($_POST['author']);
+            htmlspecialchars($article->setAuthor($_POST['author']));
         }
 
         $extrait = null;
         if (!empty($_POST['extrait'])) {
-            $article->setExtrait($_POST['extrait']);
+            htmlspecialchars($article->setExtrait($_POST['extrait']));
         }
 
         $content = null;
         if (!empty($_POST['content'])) {
-            $article->setContent(htmlspecialchars($_POST['content']));
+            htmlspecialchars($article->setContent(htmlspecialchars($_POST['content'])));
         }
 
         $imgArticle = null;

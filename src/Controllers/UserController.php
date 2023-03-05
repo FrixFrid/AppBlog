@@ -85,8 +85,8 @@ class UserController extends Controller
     public function loginUser()
     {
         if (isset($_POST['email'])) {
-            $user = $this->model->findUserLogin($_POST['email']);
-            if (password_verify($_POST['mdp'], $user['mdp'])) {
+            $user = $this->model->findUserLogin(htmlspecialchars($_POST['email']));
+            if (password_verify($_POST['mdp'], htmlspecialchars($user['mdp']))) {
                 if ($user['is_admin'] == 1) {
                     $_SESSION['auth'] = $user['is_admin'];
                     $this->redirect("/dashboard");

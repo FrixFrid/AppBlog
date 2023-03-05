@@ -21,7 +21,7 @@ class CommentController extends Controller
     {
         $author = null;
         if (!empty($_POST['author'])) {
-            $author = $_POST['author'];
+            $author = htmlspecialchars($_POST['author']);
         }
 
         $content = null;

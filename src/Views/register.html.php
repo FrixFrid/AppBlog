@@ -25,7 +25,7 @@
         <div class="contact-box pos-relative">
             <div class="container">
     <div class="contact-form-box">
-        <form id="contact-form" class="default-form contact-form" method="POST">
+        <form action="/registerUser" class="default-form contact-form" method="POST" >
             <div class="row mb-n6">
                 <div class="col-xl-6 mb-6">
                     <div class="default-form-group">
