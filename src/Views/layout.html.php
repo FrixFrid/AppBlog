@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>TANGI Farid - <?= $pageTitle ?></title>
@@ -11,32 +9,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png" />
-
     <!-- CSS
     ============================================ -->
-
     <!-- Vendor CSS (Contain Bootstrap, Icon Fonts) -->
     <link rel="stylesheet" href="/css/vendor/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/vendor/icofont.min.css" />
-
     <!-- Plugin CSS (Global Plugins Files) -->
     <link rel="stylesheet" href="/css/plugins/animate.css">
     <link rel="stylesheet" href="/css/plugins/swiper-bundle.min.css">
     <link rel="stylesheet" href="/css/plugins/venobox.min.css" />
-
     <!-- Style CSS -->
     <link rel="stylesheet" href="/css/style.css">
-
     <!-- Minify Version -->
     <!-- <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">
     <link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
     <link rel="stylesheet" href="assets/css/style.min.css"> -->
-
 </head>
-
-
 <body>
-
 <main class="main-wrapper">
     <!-- .....:::::: Start Header Section :::::.... -->
     <header class="header-section sticky-header d-none d-lg-block">
@@ -92,7 +81,6 @@
         </div>
     </header>
     <!-- .....:::::: End Header Section :::::.... -->
-
     <!-- .....:::::: Start Mobile Header Section :::::.... -->
     <div class="mobile-header d-block d-lg-none">
         <div class="container">
@@ -111,7 +99,6 @@
         </div>
     </div>
     <!-- .....:::::: Start MobileHeader Section :::::.... -->
-
     <!--  Start Offcanvas Mobile Menu Section -->
     <div id="mobile-menu-offcanvas" class="offcanvas offcanvas-rightside offcanvas-mobile-menu-section">
         <!-- Start Offcanvas Header -->
@@ -161,7 +148,6 @@
                     </ul>
                 </div> <!-- End Mobile Menu Nav -->
             </div> <!-- End Mobile Menu -->
-
             <!-- Start Mobile contact Info -->
             <div class="mobile-contact-info text-center">
                 <ul class="social-link">
@@ -173,19 +159,15 @@
                 </ul>
             </div>
             <!-- End Mobile contact Info -->
-
         </div> <!-- End Offcanvas Mobile Menu Wrapper -->
     </div>
     <!-- ...:::: End Offcanvas Mobile Menu Section:::... -->
-
 <?= $pageContent ?>
-
 <!-- FOOTER -->
 <footer class="footer-section section-bg overflow-hidden pos-relative">
     <div class="footer-inner-shape-top-left"></div>
     <div class="footer-inner-shape-top-right"></div>
     <div class="footer-section-top section-gap-t-165">
-
     </div>
     <div class="footer-center section-gap-tb-165">
         <div class="container">
@@ -246,23 +228,18 @@
     </div>
 </footer>
 <!-- ...::: End Footer Section :::... -->
-
 <!-- material-scrolltop button -->
 <button class="material-scrolltop" type="button" ><i class="icofont-long-arrow-up icofont-2x"></i></button>
 </main>
-
 <!-- Global Vendor, plugins JS -->
-
 <!-- JS Files
 ============================================ -->
 <!-- Global Vendor, plugins JS -->
-
 <!-- Vendor JS -->
 <script src="/js/vendor/modernizr-3.11.2.min.js"></script>
 <script src="/js/vendor/jquery-3.6.0.min.js"></script>
 <script src="/js/vendor/jquery-migrate-3.3.2.min.js"></script>
 <script src="/js/vendor/bootstrap.bundle.min.js"></script>
-
 <!--Plugins JS-->
 <script src="/js/plugins/swiper-bundle.min.js"></script>
 <script src="/js/plugins/jquery.appear.min.js"></script>
@@ -273,13 +250,10 @@
 <script src="/js/plugins/counter.js"></script>
 <script src="/js/plugins/ajax-mail.js"></script>
 <script src="/js/plugins/material-scrolltop.js"></script>
-
 <!-- Minify Version -->
 <!-- <script src="assets/js/vendor.min.js"></script>
 <script src="assets/js/plugins.min.js"></script> -->
-
 <!--Main JS (Common Activation Codes)-->
 <script src="/js/main.js"></script>
-
 </body>
 </html>
