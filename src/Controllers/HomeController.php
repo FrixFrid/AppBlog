@@ -25,7 +25,6 @@ class HomeController extends Controller
         ]);
     }
 
-
     public function about()
     {
         $pageTitle = "A propos";
@@ -36,12 +35,6 @@ class HomeController extends Controller
     {
         $pageTitle = "Contact";
         $this->render('contact', ['pageTitle' => $pageTitle]);
-    }
-
-    public function logout()
-    {
-        $pageTitle = "Logout";
-        $this->render('logout', ['pageTitle' => $pageTitle]);
     }
 
     public function register()

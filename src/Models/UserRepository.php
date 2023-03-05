@@ -19,6 +19,23 @@ class UserRepository extends AbstractRepository
         return $user;
     }
 
+    public function findAllUser()
+    {
+        $usersArray = parent::findAll();
+        $users = [];
+
+        foreach ($usersArray as $userArray) {
+            $user = new User();
+            $user->setId($userArray['id']);
+            $user->setUsername($userArray['username']);
+            $user->setEmail($userArray['email']);
+            $user->setMdp($userArray['mdp']);
+            $user->setIsAdmin($userArray['is_admin']);
+            $users[] = $user;
+        }
+        return $users;
+    }
+
     public function insert(string $username, string $email, string $mdp, bool $is_admin): void
     {
         $query = $this->pdo->prepare("INSERT INTO {$this->table} SET username = :username, email = :email, mdp = :mdp, is_admin = :is_admin");

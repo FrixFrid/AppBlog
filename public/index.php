@@ -32,6 +32,9 @@ if ($_SERVER['REQUEST_URI'] === '/') {
      $homeController->register();
 } elseif ($_SERVER['REQUEST_URI'] === '/registerUser') {
      $userController->registerUser();
+} elseif (preg_match('/^\/user\/(\d+)\/delete$/', $_SERVER['REQUEST_URI'], $matches)) {
+    $id = (int)$matches[1];
+    $userController->delete($id);
 } elseif ($_SERVER['REQUEST_URI'] === '/blog') {
      $articleController->blog();
 } elseif (preg_match('/^\/blog\/article\/(\d+)\/update$/', $_SERVER['REQUEST_URI'], $matches)) {

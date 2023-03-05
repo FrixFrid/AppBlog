@@ -25,7 +25,7 @@
         <div class="container">
 <section>
     <h3 style="text-align: center">Liste des articles</h3>
-    <table>
+    <table align="center" width="100%">
         <thead>
         <tr>
             <th>Titre</th>
@@ -39,25 +39,23 @@
             <?= '<td>' . $article->getCreatedAt(); ?>
             <td>
                 <button class="btn btn btn-outline-one icon-space-left"><a href="/blog/article/<?= $article->getId() ?>/update">Modifier l'article </a></button>
-            </td>
-            <td>
                 <button class="btn btn btn-outline-one icon-space-left"><a href="/blog/article/<?= $article->getId() ?>/delete">Supprimer l'article</a></button>
             </td>
         <?php } ?>
 
     </table>
+    <hr>
+    <hr>
 </section>
         </div>
     </div>
 </div>
-<hr>
-<hr>
 <div class="contact-section section-gap-tb-165">
     <div class="contact-box pos-relative">
         <div class="container">
 <section>
     <h3 style="text-align: center">Commentaires à valider</h3>
-    <table>
+    <table align="center" width="100%">
         <thead>
         <tr>
             <th>Pseudo</th>
@@ -74,8 +72,6 @@
             <?= '<td>' . $comment->getIsValidate(); ?>
             <td>
                 <button class="btn btn btn-outline-one icon-space-left"><a href="/article/<?= $comment->getId() ?>/comment/validate">Approuver le commentaire </a></button>
-            </td>
-            <td>
                 <button class="btn btn btn-outline-one icon-space-left"><a href="/article/<?= $comment->getId() ?>/comment/delete">Supprimer
                         le commentaire</a></button>
             </td>
@@ -142,14 +138,17 @@
     </div>
     <hr>
     <hr>
+    <div class="contact-section section-gap-tb-165">
+        <div class="contact-box pos-relative">
+            <div class="container">
     <section>
-        <h3 style="text-align: center">Commentaires à valider</h3>
-        <table>
+        <h3 style="text-align: center">Utilisateurs</h3>
+        <table align="center" width="100%">
             <thead>
             <tr>
                 <th>Pseudo</th>
-                <th>Commentaire</th>
-                <th>date</th>
+                <th>Email</th>
+                <th>Admin</th>
             </tr>
             </thead>
             <?php foreach ($users as $user) { ?>
@@ -159,11 +158,8 @@
                 <?= '<td>' . $user->getEmail(); ?>
                 <?= '<td>' . $user->getIsAdmin(); ?>
                 <td>
-                    <button class="btn btn btn-outline-one icon-space-left"><a href="/article/<?= $user->getId() ?>/comment/validate">Approuver le commentaire </a></button>
-                </td>
-                <td>
-                    <button class="btn btn btn-outline-one icon-space-left"><a href="/article/<?= $user->getId() ?>/comment/delete">Supprimer
-                            le commentaire</a></button>
+                    <button class="btn btn btn-outline-one icon-space-left"><a href="/user/<?= $user->getId() ?>/delete">Supprimer
+                            l'utilisateur</a></button>
                 </td>
             <?php } ?>
 
@@ -173,8 +169,10 @@
         <div class="card-block col-md-4">
         </div>
     </section>
-<hr>
-    <hr>
+</div>
+</div>
+</div>
+
     <div class="contact-section section-gap-tb-165">
         <div class="contact-box pos-relative">
             <div class="container">

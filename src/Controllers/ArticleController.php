@@ -53,6 +53,11 @@ class ArticleController extends Controller
             die("L'article $id n'existe pas, vous ne pouvez donc pas le supprimer !");
         }
 
+        if (file_exists('./img/uploads/' . $article->getImgArticle())) {
+            unlink('./img/uploads/' . $article->getImgArticle());
+        }
+
+            var_dump($article->getImgArticle());
         $articleId = $id;
         //Réelle suppression de l'article
         $this->model->delete($id);
@@ -101,11 +106,11 @@ class ArticleController extends Controller
             if ($_FILES['imgArticle']['size'] <= 5000000) {
                 $fileInfo = pathinfo($_FILES['imgArticle']['name']);
                 $extension = $fileInfo['extension'];
-                $allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
+                $allowedExtensions = ['JPG', 'JPEG', 'PNG', 'GIF', 'jpg', 'jpeg', 'gif', 'png'];
                 $uniqueName = uniqid('img', true);
                 if (in_array($extension, $allowedExtensions)) {
                     move_uploaded_file($_FILES['imgArticle']['tmp_name'],
-                        './uploads/' . basename($uniqueName) . '.' . $extension);
+                        './img/uploads/' . basename($uniqueName) . '.' . $extension);
                 }
             }
             $imgArticle = $uniqueName . '.' . $extension;

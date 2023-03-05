@@ -67,7 +67,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php if (isset($_SESSION['auth'])) { ?>
+                                        <?php if (isset($_SESSION['auth']) && $_SESSION['auth']) { ?>
                                             <a href="/article/<?= $comment->getId() ?>/comment/delete" onclick="return window.confirm
         (`Êtes vous
         sûr de
@@ -85,6 +85,7 @@
                 </div>
                 <!-- ...::: End Comment Area :::... -->
                 <!-- Start Comment Form Area -->
+                <?php if (isset($_SESSION['auth'])) { ?>
                 <div class="comment-form-area section-mt-75">
                     <!-- Start Comment Form Box -->
                     <div class="comment-form-box">
@@ -116,6 +117,7 @@
                         </form>
                     </div>
                 </div>
+                <?php } ?>
             </div>
         </div>
     </div>

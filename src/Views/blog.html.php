@@ -44,8 +44,8 @@
                                 <p><?= $article->getExtrait() ?></p>
                                 <div class="post-meta-2">
                                     <a href="/blog/article/<?= $article->getId() ?>" class="icon-space-right"><i class="icofont-read-book-alt"></i>Lire la suite</a>
-                                    <?php if (isset($_SESSION['auth'])) { ?>
-                                    <a href="/blog/article/<?= $article->getId() ?>/update" class="icon-space-right"><i class="icofont-edit"></i>Modifier</a>
+                                    <?php if (isset($_SESSION['auth']) && $_SESSION['auth']) { ?>
+                                        <a href="/blog/article/<?= $article->getId() ?>/update" class="icon-space-right"><i class="icofont-edit"></i>Modifier</a>
                                     <a href="/blog/article/<?= $article->getId() ?>/delete" onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cet article ?!`)" class="icon-space-right"><i class="icofont-ui-delete"></i>Supprimer</a>
                                     <?php } ?>
                                 </div>
@@ -54,25 +54,7 @@
                         <?php } ?>
                         <!-- End Blog List  Single Item-->
                     <!--  End Blog List   -->
-
-                    <div class="d-flex justify-content-center justify-content-lg-start">
-                        <!--  Start Pagination  -->
-                        <div class="pagination">
-                            <div class="row">
-                                <div class="col-12">
-                                    <ul class="pagination-nav-list">
-                                        <li class="prev"><a href="#"><i class="icofont-double-left"></i></a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li class="active"><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li class="next"><a href="#"><i class="icofont-double-right"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--  Start Pagination  -->
                     </div>
-                </div>
             </div>
         </div>
     </div>
