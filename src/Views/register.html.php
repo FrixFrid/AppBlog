@@ -24,39 +24,39 @@
     <div class="contact-section section-gap-tb-165">
         <div class="contact-box pos-relative">
             <div class="container">
-    <div class="contact-form-box">
-        <form action="/registerUser" class="default-form contact-form" method="POST" >
-            <div class="row mb-n6">
-                <div class="col-xl-6 mb-6">
-                    <div class="default-form-group">
-                <input class="login__input" type="text" name="username" placeholder="Votre pseudo">
-            </div>
+                <div class="contact-form-box">
+                    <form action="/registerUser" class="default-form contact-form" method="POST">
+                        <div class="row mb-n6">
+                            <div class="col-xl-6 mb-6">
+                                <div class="default-form-group">
+                                    <input class="login__input" type="text" name="username" placeholder="Votre pseudo">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 mb-6">
+                                <div class="default-form-group">
+                                    <input type="email" name="email" placeholder="votre email de connexion">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 mb-6">
+                                <div class="default-form-group">
+                                    <input type="password" name="mdp" placeholder="votre mot de passe de connexion">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 mb-6">
+                                <div class="default-form-group">
+                                    <input type="password" name="password_confirm"
+                                           placeholder="confirmation de votre mot de passe de connexion">
+                                </div>
+                            </div>
+                            <?php if (!isset($_SESSION) === true && ($user->getIsAdmin()) === 1) {
+                                ; ?>
+                                <label>Admin ?</label>
+                                <input type="checkbox" name="is_admin">
+                            <?php } ?>
+                            <button class="btn btn-lg btn-outline-one">Inscription</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="col-xl-6 mb-6">
-                    <div class="default-form-group">
-                <input type="email" name="email" placeholder="votre email de connexion">
-            </div>
-                </div>
-                <div class="col-xl-6 mb-6">
-                    <div class="default-form-group">
-                <input type="password" name="mdp" placeholder="votre mot de passe de connexion">
-            </div>
-                </div>
-                <div class="col-xl-6 mb-6">
-                    <div class="default-form-group">
-                <input type="password" name="password_confirm"
-                       placeholder="confirmation de votre mot de passe de connexion">
-            </div>
-                </div>
-            <?php if (!isset($_SESSION) === true && ($user->getIsAdmin()) === 1) {
-                ; ?>
-                <label>Admin ?</label>
-                <input type="checkbox" name="is_admin">
-            <?php } ?>
-            <button class="btn btn-lg btn-outline-one">Inscription</button>
-            </div>
-        </form>
-    </div>
 
             </div>
         </div>

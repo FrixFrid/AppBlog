@@ -27,6 +27,20 @@ class ArticleRepository extends AbstractRepository
         return $this->hydrate($articleArray);
     }
 
+    private function hydrate(array $articleArray): Article
+    {
+        $article = new Article();
+        $article->setId($articleArray['id']);
+        $article->setTitle($articleArray['title']);
+        $article->setSlug($articleArray['slug']);
+        $article->setAuthor($articleArray['author']);
+        $article->setExtrait($articleArray['extrait']);
+        $article->setContent($articleArray['content']);
+        $article->setImgArticle($articleArray['imgArticle']);
+        $article->setCreatedAt($articleArray['createdAt']);
+        return $article;
+    }
+
     public function findAll(?string $order = "", int $limit = null): array
     {
         $articlesArray = parent::findAll($order, $limit);
@@ -50,19 +64,5 @@ class ArticleRepository extends AbstractRepository
             'imgArticle' => $article->getImgArticle(),
             'id' => $article->getId()
         ]);
-    }
-
-    private function hydrate(array $articleArray): Article
-    {
-        $article = new Article();
-        $article->setId($articleArray['id']);
-        $article->setTitle($articleArray['title']);
-        $article->setSlug($articleArray['slug']);
-        $article->setAuthor($articleArray['author']);
-        $article->setExtrait($articleArray['extrait']);
-        $article->setContent($articleArray['content']);
-        $article->setImgArticle($articleArray['imgArticle']);
-        $article->setCreatedAt($articleArray['createdAt']);
-        return $article;
     }
 }

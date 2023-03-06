@@ -29,7 +29,9 @@
                         <h2 class="title">Désolé !</h2>
                         <h4 class="sub-title">Cette page n'a pas été trouvée.</h4>
 
-                        <a href="index.php?controller=home&task=home" class="btn btn-md btn-outline-one icon-space-right"><i class="icofont-double-left"></i> Retour à l'accueil</a>
+                        <a href="index.php?controller=home&task=home"
+                           class="btn btn-md btn-outline-one icon-space-right"><i class="icofont-double-left"></i>
+                            Retour à l'accueil</a>
                     </div>
                 </div>
                 <div class="col-xl-6 offset-xl-1 col-md-6">

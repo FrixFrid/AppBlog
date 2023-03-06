@@ -24,31 +24,33 @@
     <div class="contact-section section-gap-tb-165">
         <div class="contact-box pos-relative">
             <div class="container">
-<div class="contact-form-box">
-    <form class="default-form contact-form" method="POST" action="/loginUser">
-        <div class="row mb-n6">
-            <div class="col-xl-6 mb-6">
-                <div class="default-form-group">
-                    <input name="email" type="email" placeholder="Votre email de connexion" required>
+                <div class="contact-form-box">
+                    <form class="default-form contact-form" method="POST" action="/loginUser">
+                        <div class="row mb-n6">
+                            <div class="col-xl-6 mb-6">
+                                <div class="default-form-group">
+                                    <input name="email" type="email" placeholder="Votre email de connexion" required>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 mb-6">
+                                <div class="default-form-group">
+                                    <input name="mdp" type="password" placeholder="Votre mot de passe de connexion"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-6">
+                                <div class="default-form-group tex-center">
+                                    <button class="btn btn-lg btn-outline-one" type="submit"
+                                    ">Connexion</button>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <?php if (empty($_SESSION)) { ?>
+                            <a href="/register">Vous n'avez pas de compte ? inscrivez-vous ici !</a>
+                        <?php } ?>
+                    </form>
                 </div>
-            </div>
-            <div class="col-xl-6 mb-6">
-                <div class="default-form-group">
-                    <input name="mdp" type="password" placeholder="Votre mot de passe de connexion" required>
-                </div>
-            </div>
-            <div class="col-12 mb-6">
-                <div class="default-form-group tex-center">
-                    <button class="btn btn-lg btn-outline-one" type="submit" ">Connexion</button>
-                </div>
-            </div>
-        </div>
-        <br>
-        <?php if (empty($_SESSION)) { ?>
-            <a href="/register">Vous n'avez pas de compte ? inscrivez-vous ici !</a>
-        <?php } ?>
-    </form>
-</div>
             </div>
         </div>
     </div>

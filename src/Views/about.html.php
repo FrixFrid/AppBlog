@@ -28,11 +28,14 @@
                 <div class="row align-items-center">
                     <div class="col-xl-5 col-lg-6 col-md-6 col-sm-8 col-10 offset-1 offset-sm-2 offset-md-3 offset-lg-0">
                         <div class="video-card">
-                            <a class="wave-btn" href="https://youtu.be/emNkVA8dwsM" data-autoplay="true" data-vbtype="video">
+                            <a class="wave-btn" href="https://youtu.be/emNkVA8dwsM" data-autoplay="true"
+                               data-vbtype="video">
                                 <div class="ripple"><i class="icofont-ui-play"></i></div>
                             </a>
 
-                            <a href="img/CV_FARID_CDA.jpg" target="_blank" class="btn btn-xl btn-outline-one icon-space-left">Téléchargez mon CV <i class="icofont-download"></i></a>
+                            <a href="img/CV_FARID_CDA.jpg" target="_blank"
+                               class="btn btn-xl btn-outline-one icon-space-left">Téléchargez mon CV <i
+                                        class="icofont-download"></i></a>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-8 offset-md-2 offset-lg-0 offset-xl-1">
@@ -43,11 +46,14 @@
                                 Développeur - PHP/SYMFONY
                             </h3>
 
-                            <p>Je suis un chef d'entreprise qui a décidé de reprendre les études dans le monde du développement web.
-                                Autodidact, j'ai entrepris un parcours d'apprentissage pour valider des diplômes, apprendre avec un cadre et
+                            <p>Je suis un chef d'entreprise qui a décidé de reprendre les études dans le monde du
+                                développement web.
+                                Autodidact, j'ai entrepris un parcours d'apprentissage pour valider des diplômes,
+                                apprendre avec un cadre et
                                 parler le même language que mes salariés.</p>
                             <p>J'ai commencé par valider un titre de développeur web/web mobile et
-                                actuellement je suis en alternance au sein de mon agence, l'Agence goldNstudio dans un parcours de
+                                actuellement je suis en alternance au sein de mon agence, l'Agence goldNstudio dans un
+                                parcours de
                                 développeur PHP/symfony chez Openclassrooms.</p>
                         </div>
                     </div>
@@ -65,10 +71,13 @@
                 <div class="col-12">
                     <ul class="resume-tab nav">
                         <li class="nav-item">
-                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#education-tab">Formation</button>
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#education-tab">
+                                Formation
+                            </button>
                         </li>
                         <li class="nav-item">
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#experience-tab">Experience</button>
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#experience-tab">Experience
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -131,7 +140,10 @@
                                             <div class="right">
                                                 <h3 class="title">Graphiste/Webdesigner</h3>
                                                 <span class="institute-name">Freelance</span>
-                                                <p>Concevoir des supports de promotion des produits, concevoir la mise en page et le visuel d'un document et l'enrichir selon les règles typographiques et de la charte graphique. Création de sites internet sous WordPress. </p>
+                                                <p>Concevoir des supports de promotion des produits, concevoir la mise
+                                                    en page et le visuel d'un document et l'enrichir selon les règles
+                                                    typographiques et de la charte graphique. Création de sites internet
+                                                    sous WordPress. </p>
                                             </div>
                                         </div>
                                     </li>
@@ -145,7 +157,9 @@
                                             <div class="right">
                                                 <h3 class="title">Directeur d'agence</h3>
                                                 <span class="institute-name">Agence goldNstudio</span>
-                                                <p>Elaborer des stratégie marketing, améliorer le positionnement d'un site web, coordonner les opération marketing d'un site internet, piloter une équipe.</p>
+                                                <p>Elaborer des stratégie marketing, améliorer le positionnement d'un
+                                                    site web, coordonner les opération marketing d'un site internet,
+                                                    piloter une équipe.</p>
                                             </div>
                                         </div>
                                     </li>

@@ -28,40 +28,47 @@
                     <!--  Start Blog List  -->
                     <div class="blog-list">
                         <?php foreach ($articles as $article) { ?>
-                        <!-- Start Blog List  Single Item-->
-                        <div class="blog-list-single-item">
-                            <div class="inner-shape inner-shape-top-right"></div>
-                            <a href="/blog/article/<?= $article->getId() ?>" class="image">
-                                <img src="<?php echo "/img/uploads/" . $article->getImgArticle() ?>" alt="">
+                            <!-- Start Blog List  Single Item-->
+                            <div class="blog-list-single-item">
+                                <div class="inner-shape inner-shape-top-right"></div>
+                                <a href="/blog/article/<?= $article->getId() ?>" class="image">
+                                    <img src="<?php echo "/img/uploads/" . $article->getImgArticle() ?>" alt="">
                                 </a>
-                            <div class="content">
-                                <div class="post-meta-1">
-                                    <a href="#" class="catagory"><?= $article->getSlug() ?></a>
-                                    <a href="#" class="date"><?= $article->getCreatedAt() ?></a>
-                                    <a href="#" class="icon-space-right"><i class="icofont-ui-user"></i><?= $article->getAuthor() ?></a>
-                                </div>
-                                <h4 class="title"><a href="/blog/article/<?= $article->getId() ?>"><?= $article->getTitle() ?></a></h4>
-                                <p><?= $article->getExtrait() ?></p>
-                                <div class="post-meta-2">
-                                    <a href="/blog/article/<?= $article->getId() ?>" class="icon-space-right"><i class="icofont-read-book-alt"></i>Lire la suite</a>
-                                    <?php if (isset($_SESSION['auth']) && $_SESSION['auth']) { ?>
-                                        <a href="/blog/article/<?= $article->getId() ?>/update" class="icon-space-right"><i class="icofont-edit"></i>Modifier</a>
-                                    <a href="/blog/article/<?= $article->getId() ?>/delete" onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cet article ?!`)" class="icon-space-right"><i class="icofont-ui-delete"></i>Supprimer</a>
-                                    <?php } ?>
+                                <div class="content">
+                                    <div class="post-meta-1">
+                                        <a href="#" class="catagory"><?= $article->getSlug() ?></a>
+                                        <a href="#" class="date"><?= $article->getCreatedAt() ?></a>
+                                        <a href="#" class="icon-space-right"><i
+                                                    class="icofont-ui-user"></i><?= $article->getAuthor() ?></a>
+                                    </div>
+                                    <h4 class="title"><a
+                                                href="/blog/article/<?= $article->getId() ?>"><?= $article->getTitle() ?></a>
+                                    </h4>
+                                    <p><?= $article->getExtrait() ?></p>
+                                    <div class="post-meta-2">
+                                        <a href="/blog/article/<?= $article->getId() ?>" class="icon-space-right"><i
+                                                    class="icofont-read-book-alt"></i>Lire la suite</a>
+                                        <?php if (isset($_SESSION['user']) && $_SESSION['user']->getIsAdmin()) { ?>
+                                            <a href="/blog/article/<?= $article->getId() ?>/update"
+                                               class="icon-space-right"><i class="icofont-edit"></i>Modifier</a>
+                                            <a href="/blog/article/<?= $article->getId() ?>/delete"
+                                               onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cet article ?!`)"
+                                               class="icon-space-right"><i class="icofont-ui-delete"></i>Supprimer</a>
+                                        <?php } ?>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         <?php } ?>
                         <!-- End Blog List  Single Item-->
-                    <!--  End Blog List   -->
+                        <!--  End Blog List   -->
                     </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- ...::: End Blog List Section :::... -->
+    <!-- ...::: End Blog List Section :::... -->
 
-<br>
-<br>
-<br>
+    <br>
+    <br>
+    <br>
 

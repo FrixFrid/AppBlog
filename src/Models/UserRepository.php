@@ -9,6 +9,11 @@ class UserRepository extends AbstractRepository
     public function findUser(int $id): User
     {
         $userArray = parent::find($id);
+        return $this->hydrate($userArray);
+    }
+
+    private function hydrate(array $userArray): User
+    {
         $user = new User();
         $user->setId($userArray['id']);
         $user->setUsername($userArray['username']);
@@ -18,17 +23,12 @@ class UserRepository extends AbstractRepository
         return $user;
     }
 
-    public function findAllUser()
+    public function findAllUser(): array
     {
         $usersArray = parent::findAll();
         $users = [];
         foreach ($usersArray as $userArray) {
-            $user = new User();
-            $user->setId($userArray['id']);
-            $user->setUsername($userArray['username']);
-            $user->setEmail($userArray['email']);
-            $user->setMdp($userArray['mdp']);
-            $user->setIsAdmin($userArray['is_admin']);
+            $user = $this->hydrate($userArray);
             $users[] = $user;
         }
         return $users;
@@ -45,22 +45,11 @@ class UserRepository extends AbstractRepository
         ]);
     }
 
-    public function updateUser(User $user): bool
-    {
-        $query = $this->pdo->prepare("UPDATE {$this->table} SET :id, :username, :email, :mdp, WHERE :id");
-        return $query->execute([
-            $user->getId(),
-            $user->getUsername(),
-            $user->getEmail(),
-            $user->getMdp(),
-            $user->getIsAdmin()
-        ]);
-    }
-
-    public function findUserLogin(string $email)
+    public function findUserLogin(string $email): User
     {
         $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE email = :email");
         $query->execute(['email' => $email]);
-        return $query->fetch();
+        $userArray = $query->fetch();
+        return $this->hydrate($userArray);
     }
 }

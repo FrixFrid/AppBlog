@@ -4,7 +4,6 @@ namespace AppBlog\Controllers;
 
 use AppBlog\Models\ArticleRepository;
 use AppBlog\Models\CommentRepository;
-use AppBlog\Models\Comment;
 use AppBlog\Models\User;
 use AppBlog\Models\UserRepository;
 
@@ -74,36 +73,26 @@ class UserController extends Controller
     public function loginUser()
     {
         if (isset($_POST['email'])) {
-            $user = $this->model->findUserLogin(htmlspecialchars($_POST['email']));
-            if (password_verify($_POST['mdp'], htmlspecialchars($user['mdp']))) {
-                if ($user['is_admin'] == 1) {
-                    $_SESSION['auth'] = $user['is_admin'];
-                    $this->redirect("/dashboard");
-                } elseif ($user['is_admin'] == 0) {
-                    $_SESSION['auth'] = $user['is_admin'];
-                    $this->redirect("/");
-                }
-            } else {
+            $user = $this->model->findUserLogin($_POST['email']);
+            if (!password_verify($_POST['mdp'], ($user->getMdp()))) {
                 $this->redirect("/login");
+            }
+                $_SESSION['user'] = $user;
+            if ($user->getIsAdmin()) {
+                $this->redirect("/dashboard");
+            } else {
+                $this->redirect("/");
             }
         }
     }
 
+
     public function logout()
     {
         if (session_status() == PHP_SESSION_ACTIVE) {
-        session_destroy();
+            session_destroy();
         }
         $this->redirect("/");
-    }
-
-    public function isAdmin($user)
-    {
-        if (isset($_SESSION['auth']) && $user['is_admin'] === 1) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public function dashboard()

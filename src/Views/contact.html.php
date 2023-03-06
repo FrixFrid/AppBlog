@@ -29,7 +29,9 @@
                     <!-- Start Map Area-->
                     <div class="map">
                         <div class="gmap-box">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d43265.59653408268!2d4.997199859901621!3d47.331922539057935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f29d8ceffd9675%3A0x409ce34b31458d0!2s21000%20Dijon!5e0!3m2!1sfr!2sfr!4v1675383574536!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d43265.59653408268!2d4.997199859901621!3d47.331922539057935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f29d8ceffd9675%3A0x409ce34b31458d0!2s21000%20Dijon!5e0!3m2!1sfr!2sfr!4v1675383574536!5m2!1sfr!2sfr"
+                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                     <!-- End Map Area -->
@@ -72,11 +74,14 @@
                         <div class="sidebar-widget-single-area ">
                             <h3 class="title">Suivez-moi !</h3>
                             <ul class="social-link">
-                                <a href="https://www.facebook.com/ifxmysetup/" target="_blank"><i class="icofont-facebook"></i></a>
+                                <a href="https://www.facebook.com/ifxmysetup/" target="_blank"><i
+                                            class="icofont-facebook"></i></a>
                                 <a href="https://twitter.com/ifxmysetup" target="_blank"><i class="icofont-twitter"></i></a>
-                                <a href="https://www.instagram.com/ifxmysetup/" target="_blank"><i class="icofont-instagram"></i></a>
+                                <a href="https://www.instagram.com/ifxmysetup/" target="_blank"><i
+                                            class="icofont-instagram"></i></a>
                                 <a href="https://github.com/FrixFrid" target="_blank"><i class="icofont-github"></i></a>
-                                <a href="https://fr.linkedin.com/in/farid-tangi" target="_blank"><i class="icofont-linkedin"></i></a>
+                                <a href="https://fr.linkedin.com/in/farid-tangi" target="_blank"><i
+                                            class="icofont-linkedin"></i></a>
                             </ul>
                         </div>
                         <!-- End Sidebar Widget Single Item - Social Widgets -->
@@ -94,7 +99,8 @@
 
                         <!-- Start Contact Form Box -->
                         <div class="contact-form-box">
-                            <form id="contact-form" class="default-form contact-form" method="post" action="./mail/contact.php">
+                            <form id="contact-form" class="default-form contact-form" method="post"
+                                  action="./mail/contact.php">
                                 <div class="row mb-n6">
                                     <div class="col-xl-6 mb-6">
                                         <div class="default-form-group">

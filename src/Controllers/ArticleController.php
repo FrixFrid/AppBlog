@@ -2,8 +2,6 @@
 
 namespace AppBlog\Controllers;
 
-use AppBlog\Models\Article;
-use AppBlog\Models\Comment;
 use AppBlog\Models\ArticleRepository;
 use AppBlog\Models\CommentRepository;
 
@@ -48,7 +46,6 @@ class ArticleController extends Controller
         if (file_exists('./img/uploads/' . $article->getImgArticle())) {
             unlink('./img/uploads/' . $article->getImgArticle());
         }
-            var_dump($article->getImgArticle());
         $articleId = $id;
         $this->model->delete($id);
         $this->commentRepository->deleteByArticleId($articleId);
@@ -91,9 +88,9 @@ class ArticleController extends Controller
 
                     $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
                     if (in_array($mime_type, $allowedMimeTypes)) {
-                    move_uploaded_file($_FILES['imgArticle']['tmp_name'],
-                        './img/uploads/' . basename($uniqueName) . '.' . $extension);
-            $imgArticle = $uniqueName . '.' . $extension;
+                        move_uploaded_file($_FILES['imgArticle']['tmp_name'],
+                            './img/uploads/' . basename($uniqueName) . '.' . $extension);
+                        $imgArticle = $uniqueName . '.' . $extension;
                     } else {
                         die('Erreur : ');
                     }
@@ -111,19 +108,19 @@ class ArticleController extends Controller
     {
         $article = $this->model->find($id);
         if (!empty($_POST['title'])) {
-            htmlspecialchars($article->setTitle($_POST['title']));
+            $article->setTitle($_POST['title']);
         }
         if (!empty($_POST['slug'])) {
-            htmlspecialchars($article->setSlug($_POST['slug']));
+            $article->setSlug($_POST['slug']);
         }
         if (!empty($_POST['author'])) {
-            htmlspecialchars($article->setAuthor($_POST['author']));
+            $article->setAuthor($_POST['author']);
         }
         if (!empty($_POST['extrait'])) {
-            htmlspecialchars($article->setExtrait($_POST['extrait']));
+            $article->setExtrait($_POST['extrait']);
         }
         if (!empty($_POST['content'])) {
-            htmlspecialchars($article->setContent(htmlspecialchars($_POST['content'])));
+            $article->setContent(htmlspecialchars($_POST['content']));
         }
         if (!empty($_POST['imgArticle'])) {
             $article->setImgArticle($_POST['imgArticle']);

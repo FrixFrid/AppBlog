@@ -2,9 +2,6 @@
 
 namespace AppBlog\Controllers;
 
-use AppBlog\Models\Article;
-use AppBlog\Models\Comment;
-use AppBlog\Models\ArticleRepository;
 use AppBlog\Models\CommentRepository;
 
 class CommentController extends Controller
@@ -21,15 +18,15 @@ class CommentController extends Controller
     {
         $author = null;
         if (!empty($_POST['author'])) {
-            $author = htmlspecialchars($_POST['author']);
+            $author = $_POST['author'];
         }
         $content = null;
         if (!empty($_POST['content'])) {
-            $content = htmlspecialchars($_POST['content']);
+            $content = $_POST['content'];
         }
         $email = null;
         if (!empty($_POST['email'])) {
-            $email = htmlspecialchars(($_POST['email']));
+            $email = $_POST['email'];
         }
         $articleId = null;
         if (!empty($_POST['articleId']) && ctype_digit($_POST['articleId'])) {

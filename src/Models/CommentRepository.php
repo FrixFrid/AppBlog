@@ -13,14 +13,7 @@ class   CommentRepository extends AbstractRepository
         $commentsArray = $query->fetchAll();
         $comments = [];
         foreach ($commentsArray as $commentArray) {
-            $comment = new Comment();
-            $comment->setId($commentArray['id']);
-            $comment->setAuthor($commentArray['author']);
-            $comment->setContent($commentArray['content']);
-            $comment->setEmail($commentArray['email']);
-            $comment->setCreatedAt($commentArray['createdAt']);
-            $comment->setIsValidate($commentArray['is_validate']);
-            $comment->setArticleId($articleId);
+            $comment = $this->hydrate($commentArray);
             $comments[] = $comment;
         }
         return $comments;
@@ -38,10 +31,8 @@ class   CommentRepository extends AbstractRepository
         ]);
     }
 
-    public function find(int $id): Comment
+    private function hydrate(array $commentArray): Comment
     {
-        $commentArray = parent::find($id);
-        if(empty($commentArray)) throw new \Exception("Comment not found with id : $id");
         $comment = new Comment();
         $comment->setId($commentArray['id']);
         $comment->setAuthor($commentArray['author']);
@@ -53,17 +44,11 @@ class   CommentRepository extends AbstractRepository
         return $comment;
     }
 
-    public function updateComment($comment)
+    public function find(int $id): Comment
     {
-        $query = $this->pdo->prepare("UPDATE {$this->table} SET :author, :content, :createdAt, :email, :getIsValidate, :articleId WHERE :id");
-        return $query->execute([
-            $comment->getAuthor(),
-            $comment->getContent(),
-            $comment->getEmail(),
-            $comment->getCreatedAt(),
-            $comment->getIsValidate(),
-            $comment->getArticleId()
-        ]);
+        $commentArray = parent::find($id);
+        if (empty($commentArray)) throw new \Exception("Comment not found with id : $id");
+        return $this->hydrate($commentArray);
     }
 
     public function validateComment(int $id)
@@ -81,20 +66,14 @@ class   CommentRepository extends AbstractRepository
         $commentsArray = $query->fetchAll();
         $comments = [];
         foreach ($commentsArray as $commentArray) {
-            $comment = new Comment();
-            $comment->setId($commentArray['id']);
-            $comment->setAuthor($commentArray['author']);
-            $comment->setContent($commentArray['content']);
-            $comment->setEmail($commentArray['email']);
-            $comment->setCreatedAt($commentArray['createdAt']);
-            $comment->setIsValidate($commentArray['is_validate']);
-            $comment->setArticleId($commentArray['articleId']);
+            $comment = $this->hydrate($commentArray);
             $comments[] = $comment;
         }
         return $comments;
     }
 
-    public function deleteByArticleId($articleId) {
+    public function deleteByArticleId($articleId)
+    {
         $query = $this->pdo->prepare("DELETE FROM {$this->table} WHERE articleId = :articleId");
         $query->bindValue(":articleId", $articleId);
         return $query->execute();

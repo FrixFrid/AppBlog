@@ -23,66 +23,73 @@
 <div class="contact-section section-gap-tb-165">
     <div class="contact-box pos-relative">
         <div class="container">
-<section>
-    <h3 style="text-align: center">Liste des articles</h3>
-    <table align="center" width="100%">
-        <thead>
-        <tr>
-            <th>Titre</th>
-            <th>date</th>
-        </tr>
-        </thead>
-        <?php foreach ($articles as $article) { ?>
-            <?= '<tbody>'; ?>
-            <?= '<tr>' ?>
-            <?= '<td>' . $article->getTitle(); ?>
-            <?= '<td>' . $article->getCreatedAt(); ?>
-            <td>
-                <button class="btn btn btn-outline-one icon-space-left"><a href="/blog/article/<?= $article->getId() ?>/update">Modifier l'article </a></button>
-                <button class="btn btn btn-outline-one icon-space-left"><a href="/blog/article/<?= $article->getId() ?>/delete">Supprimer l'article</a></button>
-            </td>
-        <?php } ?>
+            <section>
+                <h3 style="text-align: center">Liste des articles</h3>
+                <table align="center" width="100%">
+                    <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>date</th>
+                    </tr>
+                    </thead>
+                    <?php foreach ($articles as $article) { ?>
+                        <?= '<tbody>'; ?>
+                        <?= '<tr>' ?>
+                        <?= '<td>' . $article->getTitle(); ?>
+                        <?= '<td>' . $article->getCreatedAt(); ?>
+                        <td>
+                            <button class="btn btn btn-outline-one icon-space-left"><a
+                                        href="/blog/article/<?= $article->getId() ?>/update">Modifier l'article </a>
+                            </button>
+                            <button class="btn btn btn-outline-one icon-space-left"><a
+                                        href="/blog/article/<?= $article->getId() ?>/delete">Supprimer l'article</a>
+                            </button>
+                        </td>
+                    <?php } ?>
 
-    </table>
-    <hr>
-    <hr>
-</section>
+                </table>
+                <hr>
+                <hr>
+            </section>
         </div>
     </div>
 </div>
 <div class="contact-section section-gap-tb-165">
     <div class="contact-box pos-relative">
         <div class="container">
-<section>
-    <h3 style="text-align: center">Commentaires à valider</h3>
-    <table align="center" width="100%">
-        <thead>
-        <tr>
-            <th>Pseudo</th>
-            <th>Commentaire</th>
-            <th>date</th>
-        </tr>
-        </thead>
-        <?php foreach ($comments as $comment) { ?>
-            <?= '<tbody>'; ?>
-            <?= '<tr>' ?>
-            <?= '<td>' . $comment->getAuthor(); ?>
-            <?= '<td>' . $comment->getContent(); ?>
-            <?= '<td>' . $comment->getCreatedAt(); ?>
-            <?= '<td>' . $comment->getIsValidate(); ?>
-            <td>
-                <button class="btn btn btn-outline-one icon-space-left"><a href="/article/<?= $comment->getId() ?>/comment/validate">Approuver le commentaire </a></button>
-                <button class="btn btn btn-outline-one icon-space-left"><a href="/article/<?= $comment->getId() ?>/comment/delete">Supprimer
-                        le commentaire</a></button>
-            </td>
-        <?php } ?>
+            <section>
+                <h3 style="text-align: center">Commentaires à valider</h3>
+                <table align="center" width="100%">
+                    <thead>
+                    <tr>
+                        <th>Pseudo</th>
+                        <th>Commentaire</th>
+                        <th>date</th>
+                    </tr>
+                    </thead>
+                    <?php foreach ($comments as $comment) { ?>
+                        <?= '<tbody>'; ?>
+                        <?= '<tr>' ?>
+                        <?= '<td>' . $comment->getAuthor(); ?>
+                        <?= '<td>' . $comment->getContent(); ?>
+                        <?= '<td>' . $comment->getCreatedAt(); ?>
+                        <?= '<td>' . $comment->getIsValidate(); ?>
+                        <td>
+                            <button class="btn btn btn-outline-one icon-space-left"><a
+                                        href="/article/<?= $comment->getId() ?>/comment/validate">Approuver le
+                                    commentaire </a></button>
+                            <button class="btn btn btn-outline-one icon-space-left"><a
+                                        href="/article/<?= $comment->getId() ?>/comment/delete">Supprimer
+                                    le commentaire</a></button>
+                        </td>
+                    <?php } ?>
 
-    </table>
-    <hr>
-    <hr>
-    <div class="card-block col-md-4">
-    </div>
-</section>
+                </table>
+                <hr>
+                <hr>
+                <div class="card-block col-md-4">
+                </div>
+            </section>
         </div>
     </div>
 </div>
@@ -90,49 +97,50 @@
     <div class="contact-section section-gap-tb-165">
         <div class="contact-box pos-relative">
             <div class="container">
-            <section class="login-section">
-    <h3 class="login__title" style="text-align: center">Ajouter un article</h3>
-    <div class="contact-form-box">
-    <form method="POST" enctype="multipart/form-data" action="/blog/article/insert">
-        <div class="row mb-n6">
-        <div class="col-xl-6 mb-6">
-            <div class="default-form-group">
-                <input name="title" type="text" placeholder="Titre de l'article">
-            </div>
-        </div>
-            <div class="col-xl-6 mb-6">
-                <div class="default-form-group">
-                    <input name="slug" type="text" placeholder="Catégorie de l'article">
-                </div>
-            </div>
-            <div class="col-xl-6 mb-6">
-                <div class="default-form-group">
-                    <input name="author" type="text" placeholder="Auteur de l'article">
-                </div>
-            </div>
-            <div class="col-xl-6 mb-6">
-                <div class="default-form-group">
-                    <input name="extrait" type="text" placeholder="Extrait de l'article">
-                </div>
-            </div>
-            <div class="col-xl-6 mb-6">
-                <div class="default-form-group">
-                    <textarea name="content" type="text" cols="30" rows="10" placeholder="Article"></textarea>
-                </div>
-            </div>
-            <div class="col-xl-6 mb-6">
-            <label>Image :</label>
-            <input type="file" name="imgArticle">
-            </div>
-            <div class="col-6 mb-6">
-                <div class="default-form-group tex-center">
-                    <button type="submit" class="btn btn-lg btn-outline-one">Ajouter</button>
-                </div>
-            </div>
-        </div>
-    </form>
-    </div>
-</section>
+                <section class="login-section">
+                    <h3 class="login__title" style="text-align: center">Ajouter un article</h3>
+                    <div class="contact-form-box">
+                        <form method="POST" enctype="multipart/form-data" action="/blog/article/insert">
+                            <div class="row mb-n6">
+                                <div class="col-xl-6 mb-6">
+                                    <div class="default-form-group">
+                                        <input name="title" type="text" placeholder="Titre de l'article">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 mb-6">
+                                    <div class="default-form-group">
+                                        <input name="slug" type="text" placeholder="Catégorie de l'article">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 mb-6">
+                                    <div class="default-form-group">
+                                        <input name="author" type="text" placeholder="Auteur de l'article">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 mb-6">
+                                    <div class="default-form-group">
+                                        <input name="extrait" type="text" placeholder="Extrait de l'article">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 mb-6">
+                                    <div class="default-form-group">
+                                        <textarea name="content" type="text" cols="30" rows="10"
+                                                  placeholder="Article"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 mb-6">
+                                    <label>Image :</label>
+                                    <input type="file" name="imgArticle">
+                                </div>
+                                <div class="col-6 mb-6">
+                                    <div class="default-form-group tex-center">
+                                        <button type="submit" class="btn btn-lg btn-outline-one">Ajouter</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
@@ -141,73 +149,75 @@
     <div class="contact-section section-gap-tb-165">
         <div class="contact-box pos-relative">
             <div class="container">
-    <section>
-        <h3 style="text-align: center">Utilisateurs</h3>
-        <table align="center" width="100%">
-            <thead>
-            <tr>
-                <th>Pseudo</th>
-                <th>Email</th>
-                <th>Admin</th>
-            </tr>
-            </thead>
-            <?php foreach ($users as $user) { ?>
-                <?= '<tbody>'; ?>
-                <?= '<tr>' ?>
-                <?= '<td>' . $user->getUsername(); ?>
-                <?= '<td>' . $user->getEmail(); ?>
-                <?= '<td>' . $user->getIsAdmin(); ?>
-                <td>
-                    <button class="btn btn btn-outline-one icon-space-left"><a href="/user/<?= $user->getId() ?>/delete">Supprimer
-                            l'utilisateur</a></button>
-                </td>
-            <?php } ?>
+                <section>
+                    <h3 style="text-align: center">Utilisateurs</h3>
+                    <table align="center" width="100%">
+                        <thead>
+                        <tr>
+                            <th>Pseudo</th>
+                            <th>Email</th>
+                            <th>Admin</th>
+                        </tr>
+                        </thead>
+                        <?php foreach ($users as $user) { ?>
+                            <?= '<tbody>'; ?>
+                            <?= '<tr>' ?>
+                            <?= '<td>' . $user->getUsername(); ?>
+                            <?= '<td>' . $user->getEmail(); ?>
+                            <?= '<td>' . $user->getIsAdmin(); ?>
+                            <td>
+                                <button class="btn btn btn-outline-one icon-space-left"><a
+                                            href="/user/<?= $user->getId() ?>/delete">Supprimer
+                                        l'utilisateur</a></button>
+                            </td>
+                        <?php } ?>
 
-        </table>
-        <hr>
-        <hr>
-        <div class="card-block col-md-4">
+                    </table>
+                    <hr>
+                    <hr>
+                    <div class="card-block col-md-4">
+                    </div>
+                </section>
+            </div>
         </div>
-    </section>
-</div>
-</div>
-</div>
+    </div>
 
     <div class="contact-section section-gap-tb-165">
         <div class="contact-box pos-relative">
             <div class="container">
-            <section class="contact-form-box">
-    <h3 class="login__title" style="text-align: center">Ajouter un utilisateur</h3>
-    <form action="/registerUser" method="POST">
-        <div class="row mb-n6">
-        <div class="col-xl-6 mb-6">
-            <div class="default-form-group">
-                <input name="username" type="text" placeholder="Pseudo">
+                <section class="contact-form-box">
+                    <h3 class="login__title" style="text-align: center">Ajouter un utilisateur</h3>
+                    <form action="/registerUser" method="POST">
+                        <div class="row mb-n6">
+                            <div class="col-xl-6 mb-6">
+                                <div class="default-form-group">
+                                    <input name="username" type="text" placeholder="Pseudo">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 mb-6">
+                                <div class="default-form-group">
+                                    <input name="email" type="email" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 mb-6">
+                                <div class="default-form-group">
+                                    <input name="mdp" type="password" placeholder="Mot de passe">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 mb-6">
+                                <div class="default-form-group">
+                                    <input name="password_confirm" type="password"
+                                           placeholder="Confirmation du Mot de passe">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 mb-6">
+                                <label>Admin ?</label>
+                                <input type="checkbox" name="is_admin">
+                            </div>
+                            <button class="btn btn-lg btn-outline-one">Inscription</button>
+                        </div>
+                    </form>
+                </section>
             </div>
         </div>
-        <div class="col-xl-6 mb-6">
-            <div class="default-form-group">
-                <input name="email" type="email" placeholder="Email">
-            </div>
-        </div>
-        <div class="col-xl-6 mb-6">
-            <div class="default-form-group">
-                <input name="mdp" type="password" placeholder="Mot de passe">
-            </div>
-        </div>
-        <div class="col-xl-6 mb-6">
-            <div class="default-form-group">
-                <input name="password_confirm" type="password" placeholder="Confirmation du Mot de passe">
-            </div>
-        </div>
-        <div class="col-xl-6 mb-6">
-            <label>Admin ?</label>
-        <input type="checkbox" name="is_admin">
-            </div>
-                <button class="btn btn-lg btn-outline-one">Inscription</button>
-        </div>
-    </form>
-</section>
-        </div>
-    </div>
     </div>

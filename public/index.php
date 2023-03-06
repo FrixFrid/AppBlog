@@ -1,9 +1,9 @@
 <?php
 
-use AppBlog\Controllers\HomeController;
-use AppBlog\Controllers\UserController;
 use AppBlog\Controllers\ArticleController;
 use AppBlog\Controllers\CommentController;
+use AppBlog\Controllers\HomeController;
+use AppBlog\Controllers\UserController;
 
 require_once('../vendor/autoload.php');
 require_once('../config/config.php');
@@ -14,31 +14,31 @@ $articleController = new ArticleController();
 $commentController = new CommentController();
 
 if ($_SERVER['REQUEST_URI'] === '/') {
-     $homeController->home();
+    $homeController->home();
 } elseif ($_SERVER['REQUEST_URI'] === '/contact') {
-     $homeController->contact();
+    $homeController->contact();
 } elseif ($_SERVER['REQUEST_URI'] === '/about') {
-     $homeController->about();
+    $homeController->about();
 } elseif ($_SERVER['REQUEST_URI'] === '/dashboard') {
-     $userController->dashboard();
+    $userController->dashboard();
 } elseif ($_SERVER['REQUEST_URI'] === '/login') {
-     $userController->login();
+    $userController->login();
 } elseif ($_SERVER['REQUEST_URI'] === '/loginUser') {
-     $userController->loginUser();
+    $userController->loginUser();
 } elseif ($_SERVER['REQUEST_URI'] === '/logout') {
     $userController->logout();
 } elseif ($_SERVER['REQUEST_URI'] === '/register') {
-     $homeController->register();
+    $homeController->register();
 } elseif ($_SERVER['REQUEST_URI'] === '/registerUser') {
-     $userController->registerUser();
+    $userController->registerUser();
 } elseif (preg_match('/^\/user\/(\d+)\/delete$/', $_SERVER['REQUEST_URI'], $matches)) {
     $id = (int)$matches[1];
     $userController->delete($id);
 } elseif ($_SERVER['REQUEST_URI'] === '/blog') {
-     $articleController->blog();
+    $articleController->blog();
 } elseif (preg_match('/^\/blog\/article\/(\d+)\/update$/', $_SERVER['REQUEST_URI'], $matches)) {
     $id = (int)$matches[1];
-     $articleController->updateArticle($id);
+    $articleController->updateArticle($id);
 } elseif (preg_match('/^\/blog\/article\/(\d+)$/', $_SERVER['REQUEST_URI'], $matches)) {
     $id = (int)$matches[1];
     $articleController->show($id);
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_URI'] === '/') {
     $articleId = (int)$matches[1];
     $commentController->validateComment($articleId);
 } else {
-     $homeController->page404();
+    $homeController->page404();
 }
 
 

@@ -9,10 +9,12 @@
                         <h2 class="title-large">Farid </h2>
                         <p>Développeur - PHP/SYMFONY</p>
 
-                        <a href="/about" class="btn btn-xl btn-outline-one icon-space-left">A propose de moi <i class="icofont-arrow-right"></i></a>
+                        <a href="/about" class="btn btn-xl btn-outline-one icon-space-left">A propose de moi <i
+                                    class="icofont-arrow-right"></i></a>
 
                         <div class="video-link">
-                            <a class="wave-btn" href="https://youtu.be/TqzM5iKjO1s" data-autoplay="true" data-vbtype="video">
+                            <a class="wave-btn" href="https://youtu.be/TqzM5iKjO1s" data-autoplay="true"
+                               data-vbtype="video">
 
                                 <div class="ripple"><i class="icofont-ui-play"></i></div>
                             </a>
@@ -43,9 +45,11 @@
                 <div class="social-link">
                     <a href="https://www.facebook.com/ifxmysetup/" target="_blank"><i class="icofont-facebook"></i></a>
                     <a href="https://twitter.com/ifxmysetup" target="_blank"><i class="icofont-twitter"></i></a>
-                    <a href="https://www.instagram.com/ifxmysetup/" target="_blank"><i class="icofont-instagram"></i></a>
+                    <a href="https://www.instagram.com/ifxmysetup/" target="_blank"><i
+                                class="icofont-instagram"></i></a>
                     <a href="https://github.com/FrixFrid" target="_blank"><i class="icofont-github"></i></a>
-                    <a href="https://fr.linkedin.com/in/farid-tangi" target="_blank"><i class="icofont-linkedin"></i></a>
+                    <a href="https://fr.linkedin.com/in/farid-tangi" target="_blank"><i
+                                class="icofont-linkedin"></i></a>
                 </div>
             </div>
 
@@ -128,11 +132,13 @@
                 <div class="row align-items-center">
                     <div class="col-xl-5 col-lg-6 col-md-6 col-sm-8 col-10 offset-1 offset-sm-2 offset-md-3 offset-lg-0">
                         <div class="video-card">
-                            <a class="wave-btn" href="https://youtu.be/h4ewAiy7iKA" data-autoplay="true" data-vbtype="video">
+                            <a class="wave-btn" href="https://youtu.be/h4ewAiy7iKA" data-autoplay="true"
+                               data-vbtype="video">
                                 <div class="ripple"><i class="icofont-ui-play"></i></div>
                             </a>
 
-                            <a href="/about" class="btn btn-xl btn-outline-one icon-space-left">En savoir plus sur moi <i class="icofont-funky-man"></i></a>
+                            <a href="/about" class="btn btn-xl btn-outline-one icon-space-left">En savoir plus sur moi
+                                <i class="icofont-funky-man"></i></a>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-8 offset-md-2 offset-lg-0 offset-xl-1">
@@ -143,7 +149,8 @@
                                 Développeur - PHP/SYMFONY
                             </h3>
 
-                            <p>Je suis en alternance dans le parcours PHP/SYMFONY chez Openclassrooms au sein de mon agence...</p>
+                            <p>Je suis en alternance dans le parcours PHP/SYMFONY chez Openclassrooms au sein de mon
+                                agence...</p>
                         </div>
                     </div>
                 </div>
@@ -170,28 +177,32 @@
             <div class="blog-feed-display-wrapper">
                 <div class="row mb-n5">
                     <?php foreach ($articles as $article) { ?>
-                    <div class="col-12 mb-5">
-                        <!-- Start Blog Feed Single Item -->
-                        <div class="blog-feed-single-item">
-                            <div class="inner-shape inner-shape-top-right"></div>
-                            <a href="/blog/article/<?= $article->getId() ?>" class="image">
-                                <img src="<?php echo "/img/uploads/" . $article->getImgArticle() ?>" alt="">
-                            </a>
-                            <div class="content-box">
-                                <div class="content">
-                                    <div class="post-meta">
-                                        <a class="catagory"><?= $article->getSlug() ?></a>
-                                        <a class="date"><?= $article->getCreatedAt() ?></a>
+                        <div class="col-12 mb-5">
+                            <!-- Start Blog Feed Single Item -->
+                            <div class="blog-feed-single-item">
+                                <div class="inner-shape inner-shape-top-right"></div>
+                                <a href="/blog/article/<?= $article->getId() ?>" class="image">
+                                    <img src="<?php echo "/img/uploads/" . $article->getImgArticle() ?>" alt="">
+                                </a>
+                                <div class="content-box">
+                                    <div class="content">
+                                        <div class="post-meta">
+                                            <a class="catagory"><?= $article->getSlug() ?></a>
+                                            <a class="date"><?= $article->getCreatedAt() ?></a>
+                                        </div>
+                                        <h4 class="title"><a
+                                                    href="/blog/article/<?= $article->getId() ?>"><?= $article->getTitle() ?></a>
+                                        </h4>
                                     </div>
-                                    <h4 class="title"><a href="/blog/article/<?= $article->getId() ?>"><?= $article->getTitle() ?></a></h4>
+
+                                    <a href="/blog/article/<?= $article->getId() ?>"
+                                       class="btn btn-md btn-outline-one icon-space-left">Lire la suite<i
+                                                class="icofont-double-right"></i></a>
                                 </div>
 
-                                <a href="/blog/article/<?= $article->getId() ?>" class="btn btn-md btn-outline-one icon-space-left">Lire la suite<i class="icofont-double-right"></i></a>
                             </div>
-
+                            <!-- End Blog Feed Single Item -->
                         </div>
-                        <!-- End Blog Feed Single Item -->
-                    </div>
                     <?php } ?>
                 </div>
             </div>

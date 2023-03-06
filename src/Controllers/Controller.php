@@ -12,9 +12,9 @@ abstract class Controller
     {
         extract($variables);
         ob_start();
-        require ('../src/Views/' . $path . '.html.php');
+        require('../src/Views/' . $path . '.html.php');
         $pageContent = ob_get_clean();
-        require ('../src/Views/layout.html.php');
+        require('../src/Views/layout.html.php');
     }
 
     public function redirect(string $url)
