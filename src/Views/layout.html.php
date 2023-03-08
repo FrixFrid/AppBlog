@@ -190,9 +190,9 @@
                     <div class="col-auto mb-5">
                         <!-- Start Single Footer Info -->
                         <div class="footer-single-info">
-                            <a href="mailto:fridfrix@icloud.com" class="info-box">
+                            <a href="mailto:hello@ifxmysetup.com" class="info-box">
                                 <span class="icon"><i class="icofont-envelope-open"></i></span>
-                                <span class="text">fridfrix@icloud.com</span>
+                                <span class="text">hello@ifxmysetup.com</span>
                             </a>
                         </div>
                         <!-- Start Single Footer Info -->

@@ -52,7 +52,7 @@
                                 <!-- Start contact Single Box -->
                                 <li class="contact-sidebar-single-box">
                                     <h6 class="title-text">Email:</h6>
-                                    <a href="mailto:fridfrix@icloud.com" class="link">fridfrix@icloud.com</a>
+                                    <a href="mailto:hello@ifxmysetup.com" class="link">hello@ifxmysetup.com</a>
                                 </li>
                                 <!-- End contact Single Box -->
                                 <!-- Start contact Single Box -->

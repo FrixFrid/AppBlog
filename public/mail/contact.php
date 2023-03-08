@@ -17,7 +17,7 @@ $mail->SMTPDebug = false;
 if($mail->SMTPAuth){
     $mail->SMTPSecure = 'ssl';               //Protocole de sécurisation des échanges avec le SMTP
     $mail->Username   =  'hello@ifxmysetup.com';    //Adresse email à utiliser
-    $mail->Password   =  'Lina21Inaya14!';         //Mot de passe de l'adresse email à utiliser
+    $mail->Password   =  '';         //Mot de passe de l'adresse email à utiliser
 }
 
 $mail->From       = "hello@ifxmysetup.com";                //L'email à afficher pour l'envoi
