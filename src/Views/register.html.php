@@ -29,23 +29,23 @@
                         <div class="row mb-n6">
                             <div class="col-xl-6 mb-6">
                                 <div class="default-form-group">
-                                    <input class="login__input" type="text" name="username" placeholder="Votre pseudo">
+                                    <input class="login__input" type="text" name="username" placeholder="Votre pseudo" required>
                                 </div>
                             </div>
                             <div class="col-xl-6 mb-6">
                                 <div class="default-form-group">
-                                    <input type="email" name="email" placeholder="votre email de connexion">
+                                    <input type="email" name="email" placeholder="votre email de connexion" required>
                                 </div>
                             </div>
                             <div class="col-xl-6 mb-6">
                                 <div class="default-form-group">
-                                    <input type="password" name="mdp" placeholder="votre mot de passe de connexion">
+                                    <input type="password" name="mdp" placeholder="votre mot de passe de connexion" required>
                                 </div>
                             </div>
                             <div class="col-xl-6 mb-6">
                                 <div class="default-form-group">
                                     <input type="password" name="password_confirm"
-                                           placeholder="confirmation de votre mot de passe de connexion">
+                                           placeholder="confirmation de votre mot de passe de connexion" required>
                                 </div>
                             </div>
                             <?php if (!isset($_SESSION) === true && ($user->getIsAdmin()) === 1) {

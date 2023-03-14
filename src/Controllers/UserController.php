@@ -76,20 +76,21 @@ class UserController extends Controller
             $user = $this->model->findUserLogin($_POST['email']);
             if (!password_verify($_POST['mdp'], ($user->getMdp()))) {
                 $this->redirect("/login");
-            }
-                $_SESSION['user'] = $user;
-            if ($user->getIsAdmin()) {
-                $this->redirect("/dashboard");
             } else {
-                $this->redirect("/");
+                $_SESSION['user'] = $user;
+                if ($user->getIsAdmin()) {
+                    $this->redirect("/dashboard");
+                } else {
+                    $this->redirect("/");
+                }
             }
         }
     }
 
-
     public function logout()
     {
         if (session_status() == PHP_SESSION_ACTIVE) {
+            session_unset();
             session_destroy();
         }
         $this->redirect("/");

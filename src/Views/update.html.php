@@ -75,14 +75,14 @@
                                                 <div class="default-form-group">
                                                     <label>Extrait :</label>
                                                     <input type="text" name="extrait"
-                                                           value="<?= $article->getExtrait(); ?>">
+                                                           value="<?= htmlspecialchars($article->getExtrait()); ?>">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 mb-6">
                                                 <div class="default-form-group">
                                                     <label>Article :</label>
                                                     <textarea name="content" id="" cols="30"
-                                                              rows="10"><?= $article->getContent(); ?></textarea>
+                                                              rows="10"><?= htmlspecialchars($article->getContent()); ?></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 mb-6">
@@ -91,7 +91,7 @@
                                             </div>
                                             <div class="col-6 mb-6">
                                                 <div class="default-form-group tex-center">
-                                                    <input type="hidden" name="id" value="<?= $article->getId() ?>">
+                                                    <input type="hidden" name="id" value="<?= htmlspecialchars($article->getId()); ?>">
                                                     <button type="submit" class="btn btn-lg btn-outline-one">Modifier
                                                     </button>
                                                 </div>

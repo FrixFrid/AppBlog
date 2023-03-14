@@ -3,7 +3,7 @@ session_set_cookie_params([
     'lifetime' => 3600,
     'path' => '/',
     'domain' => 'blog.ft',
-    'secure' => true,
+    'secure' => false,
     'httponly' => true,
     'samesite' => 'Strict',
 ]);

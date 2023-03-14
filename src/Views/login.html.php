@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <br>
-                        <?php if (empty($_SESSION)) { ?>
+                        <?php if (empty($_SESSION['user'])) { ?>
                             <a href="/register">Vous n'avez pas de compte ? inscrivez-vous ici !</a>
                         <?php } ?>
                     </form>

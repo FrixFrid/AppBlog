@@ -65,7 +65,7 @@
                             } elseif (isset($_SESSION['user'])) {
                                 ?>
                                 <li class="header-nav">
-                                    <a href="/logout"">Déconnexion</a>
+                                    <a href="/logout">Déconnexion</a>
                                 </li>
                                 <?php
                             } else {
@@ -73,7 +73,8 @@
                                 <li class="header-nav">
                                     <a href="/login">Connexion/Inscription</a>
                                 </li>
-                            <?php } ?>
+                            <?php }
+                            ?>
                         </ul>
                         <!-- End Header Menu -->
                     </div>
