@@ -50,7 +50,7 @@ class CommentController extends Controller
 
     public function delete($id)
     {
-        $comment = $this->model->findNotValidated();
+        $comment = $this->model->find($id);
         if (!$comment) {
             die("Aucun commentaire n'a l'identifiant $id !");
         }
